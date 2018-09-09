@@ -1,0 +1,12 @@
+E:\work\iHil\iHilBms\iHilBms\bin\Debug\Instance\TCommuniationBase.dll
+E:\work\iHil\iHilBms\iHilBms\bin\Debug\Instance\TCommuniationBase.pdb
+E:\work\iHil\Instance\TCommuniationBase\obj\Debug\TCommuniationBase.dll
+E:\work\iHil\Instance\TCommuniationBase\obj\Debug\TCommuniationBase.pdb
+E:\work\iHil\Instance\TCommuniationBase\bin\Debug\TCommuniationBase.dll
+E:\work\iHil\Instance\TCommuniationBase\bin\Debug\TCommuniationBase.pdb
+E:\VSProject\iHIL0828\Instance\TCommuniationBase\bin\Debug\TCommuniationBase.dll
+E:\VSProject\iHIL0828\Instance\TCommuniationBase\bin\Debug\TCommuniationBase.pdb
+E:\VSProject\iHIL0828\Instance\TCommuniationBase\obj\Debug\TCommuniationBase.csprojAssemblyReference.cache
+E:\VSProject\iHIL0828\Instance\TCommuniationBase\obj\Debug\TCommuniationBase.csproj.CoreCompileInputs.cache
+E:\VSProject\iHIL0828\Instance\TCommuniationBase\obj\Debug\TCommuniationBase.dll
+E:\VSProject\iHIL0828\Instance\TCommuniationBase\obj\Debug\TCommuniationBase.pdb

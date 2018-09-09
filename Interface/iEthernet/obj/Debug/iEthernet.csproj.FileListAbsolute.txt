@@ -1,0 +1,5 @@
+E:\VSProject\iHIL0828\iHilBms\iHilBms\Bin\Debug\Interface\iEthernet.dll
+E:\VSProject\iHIL0828\iHilBms\iHilBms\Bin\Debug\Interface\iEthernet.pdb
+E:\VSProject\iHIL0828\Interface\iEthernet\obj\Debug\iEthernet.csproj.CoreCompileInputs.cache
+E:\VSProject\iHIL0828\Interface\iEthernet\obj\Debug\iEthernet.dll
+E:\VSProject\iHIL0828\Interface\iEthernet\obj\Debug\iEthernet.pdb

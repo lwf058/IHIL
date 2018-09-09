@@ -1,0 +1,12 @@
+E:\work\iHil\iHilBms\bin\Debug\Instance\TUser.dll
+E:\work\iHil\iHilBms\bin\Debug\Instance\TUser.pdb
+E:\work\iHil\Instance\TUser\bin\Debug\TUser.dll
+E:\work\iHil\Instance\TUser\bin\Debug\TUser.pdb
+E:\work\iHil\Instance\TUser\obj\Debug\TUser.dll
+E:\work\iHil\Instance\TUser\obj\Debug\TUser.pdb
+E:\VSProject\iHIL0828\Instance\TUser\bin\Debug\TUser.dll
+E:\VSProject\iHIL0828\Instance\TUser\bin\Debug\TUser.pdb
+E:\VSProject\iHIL0828\Instance\TUser\obj\Debug\TUser.csprojAssemblyReference.cache
+E:\VSProject\iHIL0828\Instance\TUser\obj\Debug\TUser.csproj.CoreCompileInputs.cache
+E:\VSProject\iHIL0828\Instance\TUser\obj\Debug\TUser.dll
+E:\VSProject\iHIL0828\Instance\TUser\obj\Debug\TUser.pdb

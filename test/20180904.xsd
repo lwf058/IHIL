@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="TSchem" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="TCondition">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="subCondition" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:attribute name="IsParent" type="xs:string" />
+            <xs:attribute name="VarName" type="xs:string" />
+            <xs:attribute name="VarCaption" type="xs:string" />
+            <xs:attribute name="Con" type="xs:string" />
+            <xs:attribute name="ConValue" type="xs:string" />
+            <xs:attribute name="Unit" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="IsParent" type="xs:string" />
+      <xs:attribute name="VarName" type="xs:string" />
+      <xs:attribute name="ConValue" type="xs:string" />
+      <xs:attribute name="VarCaption" type="xs:string" />
+      <xs:attribute name="Con" type="xs:string" />
+      <xs:attribute name="Unit" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TSchem" msdata:IsDataSet="true" msdata:Locale="en-US">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="TCondition" />
+        <xs:element name="setCanlist">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TSetCan" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="Check" type="xs:string" />
+                  <xs:attribute name="AgreeMentFile" type="xs:string" />
+                  <xs:attribute name="Baut" type="xs:string" />
+                  <xs:attribute name="Alias" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="setEthList">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TSetEth" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="Check" type="xs:string" />
+                  <xs:attribute name="IP" type="xs:string" />
+                  <xs:attribute name="Port" type="xs:string" />
+                  <xs:attribute name="AgreeMentFile" type="xs:string" />
+                  <xs:attribute name="Alias" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="stepList">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TStep" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="cmdList" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="TCMD" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="initlist" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                <xs:element name="setlist" type="xs:string" minOccurs="0" msdata:Ordinal="1" />
+                                <xs:element name="judgelist" minOccurs="0" maxOccurs="unbounded">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element ref="TCondition" minOccurs="0" maxOccurs="unbounded" />
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="savelist" minOccurs="0" maxOccurs="unbounded">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element ref="TCondition" minOccurs="0" maxOccurs="unbounded" />
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                              <xs:attribute name="Kind" type="xs:string" />
+                              <xs:attribute name="Cmd" type="xs:string" />
+                              <xs:attribute name="WaitTime" type="xs:string" />
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="testid" type="xs:string" />
+                  <xs:attribute name="title" type="xs:string" />
+                  <xs:attribute name="kind" type="xs:string" />
+                  <xs:attribute name="Check" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

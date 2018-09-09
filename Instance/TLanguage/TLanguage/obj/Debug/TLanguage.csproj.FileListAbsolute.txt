@@ -1,0 +1,9 @@
+E:\work\iHil\Instance\TLanguage\TLanguage\obj\Debug\TLanguage.csprojResolveAssemblyReference.cache
+E:\work\iHil\Instance\TLanguage\TLanguage\bin\Debug\TLanguage.dll
+E:\work\iHil\Instance\TLanguage\TLanguage\bin\Debug\TLanguage.pdb
+E:\work\iHil\Instance\TLanguage\TLanguage\bin\Debug\iLanguage.dll
+E:\work\iHil\Instance\TLanguage\TLanguage\bin\Debug\LiuQF.Common.dll
+E:\work\iHil\Instance\TLanguage\TLanguage\obj\Debug\TLanguage.dll
+E:\work\iHil\Instance\TLanguage\TLanguage\obj\Debug\TLanguage.pdb
+E:\VSProject\iHIL0828\Instance\TLanguage\TLanguage\obj\Debug\TLanguage.csprojAssemblyReference.cache
+E:\VSProject\iHIL0828\Instance\TLanguage\TLanguage\obj\Debug\TLanguage.csproj.CoreCompileInputs.cache

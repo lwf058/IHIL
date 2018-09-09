@@ -1,0 +1,8 @@
+E:\work\iHil\Instance\TCAN\bin\Debug\TCAN.dll
+E:\work\iHil\Instance\TCAN\bin\Debug\TCAN.pdb
+E:\work\iHil\Instance\TCAN\bin\Debug\iBms.dll
+E:\work\iHil\Instance\TCAN\obj\Debug\TCAN.csprojResolveAssemblyReference.cache
+E:\work\iHil\Instance\TCAN\obj\Debug\TCAN.dll
+E:\work\iHil\Instance\TCAN\obj\Debug\TCAN.pdb
+E:\VSProject\iHIL0828\Instance\TCAN\obj\Debug\TCAN.csprojAssemblyReference.cache
+E:\VSProject\iHIL0828\Instance\TCAN\obj\Debug\TCAN.csproj.CoreCompileInputs.cache

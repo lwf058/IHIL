@@ -1,0 +1,1240 @@
+<?xml version="1.0" encoding="gb2312"?>
+<ChHIL>
+	<machine isAutoTest="True" isBindCode="False">
+		<cannetList>
+			<canitem machineindex="0" chindex="0" check="-1" file="20151215-hm1-IP34_-WX-EP_BMS_HSCAN6-V04.bm" btl="2" chip="192.168.1.178" chport="4001"/>
+			<canitem machineindex="0" chindex="1" check="-1" file="20160816-IP34WX-InternalCan-V104-CMU.bm" btl="2" chip="192.168.1.178" chport="4002"/>
+			<canitem machineindex="0" chindex="2" check="-1" file="20151215-hm1-IP34_-WX-EP_BMS_HSCAN6-V04.bm" btl="2" chip="192.168.1.178" chport="4003"/>
+			<canitem machineindex="0" chindex="3" check="-1" file="20160816-IP34WX-InternalCan-V104-CMU.bm" btl="2" chip="192.168.1.178" chport="4004"/>
+		</cannetList>
+		<comset>
+			<comitem key="" bz="第一个串口" text="内阻仪" check="-1" file="AAA.moc" btl="" ch1index="" ch2index="" ch1com="COM1"/>
+			<comitem bz="第二个串口" text="耐压仪" check="-1" file="AAA.moc" btl="" ch1index="" ch2index="" ch1com="" ch2com=""/>
+			<comitem bz="第三个串口" text="万用表" check="-1" file="1拖2继电器 - 测试.moc" btl="9600,n,8,2" ch1index="" ch2index="" ch1com="COM8" ch2com="COM9"/>
+			<comitem bz="第四个串口" text="继电器" check="-1" file="1拖2继电器 - 仪表-V1.1.moc" btl="9600,n,8,2" ch1index="" ch2index="" ch1com="COM7" ch2com="COM7"/>
+			<comitem bz="第五个串口" text="串口" check="0" file="" btl="" ch1index="" ch2index="" ch1com="" ch2com=""/>
+		</comset>
+		<telect>
+			<netitem bz="第一个以太网" text="内阻仪" check="0" file="万用表.net" IP="169.254.4.10" PORT="5025" ip="169.254.4.10" port="5025" porttwo="5025"/>
+			<netitem bz="第二个以太网" text="耐压仪" check="0" file="" IP="169.254.4.10" PORT="5025" ip="" port="" porttwo=""/>
+		</telect>
+	</machine>
+	<steplist>
+		<step text="脉冲前的电芯组压差计算" kind="" check="-1" isLock="">
+			<send>
+				<itemsend kind="过渡" cmd="NOT_EXIST" waittime="0" runtime="1001">
+					<initlist/>
+					<runlist/>
+					<savelist>
+						<conitem value="0" isparent="0" text="脉冲前cellTMax" blmc="脉冲前cellTMax" dw="℃" con="=" defaultVal=""/>
+						<conitem value="0" isparent="0" text="脉冲前cellTMin" blmc="脉冲前cellTMin" dw="℃" con="=" defaultVal=""/>
+						<conitem value="0" isparent="0" text="脉冲前BusbarTMax" blmc="脉冲前BusbarTMax" dw="℃" con="=" defaultVal=""/>
+						<conitem value="0" isparent="0" text="脉冲前BusbarTMin" blmc="脉冲前BusbarTMin" dw="℃" con="=" defaultVal=""/>
+						<conitem value="0" isparent="0" text="脉冲前SOC" blmc="脉冲前SOC" dw="%" con="=" defaultVal=""/>
+						<conitem value="0" isparent="0" text="脉冲前celldiffT" blmc="脉冲前celldiffT" dw="℃" con="=" defaultVal=""/>
+						<conitem value="0" isparent="0" text="脉冲前BusbardiffT" blmc="脉冲前BusbardiffT" dw="℃" con="=" defaultVal=""/>
+						<conitem value="0" isparent="0" text="脉冲前的压差" blmc="脉冲前的压差" dw="mV" con="=" defaultVal=""/>
+					</savelist>
+					<judgelist>
+						<conitem value="0" strvalue="" isparent="1" text="与条件" blmc="" dw="" con="=">
+							<subconitem value="2" isparent="0" text="脉冲前celldiffT" blmc="脉冲前celldiffT" dw="℃" con="&lt;=" defaultVal="数字"/>
+							<subconitem value="2" isparent="0" text="脉冲前BusbardiffT" blmc="脉冲前BusbardiffT" dw="℃" con="&lt;=" defaultVal="数字"/>
+							<subconitem value="60" isparent="0" text="脉冲前的压差" blmc="脉冲前的压差" dw="mV" con="&lt;=" defaultVal="数字"/>
+						</conitem>
+					</judgelist>
+				</itemsend>
+				<itemsend kind="CAN2" cmd="DTC" waittime="200" runtime="20000">
+					<initlist/>
+					<runlist/>
+					<savelist>
+						<conitem value="0" isparent="0" text="脉冲前DTC(2)" blmc="CAN2_bcm_dtc_fault_detected" dw="DTCs" con="=" defaultVal=""/>
+					</savelist>
+					<judgelist>
+						<conitem value="2" isparent="0" text="bcm_dtc_fault_detected" blmc="CAN2_bcm_dtc_fault_detected" dw="DTCs" con="=" defaultVal=""/>
+					</judgelist>
+					<runinglist>
+						<conitem value="2" isparent="0" text="bcm_dtc_fault_detected" blmc="CAN2_bcm_dtc_fault_detected" dw="DTCs" con="=" defaultVal=""/>
+					</runinglist>
+				</itemsend>
+			</send>
+			<result/>
+			<runlist/>
+			<resultsave/>
+		</step>
+		<step text="脉冲中温升温差压差计算" kind="" check="-1" isLock="">
+			<send>
+				<itemsend kind="过渡" cmd="NOT_EXIST" waittime="0" runtime="1001">
+					<initlist/>
+					<runlist/>
+					<savelist>
+						<conitem value="0" isparent="0" text="Busbar温升(_Q16℃)" blmc="Busbar温升" dw="℃" con="=" defaultVal=""/>
+						<conitem value="0" isparent="0" text="cell温升(_Q15℃)" blmc="cell温升" dw="℃" con="=" defaultVal=""/>
+						<conitem value="0" isparent="0" text="Busbar最高温度(_Q42℃)" blmc="Busbar最高温度" dw="℃" con="=" defaultVal=""/>
+						<conitem value="0" isparent="0" text="cell最高温度" blmc="cell最高温度" dw="℃" con="=" defaultVal=""/>
+						<conitem value="0" isparent="0" text="脉冲中Busbar最大温差(_Q5℃)" blmc="脉冲中Busbar最大温差" dw="℃" con="=" defaultVal=""/>
+						<conitem value="0" isparent="0" text="脉冲中cell最大温差(_Q3℃)" blmc="脉冲中cell最大温差" dw="℃" con="=" defaultVal=""/>
+						<conitem value="0" isparent="0" text="脉冲中最大压差(_Q60mV)" blmc="脉冲中最大压差" dw="mV" con="=" defaultVal=""/>
+						<conitem value="0" isparent="0" text="bcm_dtc_fault_detected" blmc="CAN2_bcm_dtc_fault_detected" dw="DTCs" con="=" defaultVal="0"/>
+						<conitem value="0" isparent="0" text="Bmu_dtc_001" blmc="CAN2_Bmu_dtc_001" dw="DTCID" con="=" defaultVal="0"/>
+						<conitem value="0" isparent="0" text="Bmu_dtc_002" blmc="CAN2_Bmu_dtc_002" dw="DTCID" con="=" defaultVal="0"/>
+						<conitem value="0" isparent="0" text="Bmu_dtc_003" blmc="CAN2_Bmu_dtc_003" dw="DTCID" con="=" defaultVal="0"/>
+						<conitem value="0" isparent="0" text="Bmu_dtc_004" blmc="CAN2_Bmu_dtc_004" dw="DTCID" con="=" defaultVal="0"/>
+						<conitem value="0" isparent="0" text="Bmu_dtc_005" blmc="CAN2_Bmu_dtc_005" dw="DTCID" con="=" defaultVal="0"/>
+					</savelist>
+					<judgelist>
+						<conitem value="0" isparent="1" text="与条件" blmc="" dw="" con="=">
+							<subconitem value="16" isparent="0" text="Busbar温升" blmc="Busbar温升" dw="℃" con="&lt;=" defaultVal="数字"/>
+							<subconitem value="3" isparent="0" text="脉冲中cell最大温差" blmc="脉冲中cell最大温差" dw="℃" con="&lt;=" defaultVal="数字"/>
+							<subconitem value="42" isparent="0" text="Busbar最高温度" blmc="Busbar最高温度" dw="℃" con="&lt;=" defaultVal="数字"/>
+							<subconitem value="5" isparent="0" text="脉冲中Busbar最大温差" blmc="脉冲中Busbar最大温差" dw="℃" con="&lt;=" defaultVal="数字"/>
+							<subconitem value="15" isparent="0" text="cell温升" blmc="cell温升" dw="℃" con="&lt;=" defaultVal="数字"/>
+							<subconitem value="60" isparent="0" text="脉冲中最大压差" blmc="脉冲中最大压差" dw="mV" con="&lt;=" defaultVal="数字"/>
+						</conitem>
+					</judgelist>
+					<runinglist>
+						<conitem value="1" isparent="0" text="脉冲_step24_state" blmc="脉冲_step24_state" dw="" con="!=" defaultVal=""/>
+					</runinglist>
+				</itemsend>
+				<itemsend kind="CAN2" cmd="DTC" waittime="200" runtime="20000">
+					<initlist/>
+					<runlist/>
+					<savelist>
+						<conitem value="0" isparent="0" text="脉冲中DTC(2)" blmc="CAN2_bcm_dtc_fault_detected" dw="DTCs" con="=" defaultVal=""/>
+					</savelist>
+					<judgelist>
+						<conitem value="2" isparent="0" text="bcm_dtc_fault_detected" blmc="CAN2_bcm_dtc_fault_detected" dw="DTCs" con="=" defaultVal=""/>
+					</judgelist>
+					<runinglist>
+						<conitem value="2" isparent="0" text="bcm_dtc_fault_detected" blmc="CAN2_bcm_dtc_fault_detected" dw="DTCs" con="=" defaultVal=""/>
+					</runinglist>
+				</itemsend>
+			</send>
+			<result/>
+			<runlist/>
+			<resultsave/>
+		</step>
+	</steplist>
+	<custbllist>
+		<custbl>
+			<custitem id="1" blmc="NOT_EXIST" dw="" caption="过渡" blgs=""/>
+			<custitem id="2" blmc="gkdh" dw="" caption="工况项目编码" blgs=""/>
+			<custitem id="3" blmc="ShowForm" dw="" caption="提示信息请自行修改" blgs=""/>
+			<custitem id="4" blmc="ShowPassword" dw="" caption="密码校验" blgs=""/>
+			<custitem id="5" blmc="万用表电压" dw="V" caption="电压" blgs="[NET1_VOLT]*pow(10,[NET1_VE])"/>
+			<custitem id="6" blmc="V1-V2pack" dw="V" caption="V1-V2(万用表-电池包电压)" blgs="[万用表电压]-[CAN1_BMSPackVol_h6HSC6]"/>
+			<custitem id="7" blmc="V1-V3total" dw="V" caption="V1-V3(万用表-计算电压)" blgs="[万用表电压]-([CAN2_SysTotalCellv]/1000)"/>
+			<custitem id="8" blmc="V2-V3total" dw="V" caption="V2-V3(电池包-计算电压)" blgs="[CAN1_BMSPackVol_h6HSC6]-([CAN2_SysTotalCellv]/1000)"/>
+			<custitem id="9" blmc="脉冲前的压差" dw="mV" caption="脉冲前的压差" blgs="([脉冲_step1_CAN1_BMSCellMaxVolHSC6]-[脉冲_step1_CAN1_BMSCellMinVolHSC6])*1000"/>
+			<custitem id="10" blmc="脉冲后的压差" dw="mV" caption="脉冲后的压差" blgs="([脉冲_step24_CAN1_BMSCellMaxVolHSC6]-[脉冲_step24_CAN1_BMSCellMinVolHSC6])*1000"/>
+			<custitem id="11" blmc="电芯温差" dw="℃" caption="电芯温差" blgs="[脉冲_step24_CAN1_BMSCellMaxTem_h6HSC6]-[脉冲_step24_CAN1_BMSCellMinTem_h6HSC6]"/>
+			<custitem id="12" blmc="电芯总和电压" dw="V" caption="电芯总和电压" blgs="[CAN2_SysTotalCellV]/1000"/>
+			<custitem id="13" blmc="脉冲前电流" dw="A" caption="脉冲前电流" blgs="[脉冲_step1_CAN1_BMSPackCrnt_h6HSC6]+[脉冲_step1_A]"/>
+			<custitem id="14" blmc="脉冲后电流" dw="A" caption="脉冲后电流" blgs="[脉冲_step24_CAN1_BMSPackCrnt_h6HSC6]+[脉冲_step24_A]"/>
+			<custitem id="15" blmc="脉冲一中208A放电流差值" dw="A" caption="脉冲一中208A放电流差值" blgs="[脉冲_step5_CAN1_BMSPackCrnt_h6HSC6]+[脉冲_step5_A]"/>
+			<custitem id="16" blmc="脉冲二中208A放电流差值" dw="A" caption="脉冲二中208A放电流差值" blgs="[脉冲_step10_CAN1_BMSPackCrnt_h6HSC6]+[脉冲_step10_A]"/>
+			<custitem id="17" blmc="脉冲三中208A放电流差值" dw="A" caption="脉冲三中208A放电流差值" blgs="[脉冲_step15_CAN1_BMSPackCrnt_h6HSC6]+[脉冲_step15_A]"/>
+			<custitem id="18" blmc="脉冲四中208A放电流差值" dw="A" caption="脉冲四中208A放电流差值" blgs="[脉冲_step20_CAN1_BMSPackCrnt_h6HSC6]+[脉冲_step20_A]"/>
+			<custitem id="19" blmc="脉冲一中64A充电流差值" dw="A" caption="脉冲一中64A充电流差值" blgs="[脉冲_step7_CAN1_BMSPackCrnt_h6HSC6]+[脉冲_step7_A]"/>
+			<custitem id="20" blmc="脉冲二中64A充电流差值" dw="A" caption="脉冲二中64A充电流差值" blgs="[脉冲_step12_CAN1_BMSPackCrnt_h6HSC6]+[脉冲_step12_A]"/>
+			<custitem id="21" blmc="脉冲三中64A充电流差值" dw="A" caption="脉冲三中64A充电流差值" blgs="[脉冲_step17_CAN1_BMSPackCrnt_h6HSC6]+[脉冲_step17_A]"/>
+			<custitem id="22" blmc="脉冲四中64A充电流差值" dw="A" caption="脉冲四中64A充电流差值" blgs="[脉冲_step22_CAN1_BMSPackCrnt_h6HSC6]+[脉冲_step22_A]"/>
+			<custitem id="23" blmc="Dcr00_00" dw="mΩ" caption="Dcr00_00" blgs="abs([脉冲_step5_CAN2_CMU00CellVolt00]-[脉冲_step6_CAN2_CMU00CellVolt00])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="24" blmc="Dcr00_01" dw="mΩ" caption="Dcr00_01" blgs="abs([脉冲_step5_CAN2_CMU00CellVolt01]-[脉冲_step6_CAN2_CMU00CellVolt01])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="25" blmc="Dcr00_02" dw="mΩ" caption="Dcr00_02" blgs="abs([脉冲_step5_CAN2_CMU00CellVolt02]-[脉冲_step6_CAN2_CMU00CellVolt02])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="26" blmc="Dcr00_03" dw="mΩ" caption="Dcr00_03" blgs="abs([脉冲_step5_CAN2_CMU00CellVolt03]-[脉冲_step6_CAN2_CMU00CellVolt03])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="27" blmc="Dcr00_04" dw="mΩ" caption="Dcr00_04" blgs="abs([脉冲_step5_CAN2_CMU00CellVolt04]-[脉冲_step6_CAN2_CMU00CellVolt04])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="28" blmc="Dcr00_05" dw="mΩ" caption="Dcr00_05" blgs="abs([脉冲_step5_CAN2_CMU00CellVolt05]-[脉冲_step6_CAN2_CMU00CellVolt05])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="29" blmc="Dcr00_06" dw="mΩ" caption="Dcr00_06" blgs="abs([脉冲_step5_CAN2_CMU00CellVolt06]-[脉冲_step6_CAN2_CMU00CellVolt06])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="30" blmc="Dcr00_07" dw="mΩ" caption="Dcr00_07" blgs="abs([脉冲_step5_CAN2_CMU00CellVolt07]-[脉冲_step6_CAN2_CMU00CellVolt07])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="31" blmc="Dcr00_08" dw="mΩ" caption="Dcr00_08" blgs="abs([脉冲_step5_CAN2_CMU00CellVolt08]-[脉冲_step6_CAN2_CMU00CellVolt08])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="32" blmc="Dcr00_09" dw="mΩ" caption="Dcr00_09" blgs="abs([脉冲_step5_CAN2_CMU00CellVolt09]-[脉冲_step6_CAN2_CMU00CellVolt09])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="33" blmc="Dcr00_10" dw="mΩ" caption="Dcr00_10" blgs="abs([脉冲_step5_CAN2_CMU00CellVolt10]-[脉冲_step6_CAN2_CMU00CellVolt10])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="34" blmc="Dcr00_11" dw="mΩ" caption="Dcr00_11" blgs="abs([脉冲_step5_CAN2_CMU00CellVolt11]-[脉冲_step6_CAN2_CMU00CellVolt11])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="35" blmc="Dcr00_12" dw="mΩ" caption="Dcr00_12" blgs="abs([脉冲_step5_CAN2_CMU00CellVolt12]-[脉冲_step6_CAN2_CMU00CellVolt12])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="36" blmc="Dcr00_13" dw="mΩ" caption="Dcr00_13" blgs="abs([脉冲_step5_CAN2_CMU00CellVolt13]-[脉冲_step6_CAN2_CMU00CellVolt13])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="37" blmc="Dcr00_14" dw="mΩ" caption="Dcr00_14" blgs="abs([脉冲_step5_CAN2_CMU00CellVolt14]-[脉冲_step6_CAN2_CMU00CellVolt14])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="38" blmc="Dcr00_15" dw="mΩ" caption="Dcr00_15" blgs="abs([脉冲_step5_CAN2_CMU00CellVolt15]-[脉冲_step6_CAN2_CMU00CellVolt15])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="39" blmc="Dcr00_16" dw="mΩ" caption="Dcr00_16" blgs="abs([脉冲_step5_CAN2_CMU00CellVolt16]-[脉冲_step6_CAN2_CMU00CellVolt16])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="40" blmc="Dcr00_17" dw="mΩ" caption="Dcr00_17" blgs="abs([脉冲_step5_CAN2_CMU00CellVolt17]-[脉冲_step6_CAN2_CMU00CellVolt17])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="41" blmc="Dcr00_18" dw="mΩ" caption="Dcr00_18" blgs="abs([脉冲_step5_CAN2_CMU00CellVolt18]-[脉冲_step6_CAN2_CMU00CellVolt18])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="42" blmc="Dcr00_19" dw="mΩ" caption="Dcr00_19" blgs="abs([脉冲_step5_CAN2_CMU00CellVolt19]-[脉冲_step6_CAN2_CMU00CellVolt19])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="43" blmc="Dcr00_20" dw="mΩ" caption="Dcr00_20" blgs="abs([脉冲_step5_CAN2_CMU00CellVolt20]-[脉冲_step6_CAN2_CMU00CellVolt20])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="44" blmc="Dcr00_21" dw="mΩ" caption="Dcr00_21" blgs="abs([脉冲_step5_CAN2_CMU00CellVolt21]-[脉冲_step6_CAN2_CMU00CellVolt21])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="45" blmc="Dcr00_22" dw="mΩ" caption="Dcr00_22" blgs="abs([脉冲_step5_CAN2_CMU00CellVolt22]-[脉冲_step6_CAN2_CMU00CellVolt22])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="46" blmc="Dcr00_23" dw="mΩ" caption="Dcr00_23" blgs="abs([脉冲_step5_CAN2_CMU00CellVolt23]-[脉冲_step6_CAN2_CMU00CellVolt23])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="47" blmc="Dcr01_00" dw="mΩ" caption="Dcr01_00" blgs="abs([脉冲_step5_CAN2_CMU01CellVolt00]-[脉冲_step6_CAN2_CMU01CellVolt00])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="48" blmc="Dcr01_01" dw="mΩ" caption="Dcr01_01" blgs="abs([脉冲_step5_CAN2_CMU01CellVolt01]-[脉冲_step6_CAN2_CMU01CellVolt01])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="49" blmc="Dcr01_02" dw="mΩ" caption="Dcr01_02" blgs="abs([脉冲_step5_CAN2_CMU01CellVolt02]-[脉冲_step6_CAN2_CMU01CellVolt02])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="50" blmc="Dcr01_03" dw="mΩ" caption="Dcr01_03" blgs="abs([脉冲_step5_CAN2_CMU01CellVolt03]-[脉冲_step6_CAN2_CMU01CellVolt03])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="51" blmc="Dcr01_04" dw="mΩ" caption="Dcr01_04" blgs="abs([脉冲_step5_CAN2_CMU01CellVolt04]-[脉冲_step6_CAN2_CMU01CellVolt04])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="52" blmc="Dcr01_05" dw="mΩ" caption="Dcr01_05" blgs="abs([脉冲_step5_CAN2_CMU01CellVolt05]-[脉冲_step6_CAN2_CMU01CellVolt05])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="53" blmc="Dcr01_06" dw="mΩ" caption="Dcr01_06" blgs="abs([脉冲_step5_CAN2_CMU01CellVolt06]-[脉冲_step6_CAN2_CMU01CellVolt06])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="54" blmc="Dcr01_07" dw="mΩ" caption="Dcr01_07" blgs="abs([脉冲_step5_CAN2_CMU01CellVolt07]-[脉冲_step6_CAN2_CMU01CellVolt07])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="55" blmc="Dcr01_08" dw="mΩ" caption="Dcr01_08" blgs="abs([脉冲_step5_CAN2_CMU01CellVolt08]-[脉冲_step6_CAN2_CMU01CellVolt08])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="56" blmc="Dcr01_09" dw="mΩ" caption="Dcr01_09" blgs="abs([脉冲_step5_CAN2_CMU01CellVolt09]-[脉冲_step6_CAN2_CMU01CellVolt09])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="57" blmc="Dcr01_10" dw="mΩ" caption="Dcr01_10" blgs="abs([脉冲_step5_CAN2_CMU01CellVolt10]-[脉冲_step6_CAN2_CMU01CellVolt10])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="58" blmc="Dcr01_11" dw="mΩ" caption="Dcr01_11" blgs="abs([脉冲_step5_CAN2_CMU01CellVolt11]-[脉冲_step6_CAN2_CMU01CellVolt11])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="59" blmc="Dcr01_12" dw="mΩ" caption="Dcr01_12" blgs="abs([脉冲_step5_CAN2_CMU01CellVolt12]-[脉冲_step6_CAN2_CMU01CellVolt12])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="60" blmc="Dcr01_13" dw="mΩ" caption="Dcr01_13" blgs="abs([脉冲_step5_CAN2_CMU01CellVolt13]-[脉冲_step6_CAN2_CMU01CellVolt13])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="61" blmc="Dcr01_14" dw="mΩ" caption="Dcr01_14" blgs="abs([脉冲_step5_CAN2_CMU01CellVolt14]-[脉冲_step6_CAN2_CMU01CellVolt14])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="62" blmc="Dcr01_15" dw="mΩ" caption="Dcr01_15" blgs="abs([脉冲_step5_CAN2_CMU01CellVolt15]-[脉冲_step6_CAN2_CMU01CellVolt15])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="63" blmc="Dcr01_16" dw="mΩ" caption="Dcr01_16" blgs="abs([脉冲_step5_CAN2_CMU01CellVolt16]-[脉冲_step6_CAN2_CMU01CellVolt16])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="64" blmc="Dcr01_17" dw="mΩ" caption="Dcr01_17" blgs="abs([脉冲_step5_CAN2_CMU01CellVolt17]-[脉冲_step6_CAN2_CMU01CellVolt17])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="65" blmc="Dcr01_18" dw="mΩ" caption="Dcr01_18" blgs="abs([脉冲_step5_CAN2_CMU01CellVolt18]-[脉冲_step6_CAN2_CMU01CellVolt18])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="66" blmc="Dcr01_19" dw="mΩ" caption="Dcr01_19" blgs="abs([脉冲_step5_CAN2_CMU01CellVolt19]-[脉冲_step6_CAN2_CMU01CellVolt19])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="67" blmc="Dcr01_20" dw="mΩ" caption="Dcr01_20" blgs="abs([脉冲_step5_CAN2_CMU01CellVolt20]-[脉冲_step6_CAN2_CMU01CellVolt20])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="68" blmc="Dcr01_21" dw="mΩ" caption="Dcr01_21" blgs="abs([脉冲_step5_CAN2_CMU01CellVolt21]-[脉冲_step6_CAN2_CMU01CellVolt21])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="69" blmc="Dcr01_22" dw="mΩ" caption="Dcr01_22" blgs="abs([脉冲_step5_CAN2_CMU01CellVolt22]-[脉冲_step6_CAN2_CMU01CellVolt22])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="70" blmc="Dcr01_23" dw="mΩ" caption="Dcr01_23" blgs="abs([脉冲_step5_CAN2_CMU01CellVolt23]-[脉冲_step6_CAN2_CMU01CellVolt23])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="71" blmc="Dcr02_00" dw="mΩ" caption="Dcr02_00" blgs="abs([脉冲_step5_CAN2_CMU02CellVolt00]-[脉冲_step6_CAN2_CMU02CellVolt00])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="72" blmc="Dcr02_01" dw="mΩ" caption="Dcr02_01" blgs="abs([脉冲_step5_CAN2_CMU02CellVolt01]-[脉冲_step6_CAN2_CMU02CellVolt01])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="73" blmc="Dcr02_02" dw="mΩ" caption="Dcr02_02" blgs="abs([脉冲_step5_CAN2_CMU02CellVolt02]-[脉冲_step6_CAN2_CMU02CellVolt02])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="74" blmc="Dcr02_03" dw="mΩ" caption="Dcr02_03" blgs="abs([脉冲_step5_CAN2_CMU02CellVolt03]-[脉冲_step6_CAN2_CMU02CellVolt03])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="75" blmc="Dcr02_04" dw="mΩ" caption="Dcr02_04" blgs="abs([脉冲_step5_CAN2_CMU02CellVolt04]-[脉冲_step6_CAN2_CMU02CellVolt04])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="76" blmc="Dcr02_05" dw="mΩ" caption="Dcr02_05" blgs="abs([脉冲_step5_CAN2_CMU02CellVolt05]-[脉冲_step6_CAN2_CMU02CellVolt05])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="77" blmc="Dcr02_06" dw="mΩ" caption="Dcr02_06" blgs="abs([脉冲_step5_CAN2_CMU02CellVolt06]-[脉冲_step6_CAN2_CMU02CellVolt06])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="78" blmc="Dcr02_07" dw="mΩ" caption="Dcr02_07" blgs="abs([脉冲_step5_CAN2_CMU02CellVolt07]-[脉冲_step6_CAN2_CMU02CellVolt07])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="79" blmc="Dcr02_08" dw="mΩ" caption="Dcr02_08" blgs="abs([脉冲_step5_CAN2_CMU02CellVolt08]-[脉冲_step6_CAN2_CMU02CellVolt08])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="80" blmc="Dcr02_09" dw="mΩ" caption="Dcr02_09" blgs="abs([脉冲_step5_CAN2_CMU02CellVolt09]-[脉冲_step6_CAN2_CMU02CellVolt09])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="81" blmc="Dcr02_10" dw="mΩ" caption="Dcr02_10" blgs="abs([脉冲_step5_CAN2_CMU02CellVolt10]-[脉冲_step6_CAN2_CMU02CellVolt10])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="82" blmc="Dcr02_11" dw="mΩ" caption="Dcr02_11" blgs="abs([脉冲_step5_CAN2_CMU02CellVolt11]-[脉冲_step6_CAN2_CMU02CellVolt11])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="83" blmc="Dcr02_12" dw="mΩ" caption="Dcr02_12" blgs="abs([脉冲_step5_CAN2_CMU02CellVolt12]-[脉冲_step6_CAN2_CMU02CellVolt12])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="84" blmc="Dcr02_13" dw="mΩ" caption="Dcr02_13" blgs="abs([脉冲_step5_CAN2_CMU02CellVolt13]-[脉冲_step6_CAN2_CMU02CellVolt13])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="85" blmc="Dcr02_14" dw="mΩ" caption="Dcr02_14" blgs="abs([脉冲_step5_CAN2_CMU02CellVolt14]-[脉冲_step6_CAN2_CMU02CellVolt14])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="86" blmc="Dcr02_15" dw="mΩ" caption="Dcr02_15" blgs="abs([脉冲_step5_CAN2_CMU02CellVolt15]-[脉冲_step6_CAN2_CMU02CellVolt15])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="87" blmc="Dcr02_16" dw="mΩ" caption="Dcr02_16" blgs="abs([脉冲_step5_CAN2_CMU02CellVolt16]-[脉冲_step6_CAN2_CMU02CellVolt16])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="88" blmc="Dcr02_17" dw="mΩ" caption="Dcr02_17" blgs="abs([脉冲_step5_CAN2_CMU02CellVolt17]-[脉冲_step6_CAN2_CMU02CellVolt17])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="89" blmc="Dcr02_18" dw="mΩ" caption="Dcr02_18" blgs="abs([脉冲_step5_CAN2_CMU02CellVolt18]-[脉冲_step6_CAN2_CMU02CellVolt18])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="90" blmc="Dcr02_19" dw="mΩ" caption="Dcr02_19" blgs="abs([脉冲_step5_CAN2_CMU02CellVolt19]-[脉冲_step6_CAN2_CMU02CellVolt19])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="91" blmc="Dcr02_20" dw="mΩ" caption="Dcr02_20" blgs="abs([脉冲_step5_CAN2_CMU02CellVolt20]-[脉冲_step6_CAN2_CMU02CellVolt20])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="92" blmc="Dcr02_21" dw="mΩ" caption="Dcr02_21" blgs="abs([脉冲_step5_CAN2_CMU02CellVolt21]-[脉冲_step6_CAN2_CMU02CellVolt21])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="93" blmc="Dcr02_22" dw="mΩ" caption="Dcr02_22" blgs="abs([脉冲_step5_CAN2_CMU02CellVolt22]-[脉冲_step6_CAN2_CMU02CellVolt22])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="94" blmc="Dcr02_23" dw="mΩ" caption="Dcr02_23" blgs="abs([脉冲_step5_CAN2_CMU02CellVolt23]-[脉冲_step6_CAN2_CMU02CellVolt23])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="95" blmc="Dcr03_00" dw="mΩ" caption="Dcr03_00" blgs="abs([脉冲_step5_CAN2_CMU03CellVolt00]-[脉冲_step6_CAN2_CMU03CellVolt00])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="96" blmc="Dcr03_01" dw="mΩ" caption="Dcr03_01" blgs="abs([脉冲_step5_CAN2_CMU03CellVolt01]-[脉冲_step6_CAN2_CMU03CellVolt01])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="97" blmc="Dcr03_02" dw="mΩ" caption="Dcr03_02" blgs="abs([脉冲_step5_CAN2_CMU03CellVolt02]-[脉冲_step6_CAN2_CMU03CellVolt02])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="98" blmc="Dcr03_03" dw="mΩ" caption="Dcr03_03" blgs="abs([脉冲_step5_CAN2_CMU03CellVolt03]-[脉冲_step6_CAN2_CMU03CellVolt03])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="99" blmc="Dcr03_04" dw="mΩ" caption="Dcr03_04" blgs="abs([脉冲_step5_CAN2_CMU03CellVolt04]-[脉冲_step6_CAN2_CMU03CellVolt04])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="100" blmc="Dcr03_05" dw="mΩ" caption="Dcr03_05" blgs="abs([脉冲_step5_CAN2_CMU03CellVolt05]-[脉冲_step6_CAN2_CMU03CellVolt05])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="102" blmc="Dcr03_06" dw="mΩ" caption="Dcr03_06" blgs="abs([脉冲_step5_CAN2_CMU03CellVolt06]-[脉冲_step6_CAN2_CMU03CellVolt06])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="103" blmc="Dcr03_07" dw="mΩ" caption="Dcr03_07" blgs="abs([脉冲_step5_CAN2_CMU03CellVolt07]-[脉冲_step6_CAN2_CMU03CellVolt07])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="104" blmc="Dcr03_08" dw="mΩ" caption="Dcr03_08" blgs="abs([脉冲_step5_CAN2_CMU03CellVolt08]-[脉冲_step6_CAN2_CMU03CellVolt08])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="105" blmc="Dcr03_09" dw="mΩ" caption="Dcr03_09" blgs="abs([脉冲_step5_CAN2_CMU03CellVolt09]-[脉冲_step6_CAN2_CMU03CellVolt09])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="106" blmc="Dcr03_10" dw="mΩ" caption="Dcr03_10" blgs="abs([脉冲_step5_CAN2_CMU03CellVolt10]-[脉冲_step6_CAN2_CMU03CellVolt10])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="107" blmc="Dcr03_11" dw="mΩ" caption="Dcr03_11" blgs="abs([脉冲_step5_CAN2_CMU03CellVolt11]-[脉冲_step6_CAN2_CMU03CellVolt11])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="108" blmc="Dcr03_12" dw="mΩ" caption="Dcr03_12" blgs="abs([脉冲_step5_CAN2_CMU03CellVolt12]-[脉冲_step6_CAN2_CMU03CellVolt12])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="109" blmc="Dcr03_13" dw="mΩ" caption="Dcr03_13" blgs="abs([脉冲_step5_CAN2_CMU03CellVolt13]-[脉冲_step6_CAN2_CMU03CellVolt13])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="110" blmc="Dcr03_14" dw="mΩ" caption="Dcr03_14" blgs="abs([脉冲_step5_CAN2_CMU03CellVolt14]-[脉冲_step6_CAN2_CMU03CellVolt14])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="111" blmc="Dcr03_15" dw="mΩ" caption="Dcr03_15" blgs="abs([脉冲_step5_CAN2_CMU03CellVolt15]-[脉冲_step6_CAN2_CMU03CellVolt15])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="112" blmc="Dcr03_16" dw="mΩ" caption="Dcr03_16" blgs="abs([脉冲_step5_CAN2_CMU03CellVolt16]-[脉冲_step6_CAN2_CMU03CellVolt16])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="113" blmc="Dcr03_17" dw="mΩ" caption="Dcr03_17" blgs="abs([脉冲_step5_CAN2_CMU03CellVolt17]-[脉冲_step6_CAN2_CMU03CellVolt17])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="114" blmc="Dcr03_18" dw="mΩ" caption="Dcr03_18" blgs="abs([脉冲_step5_CAN2_CMU03CellVolt18]-[脉冲_step6_CAN2_CMU03CellVolt18])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="115" blmc="Dcr03_19" dw="mΩ" caption="Dcr03_19" blgs="abs([脉冲_step5_CAN2_CMU03CellVolt19]-[脉冲_step6_CAN2_CMU03CellVolt19])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="116" blmc="Dcr03_20" dw="mΩ" caption="Dcr03_20" blgs="abs([脉冲_step5_CAN2_CMU03CellVolt20]-[脉冲_step6_CAN2_CMU03CellVolt20])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="117" blmc="Dcr03_21" dw="mΩ" caption="Dcr03_21" blgs="abs([脉冲_step5_CAN2_CMU03CellVolt21]-[脉冲_step6_CAN2_CMU03CellVolt21])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="118" blmc="Dcr03_22" dw="mΩ" caption="Dcr03_22" blgs="abs([脉冲_step5_CAN2_CMU03CellVolt22]-[脉冲_step6_CAN2_CMU03CellVolt22])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="119" blmc="Dcr03_23" dw="mΩ" caption="Dcr03_23" blgs="abs([脉冲_step5_CAN2_CMU03CellVolt23]-[脉冲_step6_CAN2_CMU03CellVolt23])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="120" blmc="DcrMod00" dw="mΩ" caption="DcrMod00" blgs="abs([脉冲_step5_CAN2_CMU00ModVolt]-[脉冲_step6_CAN2_CMU00ModVolt])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="121" blmc="DcrMod01" dw="mΩ" caption="DcrMod01" blgs="abs([脉冲_step5_CAN2_CMU01ModVolt]-[脉冲_step6_CAN2_CMU01ModVolt])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="122" blmc="DcrMod02" dw="mΩ" caption="DcrMod02" blgs="abs([脉冲_step5_CAN2_CMU02ModVolt]-[脉冲_step6_CAN2_CMU02ModVolt])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="123" blmc="DcrMod03" dw="mΩ" caption="DcrMod03" blgs="abs([脉冲_step5_CAN2_CMU03ModVolt]-[脉冲_step6_CAN2_CMU03ModVolt])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))"/>
+			<custitem id="124" blmc="脉冲中Busbar最大温差" dw="℃" caption="脉冲中Busbar最大温差" blgs="[脉冲_step24_CAN2_SysAlwayMaxDiffT]"/>
+			<custitem id="125" blmc="脉冲中cell最大温差" dw="℃" caption="脉冲中cell最大温差" blgs="[脉冲_step24_CAN1_SysAlwayMaxDiffT]"/>
+			<custitem id="126" blmc="脉冲中最大压差" dw="mV" caption="脉冲中最大压差" blgs="[脉冲_step24_CAN2_SysAlwayMaxDiffV]"/>
+			<custitem id="127" blmc="Busbar温升" dw="℃" caption="Busbar温升" blgs="[脉冲_step24_CAN2_SysUpMaxT]"/>
+			<custitem id="128" blmc="cell温升" dw="℃" caption="cell温升" blgs="[脉冲_step24_CAN2_SysOneUpMaxT]"/>
+			<custitem id="129" blmc="Busbar最高温度" dw="℃" caption="Busbar最高温度" blgs="[脉冲_step24_CAN2_SysAlwayMaxT]"/>
+			<custitem id="130" blmc="cell最高温度" dw="℃" caption="cell最高温度" blgs="[脉冲_step24_CAN1_SysAlwayMaxT]"/>
+			<custitem id="131" blmc="出货SOC" dw="%" caption="出货SOC" blgs="[SOC_OQC_2_CAN1_BMSPackSOCActualHSC6]"/>
+			<custitem id="132" blmc="BMS总压" dw="V" caption="BMS总压" blgs="[CAN1_BMSPackVol_h6HSC6]"/>
+			<custitem id="123" blmc="BMS总压与cell总和之差" dw="V" caption="BMS总压与cell总和之差" blgs="[CAN1_BMSPackVol_h6HSC6]-[cell总和]"/>
+			<custitem id="134" blmc="BMS总压与万用表测试值之差" dw="V" caption="BMS总压与万用表测试值之差" blgs="[CAN1_BMSPackVol_h6HSC6]-[万用表电压]"/>
+			<custitem id="135" blmc="cell总和与万用表测试值之差" dw="V" caption="cell总和与万用表测试值之差" blgs="[cell总和]-[万用表电压]"/>
+			<custitem id="136" blmc="cell总和" dw="V" caption="cell总和" blgs="[CAN2_SysTotalCellV]/1000"/>
+			<custitem id="137" blmc="调整前MinT" dw="℃" caption="调整前MinT" blgs="[1温度调整_CAN1_BMSCellMinTem_h6HSC6]"/>
+			<custitem id="138" blmc="调整后MinT" dw="℃" caption="调整后MinT" blgs="[6温度调整_CAN1_BMSCellMinTem_h6HSC6]"/>
+			<custitem id="139" blmc="脉冲前DTC" dw="DTCs" caption="脉冲前DTC" blgs="[CAN2_bcm_dtc_fault_detected]"/>
+			<custitem id="140" blmc="脉冲中DTC" dw="DTCs" caption="脉冲中DTC" blgs="[CAN2_bcm_dtc_fault_detected]"/>
+			<custitem id="141" blmc="脉冲后DTC" dw="DTCs" caption="脉冲后DTC" blgs="[CAN2_bcm_dtc_fault_detected]"/>
+			<custitem id="142" blmc="脉冲前cellTMax" dw="℃" caption="脉冲前cellTMax" blgs="[脉冲_step1_CAN1_BMSCellMaxTem_h6HSC6]"/>
+			<custitem id="143" blmc="脉冲前cellTMin" dw="℃" caption="脉冲前cellTMin" blgs="[脉冲_step1_CAN1_BMSCellMinTem_h6HSC6]"/>
+			<custitem id="144" blmc="脉冲前BusbarTMax" dw="℃" caption="脉冲前BusbarTMax" blgs="[脉冲_step1_CAN2_SysMaxCellT]"/>
+			<custitem id="145" blmc="脉冲前BusbarTMin" dw="℃" caption="脉冲前BusbarTMin" blgs="[脉冲_step1_CAN2_SysMinCellT]"/>
+			<custitem id="146" blmc="脉冲前SOC" dw="%" caption="脉冲前SOC" blgs="[脉冲_step1_CAN1_BMSPackSOCActualHSC6]"/>
+			<custitem id="147" blmc="脉冲前celldiffT" dw="℃" caption="脉冲前celldiffT" blgs="[脉冲_step1_CAN2_SysDiffCellT]"/>
+			<custitem id="148" blmc="脉冲前BusbardiffT" dw="℃" caption="脉冲前BusbardiffT" blgs="[脉冲_step1_CAN2_SysDiffCellT]"/>
+			<custitem id="149" blmc="Pack_DCR" dw="mΩ" caption="Pack_DCR" blgs="abs([脉冲_step5_V]-[脉冲_step6_V])/abs(abs([脉冲_step5_A])-abs([脉冲_step6_A]))*1000"/>
+			<custitem id="150" blmc="脉冲一中208A放电压差值" dw="V" caption="脉冲一中208A放电压差值" blgs="[脉冲_step5_CAN1_BMSPackVol_h6HSC6]-[脉冲_step5_V]"/>
+			<custitem id="151" blmc="脉冲二中208A放电压差值" dw="V" caption="脉冲二中208A放电压差值" blgs="[脉冲_step10_CAN1_BMSPackVol_h6HSC6]-[脉冲_step10_V]"/>
+			<custitem id="152" blmc="脉冲三中208A放电压差值" dw="V" caption="脉冲三中208A放电压差值" blgs="[脉冲_step15_CAN1_BMSPackVol_h6HSC6]-[脉冲_step15_V]"/>
+			<custitem id="153" blmc="脉冲四中208A放电压差值" dw="V" caption="脉冲四中208A放电压差值" blgs="[脉冲_step20_CAN1_BMSPackVol_h6HSC6]-[脉冲_step20_V]"/>
+			<custitem id="154" blmc="脉冲一中64A充电压差值" dw="V" caption="脉冲一中64A充电压差值" blgs="[脉冲_step7_CAN1_BMSPackVol_h6HSC6]-[脉冲_step7_V]"/>
+			<custitem id="155" blmc="脉冲二中64A充电压差值" dw="V" caption="脉冲二中64A充电压差值" blgs="[脉冲_step12_CAN1_BMSPackVol_h6HSC6]-[脉冲_step12_V]"/>
+			<custitem id="156" blmc="脉冲三中64A充电压差值" dw="V" caption="脉冲三中64A充电压差值" blgs="[脉冲_step17_CAN1_BMSPackVol_h6HSC6]-[脉冲_step17_V]"/>
+			<custitem id="157" blmc="脉冲四中64A充电压差值" dw="V" caption="脉冲四中64A充电压差值" blgs="[脉冲_step22_CAN1_BMSPackVol_h6HSC6]-[脉冲_step22_V]"/>
+			<custitem id="158" blmc="RStcRstcV" caption="RStcRstcV" blgs="[CAN1_BMSPtIsltnRstcHSC6]+[CAN1_BMSPtIsltnRstcVHSC6]"/>
+			<custitem id="159" blmc="bl159" blgs=""/>
+		</custbl>
+		<inibl>
+			<iniitem blmc="Connect" chapter="CH" property="Connect" caption="Connect"/>
+			<iniitem blmc="脉冲_step1_CAN1_BMSPackVol_h6HSC6" chapter="CH" property="脉冲_step1_CAN1_BMSPackVol_h6HSC6" caption="脉冲_step1_CAN1_BMSPackVol_h6HSC6"/>
+			<iniitem blmc="脉冲_step1_CAN1_BMSPackSOCActualHSC6" chapter="CH" property="脉冲_step1_CAN1_BMSPackSOCActualHSC6" caption="脉冲_step1_CAN1_BMSPackSOCActualHSC6"/>
+			<iniitem blmc="脉冲_step1_CAN1_BMSPackCrnt_h6HSC6" chapter="CH" property="脉冲_step1_CAN1_BMSPackCrnt_h6HSC6" caption="脉冲_step1_CAN1_BMSPackCrnt_h6HSC6"/>
+			<iniitem blmc="脉冲_step1_CAN1_BMSCellMaxVolHSC6" chapter="CH" property="脉冲_step1_CAN1_BMSCellMaxVolHSC6" caption="脉冲_step1_CAN1_BMSCellMaxVolHSC6"/>
+			<iniitem blmc="脉冲_step1_CAN1_BMSCellMinVolHSC6" chapter="CH" property="脉冲_step1_CAN1_BMSCellMinVolHSC6" caption="脉冲_step1_CAN1_BMSCellMinVolHSC6"/>
+			<iniitem blmc="脉冲_step1_CAN1_BMSCellMaxTem_h6HSC6" chapter="CH" property="脉冲_step1_CAN1_BMSCellMaxTem_h6HSC6" caption="脉冲_step1_CAN1_BMSCellMaxTem_h6HSC6"/>
+			<iniitem blmc="脉冲_step1_CAN1_BMSCellMinTem_h6HSC6" chapter="CH" property="脉冲_step1_CAN1_BMSCellMinTem_h6HSC6" caption="脉冲_step1_CAN1_BMSCellMinTem_h6HSC6"/>
+			<iniitem blmc="脉冲_step1_CAN1_SysAlwayMaxT" chapter="CH" property="脉冲_step1_CAN1_SysAlwayMaxT" caption="脉冲_step1_CAN1_SysAlwayMaxT"/>
+			<iniitem blmc="脉冲_step1_CAN2_SysAlwayMaxT" chapter="CH" property="脉冲_step1_CAN2_SysAlwayMaxT" caption="脉冲_step1_CAN2_SysAlwayMaxT"/>
+			<iniitem blmc="脉冲_step1_CAN2_SysUpMaxT" chapter="CH" property="脉冲_step1_CAN2_SysUpMaxT" caption="脉冲_step1_CAN2_SysUpMaxT"/>
+			<iniitem blmc="脉冲_step1_CAN2_SysDiffCellT" chapter="CH" property="脉冲_step1_CAN2_SysDiffCellT" caption="脉冲_step1_CAN2_SysDiffCellT"/>
+			<iniitem blmc="脉冲_step1_CAN2_SysDiffCellV" chapter="CH" property="脉冲_step1_CAN2_SysDiffCellV" caption="脉冲_step1_CAN2_SysDiffCellV"/>
+			<iniitem blmc="脉冲_step1_CAN2_CMU00CellTemp00_difftemp" chapter="CH" property="脉冲_step1_CAN2_CMU00CellTemp00_difftemp" caption="脉冲_step1_CAN2_CMU00CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step1_CAN2_CMU00CellTemp01_difftemp" chapter="CH" property="脉冲_step1_CAN2_CMU00CellTemp01_difftemp" caption="脉冲_step1_CAN2_CMU00CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step1_CAN2_CMU01CellTemp00_difftemp" chapter="CH" property="脉冲_step1_CAN2_CMU01CellTemp00_difftemp" caption="脉冲_step1_CAN2_CMU01CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step1_CAN2_CMU01CellTemp01_difftemp" chapter="CH" property="脉冲_step1_CAN2_CMU01CellTemp01_difftemp" caption="脉冲_step1_CAN2_CMU01CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step1_CAN2_CMU02CellTemp00_difftemp" chapter="CH" property="脉冲_step1_CAN2_CMU02CellTemp00_difftemp" caption="脉冲_step1_CAN2_CMU02CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step1_CAN2_CMU02CellTemp01_difftemp" chapter="CH" property="脉冲_step1_CAN2_CMU02CellTemp01_difftemp" caption="脉冲_step1_CAN2_CMU02CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step1_CAN2_CMU03CellTemp00_difftemp" chapter="CH" property="脉冲_step1_CAN2_CMU03CellTemp00_difftemp" caption="脉冲_step1_CAN2_CMU03CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step1_CAN2_CMU03CellTemp01_difftemp" chapter="CH" property="脉冲_step1_CAN2_CMU03CellTemp01_difftemp" caption="脉冲_step1_CAN2_CMU03CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step1_A" chapter="CH" property="脉冲_step1_A" caption="脉冲_step1_A"/>
+			<iniitem blmc="脉冲_step1_V" chapter="CH" property="脉冲_step1_V" caption="脉冲_step1_V"/>
+			<iniitem blmc="脉冲_step1_Chmah" chapter="CH" property="脉冲_step1_Chmah" caption="脉冲_step1_Chmah"/>
+			<iniitem blmc="脉冲_step1_DChmah" chapter="CH" property="脉冲_step1_DChmah" caption="脉冲_step1_DChmah"/>
+			<iniitem blmc="脉冲_step1_state" chapter="CH" property="脉冲_step1_state" caption="脉冲_step1_state"/>
+			<iniitem blmc="脉冲_step1_EndTime" chapter="CH" property="脉冲_step1_EndTime" caption="脉冲_step1_EndTime"/>
+			<iniitem blmc="脉冲_step5_CAN1_BMSPackVol_h6HSC6" chapter="CH" property="脉冲_step5_CAN1_BMSPackVol_h6HSC6" caption="脉冲_step5_CAN1_BMSPackVol_h6HSC6"/>
+			<iniitem blmc="脉冲_step5_CAN1_BMSPackSOCActualHSC6" chapter="CH" property="脉冲_step5_CAN1_BMSPackSOCActualHSC6" caption="脉冲_step5_CAN1_BMSPackSOCActualHSC6"/>
+			<iniitem blmc="脉冲_step5_CAN1_BMSPackCrnt_h6HSC6" chapter="CH" property="脉冲_step5_CAN1_BMSPackCrnt_h6HSC6" caption="脉冲_step5_CAN1_BMSPackCrnt_h6HSC6"/>
+			<iniitem blmc="脉冲_step5_CAN1_BMSCellMaxVolHSC6" chapter="CH" property="脉冲_step5_CAN1_BMSCellMaxVolHSC6" caption="脉冲_step5_CAN1_BMSCellMaxVolHSC6"/>
+			<iniitem blmc="脉冲_step5_CAN1_BMSCellMinVolHSC6" chapter="CH" property="脉冲_step5_CAN1_BMSCellMinVolHSC6" caption="脉冲_step5_CAN1_BMSCellMinVolHSC6"/>
+			<iniitem blmc="脉冲_step5_CAN1_BMSCellMaxTem_h6HSC6" chapter="CH" property="脉冲_step5_CAN1_BMSCellMaxTem_h6HSC6" caption="脉冲_step5_CAN1_BMSCellMaxTem_h6HSC6"/>
+			<iniitem blmc="脉冲_step5_CAN1_BMSCellMinTem_h6HSC6" chapter="CH" property="脉冲_step5_CAN1_BMSCellMinTem_h6HSC6" caption="脉冲_step5_CAN1_BMSCellMinTem_h6HSC6"/>
+			<iniitem blmc="脉冲_step5_CAN2_SysAlwayMaxT" chapter="CH" property="脉冲_step5_CAN2_SysAlwayMaxT" caption="脉冲_step5_CAN2_SysAlwayMaxT"/>
+			<iniitem blmc="脉冲_step5_CAN2_SysUpMaxT" chapter="CH" property="脉冲_step5_CAN2_SysUpMaxT" caption="脉冲_step5_CAN2_SysUpMaxT"/>
+			<iniitem blmc="脉冲_step5_CAN2_SysDiffCellT" chapter="CH" property="脉冲_step5_CAN2_SysDiffCellT" caption="脉冲_step5_CAN2_SysDiffCellT"/>
+			<iniitem blmc="脉冲_step5_CAN2_SysDiffCellV" chapter="CH" property="脉冲_step5_CAN2_SysDiffCellV" caption="脉冲_step5_CAN2_SysDiffCellV"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU00CellTemp00_difftemp" chapter="CH" property="脉冲_step5_CAN2_CMU00CellTemp00_difftemp" caption="脉冲_step5_CAN2_CMU00CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU00CellTemp01_difftemp" chapter="CH" property="脉冲_step5_CAN2_CMU00CellTemp01_difftemp" caption="脉冲_step5_CAN2_CMU00CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU01CellTemp00_difftemp" chapter="CH" property="脉冲_step5_CAN2_CMU01CellTemp00_difftemp" caption="脉冲_step5_CAN2_CMU01CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU01CellTemp01_difftemp" chapter="CH" property="脉冲_step5_CAN2_CMU01CellTemp01_difftemp" caption="脉冲_step5_CAN2_CMU01CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU02CellTemp00_difftemp" chapter="CH" property="脉冲_step5_CAN2_CMU02CellTemp00_difftemp" caption="脉冲_step5_CAN2_CMU02CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU02CellTemp01_difftemp" chapter="CH" property="脉冲_step5_CAN2_CMU02CellTemp01_difftemp" caption="脉冲_step5_CAN2_CMU02CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU03CellTemp00_difftemp" chapter="CH" property="脉冲_step5_CAN2_CMU03CellTemp00_difftemp" caption="脉冲_step5_CAN2_CMU03CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU03CellTemp01_difftemp" chapter="CH" property="脉冲_step5_CAN2_CMU03CellTemp01_difftemp" caption="脉冲_step5_CAN2_CMU03CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU00CellVolt00" chapter="CH" property="脉冲_step5_CAN2_CMU00CellVolt00" caption="脉冲_step5_CAN2_CMU00CellVolt00"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU00CellVolt01" chapter="CH" property="脉冲_step5_CAN2_CMU00CellVolt01" caption="脉冲_step5_CAN2_CMU00CellVolt01"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU00CellVolt02" chapter="CH" property="脉冲_step5_CAN2_CMU00CellVolt02" caption="脉冲_step5_CAN2_CMU00CellVolt02"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU00CellVolt03" chapter="CH" property="脉冲_step5_CAN2_CMU00CellVolt03" caption="脉冲_step5_CAN2_CMU00CellVolt03"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU00CellVolt04" chapter="CH" property="脉冲_step5_CAN2_CMU00CellVolt04" caption="脉冲_step5_CAN2_CMU00CellVolt04"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU00CellVolt05" chapter="CH" property="脉冲_step5_CAN2_CMU00CellVolt05" caption="脉冲_step5_CAN2_CMU00CellVolt05"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU00CellVolt06" chapter="CH" property="脉冲_step5_CAN2_CMU00CellVolt06" caption="脉冲_step5_CAN2_CMU00CellVolt06"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU00CellVolt07" chapter="CH" property="脉冲_step5_CAN2_CMU00CellVolt07" caption="脉冲_step5_CAN2_CMU00CellVolt07"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU00CellVolt08" chapter="CH" property="脉冲_step5_CAN2_CMU00CellVolt08" caption="脉冲_step5_CAN2_CMU00CellVolt08"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU00CellVolt09" chapter="CH" property="脉冲_step5_CAN2_CMU00CellVolt09" caption="脉冲_step5_CAN2_CMU00CellVolt09"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU00CellVolt10" chapter="CH" property="脉冲_step5_CAN2_CMU00CellVolt10" caption="脉冲_step5_CAN2_CMU00CellVolt10"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU00CellVolt11" chapter="CH" property="脉冲_step5_CAN2_CMU00CellVolt11" caption="脉冲_step5_CAN2_CMU00CellVolt11"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU00CellVolt12" chapter="CH" property="脉冲_step5_CAN2_CMU00CellVolt12" caption="脉冲_step5_CAN2_CMU00CellVolt12"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU00CellVolt13" chapter="CH" property="脉冲_step5_CAN2_CMU00CellVolt13" caption="脉冲_step5_CAN2_CMU00CellVolt13"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU00CellVolt14" chapter="CH" property="脉冲_step5_CAN2_CMU00CellVolt14" caption="脉冲_step5_CAN2_CMU00CellVolt14"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU00CellVolt15" chapter="CH" property="脉冲_step5_CAN2_CMU00CellVolt15" caption="脉冲_step5_CAN2_CMU00CellVolt15"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU00CellVolt16" chapter="CH" property="脉冲_step5_CAN2_CMU00CellVolt16" caption="脉冲_step5_CAN2_CMU00CellVolt16"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU00CellVolt17" chapter="CH" property="脉冲_step5_CAN2_CMU00CellVolt17" caption="脉冲_step5_CAN2_CMU00CellVolt17"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU00CellVolt18" chapter="CH" property="脉冲_step5_CAN2_CMU00CellVolt18" caption="脉冲_step5_CAN2_CMU00CellVolt18"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU00CellVolt19" chapter="CH" property="脉冲_step5_CAN2_CMU00CellVolt19" caption="脉冲_step5_CAN2_CMU00CellVolt19"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU00CellVolt20" chapter="CH" property="脉冲_step5_CAN2_CMU00CellVolt20" caption="脉冲_step5_CAN2_CMU00CellVolt20"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU00CellVolt21" chapter="CH" property="脉冲_step5_CAN2_CMU00CellVolt21" caption="脉冲_step5_CAN2_CMU00CellVolt21"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU00CellVolt22" chapter="CH" property="脉冲_step5_CAN2_CMU00CellVolt22" caption="脉冲_step5_CAN2_CMU00CellVolt22"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU00CellVolt23" chapter="CH" property="脉冲_step5_CAN2_CMU00CellVolt23" caption="脉冲_step5_CAN2_CMU00CellVolt23"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU01CellVolt00" chapter="CH" property="脉冲_step5_CAN2_CMU01CellVolt00" caption="脉冲_step5_CAN2_CMU01CellVolt00"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU01CellVolt01" chapter="CH" property="脉冲_step5_CAN2_CMU01CellVolt01" caption="脉冲_step5_CAN2_CMU01CellVolt01"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU01CellVolt02" chapter="CH" property="脉冲_step5_CAN2_CMU01CellVolt02" caption="脉冲_step5_CAN2_CMU01CellVolt02"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU01CellVolt03" chapter="CH" property="脉冲_step5_CAN2_CMU01CellVolt03" caption="脉冲_step5_CAN2_CMU01CellVolt03"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU01CellVolt04" chapter="CH" property="脉冲_step5_CAN2_CMU01CellVolt04" caption="脉冲_step5_CAN2_CMU01CellVolt04"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU01CellVolt05" chapter="CH" property="脉冲_step5_CAN2_CMU01CellVolt05" caption="脉冲_step5_CAN2_CMU01CellVolt05"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU01CellVolt06" chapter="CH" property="脉冲_step5_CAN2_CMU01CellVolt06" caption="脉冲_step5_CAN2_CMU01CellVolt06"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU01CellVolt07" chapter="CH" property="脉冲_step5_CAN2_CMU01CellVolt07" caption="脉冲_step5_CAN2_CMU01CellVolt07"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU01CellVolt08" chapter="CH" property="脉冲_step5_CAN2_CMU01CellVolt08" caption="脉冲_step5_CAN2_CMU01CellVolt08"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU01CellVolt09" chapter="CH" property="脉冲_step5_CAN2_CMU01CellVolt09" caption="脉冲_step5_CAN2_CMU01CellVolt09"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU01CellVolt10" chapter="CH" property="脉冲_step5_CAN2_CMU01CellVolt10" caption="脉冲_step5_CAN2_CMU01CellVolt10"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU01CellVolt11" chapter="CH" property="脉冲_step5_CAN2_CMU01CellVolt11" caption="脉冲_step5_CAN2_CMU01CellVolt11"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU01CellVolt12" chapter="CH" property="脉冲_step5_CAN2_CMU01CellVolt12" caption="脉冲_step5_CAN2_CMU01CellVolt12"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU01CellVolt13" chapter="CH" property="脉冲_step5_CAN2_CMU01CellVolt13" caption="脉冲_step5_CAN2_CMU01CellVolt13"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU01CellVolt14" chapter="CH" property="脉冲_step5_CAN2_CMU01CellVolt14" caption="脉冲_step5_CAN2_CMU01CellVolt14"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU01CellVolt15" chapter="CH" property="脉冲_step5_CAN2_CMU01CellVolt15" caption="脉冲_step5_CAN2_CMU01CellVolt15"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU01CellVolt16" chapter="CH" property="脉冲_step5_CAN2_CMU01CellVolt16" caption="脉冲_step5_CAN2_CMU01CellVolt16"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU01CellVolt17" chapter="CH" property="脉冲_step5_CAN2_CMU01CellVolt17" caption="脉冲_step5_CAN2_CMU01CellVolt17"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU01CellVolt18" chapter="CH" property="脉冲_step5_CAN2_CMU01CellVolt18" caption="脉冲_step5_CAN2_CMU01CellVolt18"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU01CellVolt19" chapter="CH" property="脉冲_step5_CAN2_CMU01CellVolt19" caption="脉冲_step5_CAN2_CMU01CellVolt19"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU01CellVolt20" chapter="CH" property="脉冲_step5_CAN2_CMU01CellVolt20" caption="脉冲_step5_CAN2_CMU01CellVolt20"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU01CellVolt21" chapter="CH" property="脉冲_step5_CAN2_CMU01CellVolt21" caption="脉冲_step5_CAN2_CMU01CellVolt21"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU01CellVolt22" chapter="CH" property="脉冲_step5_CAN2_CMU01CellVolt22" caption="脉冲_step5_CAN2_CMU01CellVolt22"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU01CellVolt23" chapter="CH" property="脉冲_step5_CAN2_CMU01CellVolt23" caption="脉冲_step5_CAN2_CMU01CellVolt23"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU02CellVolt00" chapter="CH" property="脉冲_step5_CAN2_CMU02CellVolt00" caption="脉冲_step5_CAN2_CMU02CellVolt00"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU02CellVolt01" chapter="CH" property="脉冲_step5_CAN2_CMU02CellVolt01" caption="脉冲_step5_CAN2_CMU02CellVolt01"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU02CellVolt02" chapter="CH" property="脉冲_step5_CAN2_CMU02CellVolt02" caption="脉冲_step5_CAN2_CMU02CellVolt02"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU02CellVolt03" chapter="CH" property="脉冲_step5_CAN2_CMU02CellVolt03" caption="脉冲_step5_CAN2_CMU02CellVolt03"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU02CellVolt04" chapter="CH" property="脉冲_step5_CAN2_CMU02CellVolt04" caption="脉冲_step5_CAN2_CMU02CellVolt04"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU02CellVolt05" chapter="CH" property="脉冲_step5_CAN2_CMU02CellVolt05" caption="脉冲_step5_CAN2_CMU02CellVolt05"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU02CellVolt06" chapter="CH" property="脉冲_step5_CAN2_CMU02CellVolt06" caption="脉冲_step5_CAN2_CMU02CellVolt06"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU02CellVolt07" chapter="CH" property="脉冲_step5_CAN2_CMU02CellVolt07" caption="脉冲_step5_CAN2_CMU02CellVolt07"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU02CellVolt08" chapter="CH" property="脉冲_step5_CAN2_CMU02CellVolt08" caption="脉冲_step5_CAN2_CMU02CellVolt08"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU02CellVolt09" chapter="CH" property="脉冲_step5_CAN2_CMU02CellVolt09" caption="脉冲_step5_CAN2_CMU02CellVolt09"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU02CellVolt10" chapter="CH" property="脉冲_step5_CAN2_CMU02CellVolt10" caption="脉冲_step5_CAN2_CMU02CellVolt10"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU02CellVolt11" chapter="CH" property="脉冲_step5_CAN2_CMU02CellVolt11" caption="脉冲_step5_CAN2_CMU02CellVolt11"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU02CellVolt12" chapter="CH" property="脉冲_step5_CAN2_CMU02CellVolt12" caption="脉冲_step5_CAN2_CMU02CellVolt12"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU02CellVolt13" chapter="CH" property="脉冲_step5_CAN2_CMU02CellVolt13" caption="脉冲_step5_CAN2_CMU02CellVolt13"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU02CellVolt14" chapter="CH" property="脉冲_step5_CAN2_CMU02CellVolt14" caption="脉冲_step5_CAN2_CMU02CellVolt14"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU02CellVolt15" chapter="CH" property="脉冲_step5_CAN2_CMU02CellVolt15" caption="脉冲_step5_CAN2_CMU02CellVolt15"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU02CellVolt16" chapter="CH" property="脉冲_step5_CAN2_CMU02CellVolt16" caption="脉冲_step5_CAN2_CMU02CellVolt16"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU02CellVolt17" chapter="CH" property="脉冲_step5_CAN2_CMU02CellVolt17" caption="脉冲_step5_CAN2_CMU02CellVolt17"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU02CellVolt18" chapter="CH" property="脉冲_step5_CAN2_CMU02CellVolt18" caption="脉冲_step5_CAN2_CMU02CellVolt18"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU02CellVolt19" chapter="CH" property="脉冲_step5_CAN2_CMU02CellVolt19" caption="脉冲_step5_CAN2_CMU02CellVolt19"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU02CellVolt20" chapter="CH" property="脉冲_step5_CAN2_CMU02CellVolt20" caption="脉冲_step5_CAN2_CMU02CellVolt20"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU02CellVolt21" chapter="CH" property="脉冲_step5_CAN2_CMU02CellVolt21" caption="脉冲_step5_CAN2_CMU02CellVolt21"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU02CellVolt22" chapter="CH" property="脉冲_step5_CAN2_CMU02CellVolt22" caption="脉冲_step5_CAN2_CMU02CellVolt22"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU02CellVolt23" chapter="CH" property="脉冲_step5_CAN2_CMU02CellVolt23" caption="脉冲_step5_CAN2_CMU02CellVolt23"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU03CellVolt00" chapter="CH" property="脉冲_step5_CAN2_CMU03CellVolt00" caption="脉冲_step5_CAN2_CMU03CellVolt00"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU03CellVolt01" chapter="CH" property="脉冲_step5_CAN2_CMU03CellVolt01" caption="脉冲_step5_CAN2_CMU03CellVolt01"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU03CellVolt02" chapter="CH" property="脉冲_step5_CAN2_CMU03CellVolt02" caption="脉冲_step5_CAN2_CMU03CellVolt02"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU03CellVolt03" chapter="CH" property="脉冲_step5_CAN2_CMU03CellVolt03" caption="脉冲_step5_CAN2_CMU03CellVolt03"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU03CellVolt04" chapter="CH" property="脉冲_step5_CAN2_CMU03CellVolt04" caption="脉冲_step5_CAN2_CMU03CellVolt04"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU03CellVolt05" chapter="CH" property="脉冲_step5_CAN2_CMU03CellVolt05" caption="脉冲_step5_CAN2_CMU03CellVolt05"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU03CellVolt06" chapter="CH" property="脉冲_step5_CAN2_CMU03CellVolt06" caption="脉冲_step5_CAN2_CMU03CellVolt06"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU03CellVolt07" chapter="CH" property="脉冲_step5_CAN2_CMU03CellVolt07" caption="脉冲_step5_CAN2_CMU03CellVolt07"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU03CellVolt08" chapter="CH" property="脉冲_step5_CAN2_CMU03CellVolt08" caption="脉冲_step5_CAN2_CMU03CellVolt08"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU03CellVolt09" chapter="CH" property="脉冲_step5_CAN2_CMU03CellVolt09" caption="脉冲_step5_CAN2_CMU03CellVolt09"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU03CellVolt10" chapter="CH" property="脉冲_step5_CAN2_CMU03CellVolt10" caption="脉冲_step5_CAN2_CMU03CellVolt10"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU03CellVolt11" chapter="CH" property="脉冲_step5_CAN2_CMU03CellVolt11" caption="脉冲_step5_CAN2_CMU03CellVolt11"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU03CellVolt12" chapter="CH" property="脉冲_step5_CAN2_CMU03CellVolt12" caption="脉冲_step5_CAN2_CMU03CellVolt12"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU03CellVolt13" chapter="CH" property="脉冲_step5_CAN2_CMU03CellVolt13" caption="脉冲_step5_CAN2_CMU03CellVolt13"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU03CellVolt14" chapter="CH" property="脉冲_step5_CAN2_CMU03CellVolt14" caption="脉冲_step5_CAN2_CMU03CellVolt14"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU03CellVolt15" chapter="CH" property="脉冲_step5_CAN2_CMU03CellVolt15" caption="脉冲_step5_CAN2_CMU03CellVolt15"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU03CellVolt16" chapter="CH" property="脉冲_step5_CAN2_CMU03CellVolt16" caption="脉冲_step5_CAN2_CMU03CellVolt16"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU03CellVolt17" chapter="CH" property="脉冲_step5_CAN2_CMU03CellVolt17" caption="脉冲_step5_CAN2_CMU03CellVolt17"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU03CellVolt18" chapter="CH" property="脉冲_step5_CAN2_CMU03CellVolt18" caption="脉冲_step5_CAN2_CMU03CellVolt18"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU03CellVolt19" chapter="CH" property="脉冲_step5_CAN2_CMU03CellVolt19" caption="脉冲_step5_CAN2_CMU03CellVolt19"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU03CellVolt20" chapter="CH" property="脉冲_step5_CAN2_CMU03CellVolt20" caption="脉冲_step5_CAN2_CMU03CellVolt20"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU03CellVolt21" chapter="CH" property="脉冲_step5_CAN2_CMU03CellVolt21" caption="脉冲_step5_CAN2_CMU03CellVolt21"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU03CellVolt22" chapter="CH" property="脉冲_step5_CAN2_CMU03CellVolt22" caption="脉冲_step5_CAN2_CMU03CellVolt22"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU03CellVolt23" chapter="CH" property="脉冲_step5_CAN2_CMU03CellVolt23" caption="脉冲_step5_CAN2_CMU03CellVolt23"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU00ModVolt" chapter="CH" property="脉冲_step5_CAN2_CMU00ModVolt" caption="脉冲_step5_CAN2_CMU00ModVolt"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU01ModVolt" chapter="CH" property="脉冲_step5_CAN2_CMU01ModVolt" caption="脉冲_step5_CAN2_CMU01ModVolt"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU02ModVolt" chapter="CH" property="脉冲_step5_CAN2_CMU02ModVolt" caption="脉冲_step5_CAN2_CMU02ModVolt"/>
+			<iniitem blmc="脉冲_step5_CAN2_CMU03ModVolt" chapter="CH" property="脉冲_step5_CAN2_CMU03ModVolt" caption="脉冲_step5_CAN2_CMU03ModVolt"/>
+			<iniitem blmc="脉冲_step5_A" chapter="CH" property="脉冲_step5_A" caption="脉冲_step5_A"/>
+			<iniitem blmc="脉冲_step5_V" chapter="CH" property="脉冲_step5_V" caption="脉冲_step5_V"/>
+			<iniitem blmc="脉冲_step5_Chmah" chapter="CH" property="脉冲_step5_Chmah" caption="脉冲_step5_Chmah"/>
+			<iniitem blmc="脉冲_step5_DChmah" chapter="CH" property="脉冲_step5_DChmah" caption="脉冲_step5_DChmah"/>
+			<iniitem blmc="脉冲_step5_state" chapter="CH" property="脉冲_step5_state" caption="脉冲_step5_state"/>
+			<iniitem blmc="脉冲_step5_EndTime" chapter="CH" property="脉冲_step5_EndTime" caption="脉冲_step5_EndTime"/>
+			<iniitem blmc="脉冲_step6_CAN1_BMSPackVol_h6HSC6" chapter="CH" property="脉冲_step6_CAN1_BMSPackVol_h6HSC6" caption="脉冲_step6_CAN1_BMSPackVol_h6HSC6"/>
+			<iniitem blmc="脉冲_step6_CAN1_BMSPackSOCActualHSC6" chapter="CH" property="脉冲_step6_CAN1_BMSPackSOCActualHSC6" caption="脉冲_step6_CAN1_BMSPackSOCActualHSC6"/>
+			<iniitem blmc="脉冲_step6_CAN1_BMSPackCrnt_h6HSC6" chapter="CH" property="脉冲_step6_CAN1_BMSPackCrnt_h6HSC6" caption="脉冲_step6_CAN1_BMSPackCrnt_h6HSC6"/>
+			<iniitem blmc="脉冲_step6_CAN1_BMSCellMaxVolHSC6" chapter="CH" property="脉冲_step6_CAN1_BMSCellMaxVolHSC6" caption="脉冲_step6_CAN1_BMSCellMaxVolHSC6"/>
+			<iniitem blmc="脉冲_step6_CAN1_BMSCellMinVolHSC6" chapter="CH" property="脉冲_step6_CAN1_BMSCellMinVolHSC6" caption="脉冲_step6_CAN1_BMSCellMinVolHSC6"/>
+			<iniitem blmc="脉冲_step6_CAN1_BMSCellMaxTem_h6HSC6" chapter="CH" property="脉冲_step6_CAN1_BMSCellMaxTem_h6HSC6" caption="脉冲_step6_CAN1_BMSCellMaxTem_h6HSC6"/>
+			<iniitem blmc="脉冲_step6_CAN1_BMSCellMinTem_h6HSC6" chapter="CH" property="脉冲_step6_CAN1_BMSCellMinTem_h6HSC6" caption="脉冲_step6_CAN1_BMSCellMinTem_h6HSC6"/>
+			<iniitem blmc="脉冲_step6_CAN2_SysAlwayMaxT" chapter="CH" property="脉冲_step6_CAN2_SysAlwayMaxT" caption="脉冲_step6_CAN2_SysAlwayMaxT"/>
+			<iniitem blmc="脉冲_step6_CAN2_SysUpMaxT" chapter="CH" property="脉冲_step6_CAN2_SysUpMaxT" caption="脉冲_step6_CAN2_SysUpMaxT"/>
+			<iniitem blmc="脉冲_step6_CAN2_SysDiffCellT" chapter="CH" property="脉冲_step6_CAN2_SysDiffCellT" caption="脉冲_step6_CAN2_SysDiffCellT"/>
+			<iniitem blmc="脉冲_step6_CAN2_SysDiffCellV" chapter="CH" property="脉冲_step6_CAN2_SysDiffCellV" caption="脉冲_step6_CAN2_SysDiffCellV"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU00CellTemp00_difftemp" chapter="CH" property="脉冲_step6_CAN2_CMU00CellTemp00_difftemp" caption="脉冲_step6_CAN2_CMU00CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU00CellTemp01_difftemp" chapter="CH" property="脉冲_step6_CAN2_CMU00CellTemp01_difftemp" caption="脉冲_step6_CAN2_CMU00CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU01CellTemp00_difftemp" chapter="CH" property="脉冲_step6_CAN2_CMU01CellTemp00_difftemp" caption="脉冲_step6_CAN2_CMU01CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU01CellTemp01_difftemp" chapter="CH" property="脉冲_step6_CAN2_CMU01CellTemp01_difftemp" caption="脉冲_step6_CAN2_CMU01CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU02CellTemp00_difftemp" chapter="CH" property="脉冲_step6_CAN2_CMU02CellTemp00_difftemp" caption="脉冲_step6_CAN2_CMU02CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU02CellTemp01_difftemp" chapter="CH" property="脉冲_step6_CAN2_CMU02CellTemp01_difftemp" caption="脉冲_step6_CAN2_CMU02CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU03CellTemp00_difftemp" chapter="CH" property="脉冲_step6_CAN2_CMU03CellTemp00_difftemp" caption="脉冲_step6_CAN2_CMU03CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU03CellTemp01_difftemp" chapter="CH" property="脉冲_step6_CAN2_CMU03CellTemp01_difftemp" caption="脉冲_step6_CAN2_CMU03CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU00CellVolt00" chapter="CH" property="脉冲_step6_CAN2_CMU00CellVolt00" caption="脉冲_step6_CAN2_CMU00CellVolt00"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU00CellVolt01" chapter="CH" property="脉冲_step6_CAN2_CMU00CellVolt01" caption="脉冲_step6_CAN2_CMU00CellVolt01"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU00CellVolt02" chapter="CH" property="脉冲_step6_CAN2_CMU00CellVolt02" caption="脉冲_step6_CAN2_CMU00CellVolt02"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU00CellVolt03" chapter="CH" property="脉冲_step6_CAN2_CMU00CellVolt03" caption="脉冲_step6_CAN2_CMU00CellVolt03"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU00CellVolt04" chapter="CH" property="脉冲_step6_CAN2_CMU00CellVolt04" caption="脉冲_step6_CAN2_CMU00CellVolt04"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU00CellVolt05" chapter="CH" property="脉冲_step6_CAN2_CMU00CellVolt05" caption="脉冲_step6_CAN2_CMU00CellVolt05"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU00CellVolt06" chapter="CH" property="脉冲_step6_CAN2_CMU00CellVolt06" caption="脉冲_step6_CAN2_CMU00CellVolt06"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU00CellVolt07" chapter="CH" property="脉冲_step6_CAN2_CMU00CellVolt07" caption="脉冲_step6_CAN2_CMU00CellVolt07"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU00CellVolt08" chapter="CH" property="脉冲_step6_CAN2_CMU00CellVolt08" caption="脉冲_step6_CAN2_CMU00CellVolt08"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU00CellVolt09" chapter="CH" property="脉冲_step6_CAN2_CMU00CellVolt09" caption="脉冲_step6_CAN2_CMU00CellVolt09"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU00CellVolt10" chapter="CH" property="脉冲_step6_CAN2_CMU00CellVolt10" caption="脉冲_step6_CAN2_CMU00CellVolt10"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU00CellVolt11" chapter="CH" property="脉冲_step6_CAN2_CMU00CellVolt11" caption="脉冲_step6_CAN2_CMU00CellVolt11"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU00CellVolt12" chapter="CH" property="脉冲_step6_CAN2_CMU00CellVolt12" caption="脉冲_step6_CAN2_CMU00CellVolt12"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU00CellVolt13" chapter="CH" property="脉冲_step6_CAN2_CMU00CellVolt13" caption="脉冲_step6_CAN2_CMU00CellVolt13"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU00CellVolt14" chapter="CH" property="脉冲_step6_CAN2_CMU00CellVolt14" caption="脉冲_step6_CAN2_CMU00CellVolt14"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU00CellVolt15" chapter="CH" property="脉冲_step6_CAN2_CMU00CellVolt15" caption="脉冲_step6_CAN2_CMU00CellVolt15"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU00CellVolt16" chapter="CH" property="脉冲_step6_CAN2_CMU00CellVolt16" caption="脉冲_step6_CAN2_CMU00CellVolt16"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU00CellVolt17" chapter="CH" property="脉冲_step6_CAN2_CMU00CellVolt17" caption="脉冲_step6_CAN2_CMU00CellVolt17"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU00CellVolt18" chapter="CH" property="脉冲_step6_CAN2_CMU00CellVolt18" caption="脉冲_step6_CAN2_CMU00CellVolt18"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU00CellVolt19" chapter="CH" property="脉冲_step6_CAN2_CMU00CellVolt19" caption="脉冲_step6_CAN2_CMU00CellVolt19"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU00CellVolt20" chapter="CH" property="脉冲_step6_CAN2_CMU00CellVolt20" caption="脉冲_step6_CAN2_CMU00CellVolt20"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU00CellVolt21" chapter="CH" property="脉冲_step6_CAN2_CMU00CellVolt21" caption="脉冲_step6_CAN2_CMU00CellVolt21"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU00CellVolt22" chapter="CH" property="脉冲_step6_CAN2_CMU00CellVolt22" caption="脉冲_step6_CAN2_CMU00CellVolt22"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU00CellVolt23" chapter="CH" property="脉冲_step6_CAN2_CMU00CellVolt23" caption="脉冲_step6_CAN2_CMU00CellVolt23"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU01CellVolt00" chapter="CH" property="脉冲_step6_CAN2_CMU01CellVolt00" caption="脉冲_step6_CAN2_CMU01CellVolt00"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU01CellVolt01" chapter="CH" property="脉冲_step6_CAN2_CMU01CellVolt01" caption="脉冲_step6_CAN2_CMU01CellVolt01"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU01CellVolt02" chapter="CH" property="脉冲_step6_CAN2_CMU01CellVolt02" caption="脉冲_step6_CAN2_CMU01CellVolt02"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU01CellVolt03" chapter="CH" property="脉冲_step6_CAN2_CMU01CellVolt03" caption="脉冲_step6_CAN2_CMU01CellVolt03"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU01CellVolt04" chapter="CH" property="脉冲_step6_CAN2_CMU01CellVolt04" caption="脉冲_step6_CAN2_CMU01CellVolt04"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU01CellVolt05" chapter="CH" property="脉冲_step6_CAN2_CMU01CellVolt05" caption="脉冲_step6_CAN2_CMU01CellVolt05"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU01CellVolt06" chapter="CH" property="脉冲_step6_CAN2_CMU01CellVolt06" caption="脉冲_step6_CAN2_CMU01CellVolt06"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU01CellVolt07" chapter="CH" property="脉冲_step6_CAN2_CMU01CellVolt07" caption="脉冲_step6_CAN2_CMU01CellVolt07"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU01CellVolt08" chapter="CH" property="脉冲_step6_CAN2_CMU01CellVolt08" caption="脉冲_step6_CAN2_CMU01CellVolt08"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU01CellVolt09" chapter="CH" property="脉冲_step6_CAN2_CMU01CellVolt09" caption="脉冲_step6_CAN2_CMU01CellVolt09"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU01CellVolt10" chapter="CH" property="脉冲_step6_CAN2_CMU01CellVolt10" caption="脉冲_step6_CAN2_CMU01CellVolt10"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU01CellVolt11" chapter="CH" property="脉冲_step6_CAN2_CMU01CellVolt11" caption="脉冲_step6_CAN2_CMU01CellVolt11"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU01CellVolt12" chapter="CH" property="脉冲_step6_CAN2_CMU01CellVolt12" caption="脉冲_step6_CAN2_CMU01CellVolt12"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU01CellVolt13" chapter="CH" property="脉冲_step6_CAN2_CMU01CellVolt13" caption="脉冲_step6_CAN2_CMU01CellVolt13"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU01CellVolt14" chapter="CH" property="脉冲_step6_CAN2_CMU01CellVolt14" caption="脉冲_step6_CAN2_CMU01CellVolt14"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU01CellVolt15" chapter="CH" property="脉冲_step6_CAN2_CMU01CellVolt15" caption="脉冲_step6_CAN2_CMU01CellVolt15"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU01CellVolt16" chapter="CH" property="脉冲_step6_CAN2_CMU01CellVolt16" caption="脉冲_step6_CAN2_CMU01CellVolt16"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU01CellVolt17" chapter="CH" property="脉冲_step6_CAN2_CMU01CellVolt17" caption="脉冲_step6_CAN2_CMU01CellVolt17"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU01CellVolt18" chapter="CH" property="脉冲_step6_CAN2_CMU01CellVolt18" caption="脉冲_step6_CAN2_CMU01CellVolt18"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU01CellVolt19" chapter="CH" property="脉冲_step6_CAN2_CMU01CellVolt19" caption="脉冲_step6_CAN2_CMU01CellVolt19"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU01CellVolt20" chapter="CH" property="脉冲_step6_CAN2_CMU01CellVolt20" caption="脉冲_step6_CAN2_CMU01CellVolt20"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU01CellVolt21" chapter="CH" property="脉冲_step6_CAN2_CMU01CellVolt21" caption="脉冲_step6_CAN2_CMU01CellVolt21"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU01CellVolt22" chapter="CH" property="脉冲_step6_CAN2_CMU01CellVolt22" caption="脉冲_step6_CAN2_CMU01CellVolt22"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU01CellVolt23" chapter="CH" property="脉冲_step6_CAN2_CMU01CellVolt23" caption="脉冲_step6_CAN2_CMU01CellVolt23"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU02CellVolt00" chapter="CH" property="脉冲_step6_CAN2_CMU02CellVolt00" caption="脉冲_step6_CAN2_CMU02CellVolt00"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU02CellVolt01" chapter="CH" property="脉冲_step6_CAN2_CMU02CellVolt01" caption="脉冲_step6_CAN2_CMU02CellVolt01"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU02CellVolt02" chapter="CH" property="脉冲_step6_CAN2_CMU02CellVolt02" caption="脉冲_step6_CAN2_CMU02CellVolt02"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU02CellVolt03" chapter="CH" property="脉冲_step6_CAN2_CMU02CellVolt03" caption="脉冲_step6_CAN2_CMU02CellVolt03"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU02CellVolt04" chapter="CH" property="脉冲_step6_CAN2_CMU02CellVolt04" caption="脉冲_step6_CAN2_CMU02CellVolt04"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU02CellVolt05" chapter="CH" property="脉冲_step6_CAN2_CMU02CellVolt05" caption="脉冲_step6_CAN2_CMU02CellVolt05"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU02CellVolt06" chapter="CH" property="脉冲_step6_CAN2_CMU02CellVolt06" caption="脉冲_step6_CAN2_CMU02CellVolt06"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU02CellVolt07" chapter="CH" property="脉冲_step6_CAN2_CMU02CellVolt07" caption="脉冲_step6_CAN2_CMU02CellVolt07"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU02CellVolt08" chapter="CH" property="脉冲_step6_CAN2_CMU02CellVolt08" caption="脉冲_step6_CAN2_CMU02CellVolt08"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU02CellVolt09" chapter="CH" property="脉冲_step6_CAN2_CMU02CellVolt09" caption="脉冲_step6_CAN2_CMU02CellVolt09"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU02CellVolt10" chapter="CH" property="脉冲_step6_CAN2_CMU02CellVolt10" caption="脉冲_step6_CAN2_CMU02CellVolt10"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU02CellVolt11" chapter="CH" property="脉冲_step6_CAN2_CMU02CellVolt11" caption="脉冲_step6_CAN2_CMU02CellVolt11"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU02CellVolt12" chapter="CH" property="脉冲_step6_CAN2_CMU02CellVolt12" caption="脉冲_step6_CAN2_CMU02CellVolt12"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU02CellVolt13" chapter="CH" property="脉冲_step6_CAN2_CMU02CellVolt13" caption="脉冲_step6_CAN2_CMU02CellVolt13"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU02CellVolt14" chapter="CH" property="脉冲_step6_CAN2_CMU02CellVolt14" caption="脉冲_step6_CAN2_CMU02CellVolt14"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU02CellVolt15" chapter="CH" property="脉冲_step6_CAN2_CMU02CellVolt15" caption="脉冲_step6_CAN2_CMU02CellVolt15"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU02CellVolt16" chapter="CH" property="脉冲_step6_CAN2_CMU02CellVolt16" caption="脉冲_step6_CAN2_CMU02CellVolt16"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU02CellVolt17" chapter="CH" property="脉冲_step6_CAN2_CMU02CellVolt17" caption="脉冲_step6_CAN2_CMU02CellVolt17"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU02CellVolt18" chapter="CH" property="脉冲_step6_CAN2_CMU02CellVolt18" caption="脉冲_step6_CAN2_CMU02CellVolt18"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU02CellVolt19" chapter="CH" property="脉冲_step6_CAN2_CMU02CellVolt19" caption="脉冲_step6_CAN2_CMU02CellVolt19"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU02CellVolt20" chapter="CH" property="脉冲_step6_CAN2_CMU02CellVolt20" caption="脉冲_step6_CAN2_CMU02CellVolt20"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU02CellVolt21" chapter="CH" property="脉冲_step6_CAN2_CMU02CellVolt21" caption="脉冲_step6_CAN2_CMU02CellVolt21"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU02CellVolt22" chapter="CH" property="脉冲_step6_CAN2_CMU02CellVolt22" caption="脉冲_step6_CAN2_CMU02CellVolt22"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU02CellVolt23" chapter="CH" property="脉冲_step6_CAN2_CMU02CellVolt23" caption="脉冲_step6_CAN2_CMU02CellVolt23"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU03CellVolt00" chapter="CH" property="脉冲_step6_CAN2_CMU03CellVolt00" caption="脉冲_step6_CAN2_CMU03CellVolt00"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU03CellVolt01" chapter="CH" property="脉冲_step6_CAN2_CMU03CellVolt01" caption="脉冲_step6_CAN2_CMU03CellVolt01"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU03CellVolt02" chapter="CH" property="脉冲_step6_CAN2_CMU03CellVolt02" caption="脉冲_step6_CAN2_CMU03CellVolt02"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU03CellVolt03" chapter="CH" property="脉冲_step6_CAN2_CMU03CellVolt03" caption="脉冲_step6_CAN2_CMU03CellVolt03"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU03CellVolt04" chapter="CH" property="脉冲_step6_CAN2_CMU03CellVolt04" caption="脉冲_step6_CAN2_CMU03CellVolt04"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU03CellVolt05" chapter="CH" property="脉冲_step6_CAN2_CMU03CellVolt05" caption="脉冲_step6_CAN2_CMU03CellVolt05"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU03CellVolt06" chapter="CH" property="脉冲_step6_CAN2_CMU03CellVolt06" caption="脉冲_step6_CAN2_CMU03CellVolt06"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU03CellVolt07" chapter="CH" property="脉冲_step6_CAN2_CMU03CellVolt07" caption="脉冲_step6_CAN2_CMU03CellVolt07"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU03CellVolt08" chapter="CH" property="脉冲_step6_CAN2_CMU03CellVolt08" caption="脉冲_step6_CAN2_CMU03CellVolt08"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU03CellVolt09" chapter="CH" property="脉冲_step6_CAN2_CMU03CellVolt09" caption="脉冲_step6_CAN2_CMU03CellVolt09"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU03CellVolt10" chapter="CH" property="脉冲_step6_CAN2_CMU03CellVolt10" caption="脉冲_step6_CAN2_CMU03CellVolt10"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU03CellVolt11" chapter="CH" property="脉冲_step6_CAN2_CMU03CellVolt11" caption="脉冲_step6_CAN2_CMU03CellVolt11"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU03CellVolt12" chapter="CH" property="脉冲_step6_CAN2_CMU03CellVolt12" caption="脉冲_step6_CAN2_CMU03CellVolt12"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU03CellVolt13" chapter="CH" property="脉冲_step6_CAN2_CMU03CellVolt13" caption="脉冲_step6_CAN2_CMU03CellVolt13"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU03CellVolt14" chapter="CH" property="脉冲_step6_CAN2_CMU03CellVolt14" caption="脉冲_step6_CAN2_CMU03CellVolt14"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU03CellVolt15" chapter="CH" property="脉冲_step6_CAN2_CMU03CellVolt15" caption="脉冲_step6_CAN2_CMU03CellVolt15"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU03CellVolt16" chapter="CH" property="脉冲_step6_CAN2_CMU03CellVolt16" caption="脉冲_step6_CAN2_CMU03CellVolt16"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU03CellVolt17" chapter="CH" property="脉冲_step6_CAN2_CMU03CellVolt17" caption="脉冲_step6_CAN2_CMU03CellVolt17"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU03CellVolt18" chapter="CH" property="脉冲_step6_CAN2_CMU03CellVolt18" caption="脉冲_step6_CAN2_CMU03CellVolt18"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU03CellVolt19" chapter="CH" property="脉冲_step6_CAN2_CMU03CellVolt19" caption="脉冲_step6_CAN2_CMU03CellVolt19"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU03CellVolt20" chapter="CH" property="脉冲_step6_CAN2_CMU03CellVolt20" caption="脉冲_step6_CAN2_CMU03CellVolt20"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU03CellVolt21" chapter="CH" property="脉冲_step6_CAN2_CMU03CellVolt21" caption="脉冲_step6_CAN2_CMU03CellVolt21"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU03CellVolt22" chapter="CH" property="脉冲_step6_CAN2_CMU03CellVolt22" caption="脉冲_step6_CAN2_CMU03CellVolt22"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU03CellVolt23" chapter="CH" property="脉冲_step6_CAN2_CMU03CellVolt23" caption="脉冲_step6_CAN2_CMU03CellVolt23"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU00ModVolt" chapter="CH" property="脉冲_step6_CAN2_CMU00ModVolt" caption="脉冲_step6_CAN2_CMU00ModVolt"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU01ModVolt" chapter="CH" property="脉冲_step6_CAN2_CMU01ModVolt" caption="脉冲_step6_CAN2_CMU01ModVolt"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU02ModVolt" chapter="CH" property="脉冲_step6_CAN2_CMU02ModVolt" caption="脉冲_step6_CAN2_CMU02ModVolt"/>
+			<iniitem blmc="脉冲_step6_CAN2_CMU03ModVolt" chapter="CH" property="脉冲_step6_CAN2_CMU03ModVolt" caption="脉冲_step6_CAN2_CMU03ModVolt"/>
+			<iniitem blmc="脉冲_step6_A" chapter="CH" property="脉冲_step6_A" caption="脉冲_step6_A"/>
+			<iniitem blmc="脉冲_step6_V" chapter="CH" property="脉冲_step6_V" caption="脉冲_step6_V"/>
+			<iniitem blmc="脉冲_step6_Chmah" chapter="CH" property="脉冲_step6_Chmah" caption="脉冲_step6_Chmah"/>
+			<iniitem blmc="脉冲_step6_DChmah" chapter="CH" property="脉冲_step6_DChmah" caption="脉冲_step6_DChmah"/>
+			<iniitem blmc="脉冲_step6_state" chapter="CH" property="脉冲_step6_state" caption="脉冲_step6_state"/>
+			<iniitem blmc="脉冲_step6_EndTime" chapter="CH" property="脉冲_step6_EndTime" caption="脉冲_step6_EndTime"/>
+			<iniitem blmc="脉冲_step7_CAN1_BMSPackVol_h6HSC6" chapter="CH" property="脉冲_step7_CAN1_BMSPackVol_h6HSC6" caption="脉冲_step7_CAN1_BMSPackVol_h6HSC6"/>
+			<iniitem blmc="脉冲_step7_CAN1_BMSPackSOCActualHSC6" chapter="CH" property="脉冲_step7_CAN1_BMSPackSOCActualHSC6" caption="脉冲_step7_CAN1_BMSPackSOCActualHSC6"/>
+			<iniitem blmc="脉冲_step7_CAN1_BMSPackCrnt_h6HSC6" chapter="CH" property="脉冲_step7_CAN1_BMSPackCrnt_h6HSC6" caption="脉冲_step7_CAN1_BMSPackCrnt_h6HSC6"/>
+			<iniitem blmc="脉冲_step7_CAN1_BMSCellMaxVolHSC6" chapter="CH" property="脉冲_step7_CAN1_BMSCellMaxVolHSC6" caption="脉冲_step7_CAN1_BMSCellMaxVolHSC6"/>
+			<iniitem blmc="脉冲_step7_CAN1_BMSCellMinVolHSC6" chapter="CH" property="脉冲_step7_CAN1_BMSCellMinVolHSC6" caption="脉冲_step7_CAN1_BMSCellMinVolHSC6"/>
+			<iniitem blmc="脉冲_step7_CAN1_BMSCellMaxTem_h6HSC6" chapter="CH" property="脉冲_step7_CAN1_BMSCellMaxTem_h6HSC6" caption="脉冲_step7_CAN1_BMSCellMaxTem_h6HSC6"/>
+			<iniitem blmc="脉冲_step7_CAN1_BMSCellMinTem_h6HSC6" chapter="CH" property="脉冲_step7_CAN1_BMSCellMinTem_h6HSC6" caption="脉冲_step7_CAN1_BMSCellMinTem_h6HSC6"/>
+			<iniitem blmc="脉冲_step7_CAN2_SysAlwayMaxT" chapter="CH" property="脉冲_step7_CAN2_SysAlwayMaxT" caption="脉冲_step7_CAN2_SysAlwayMaxT"/>
+			<iniitem blmc="脉冲_step7_CAN2_SysUpMaxT" chapter="CH" property="脉冲_step7_CAN2_SysUpMaxT" caption="脉冲_step7_CAN2_SysUpMaxT"/>
+			<iniitem blmc="脉冲_step7_CAN2_SysDiffCellT" chapter="CH" property="脉冲_step7_CAN2_SysDiffCellT" caption="脉冲_step7_CAN2_SysDiffCellT"/>
+			<iniitem blmc="脉冲_step7_CAN2_SysDiffCellV" chapter="CH" property="脉冲_step7_CAN2_SysDiffCellV" caption="脉冲_step7_CAN2_SysDiffCellV"/>
+			<iniitem blmc="脉冲_step7_CAN2_CMU00CellTemp00_difftemp" chapter="CH" property="脉冲_step7_CAN2_CMU00CellTemp00_difftemp" caption="脉冲_step7_CAN2_CMU00CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step7_CAN2_CMU00CellTemp01_difftemp" chapter="CH" property="脉冲_step7_CAN2_CMU00CellTemp01_difftemp" caption="脉冲_step7_CAN2_CMU00CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step7_CAN2_CMU01CellTemp00_difftemp" chapter="CH" property="脉冲_step7_CAN2_CMU01CellTemp00_difftemp" caption="脉冲_step7_CAN2_CMU01CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step7_CAN2_CMU01CellTemp01_difftemp" chapter="CH" property="脉冲_step7_CAN2_CMU01CellTemp01_difftemp" caption="脉冲_step7_CAN2_CMU01CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step7_CAN2_CMU02CellTemp00_difftemp" chapter="CH" property="脉冲_step7_CAN2_CMU02CellTemp00_difftemp" caption="脉冲_step7_CAN2_CMU02CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step7_CAN2_CMU02CellTemp01_difftemp" chapter="CH" property="脉冲_step7_CAN2_CMU02CellTemp01_difftemp" caption="脉冲_step7_CAN2_CMU02CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step7_CAN2_CMU03CellTemp00_difftemp" chapter="CH" property="脉冲_step7_CAN2_CMU03CellTemp00_difftemp" caption="脉冲_step7_CAN2_CMU03CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step7_CAN2_CMU03CellTemp01_difftemp" chapter="CH" property="脉冲_step7_CAN2_CMU03CellTemp01_difftemp" caption="脉冲_step7_CAN2_CMU03CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step7_A" chapter="CH" property="脉冲_step7_A" caption="脉冲_step7_A"/>
+			<iniitem blmc="脉冲_step7_V" chapter="CH" property="脉冲_step7_V" caption="脉冲_step7_V"/>
+			<iniitem blmc="脉冲_step7_Chmah" chapter="CH" property="脉冲_step7_Chmah" caption="脉冲_step7_Chmah"/>
+			<iniitem blmc="脉冲_step7_DChmah" chapter="CH" property="脉冲_step7_DChmah" caption="脉冲_step7_DChmah"/>
+			<iniitem blmc="脉冲_step7_state" chapter="CH" property="脉冲_step7_state" caption="脉冲_step7_state"/>
+			<iniitem blmc="脉冲_step7_EndTime" chapter="CH" property="脉冲_step7_EndTime" caption="脉冲_step7_EndTime"/>
+			<iniitem blmc="脉冲_step8_CAN1_BMSPackVol_h6HSC6" chapter="CH" property="脉冲_step8_CAN1_BMSPackVol_h6HSC6" caption="脉冲_step8_CAN1_BMSPackVol_h6HSC6"/>
+			<iniitem blmc="脉冲_step8_CAN1_BMSPackSOCActualHSC6" chapter="CH" property="脉冲_step8_CAN1_BMSPackSOCActualHSC6" caption="脉冲_step8_CAN1_BMSPackSOCActualHSC6"/>
+			<iniitem blmc="脉冲_step8_CAN1_BMSPackCrnt_h6HSC6" chapter="CH" property="脉冲_step8_CAN1_BMSPackCrnt_h6HSC6" caption="脉冲_step8_CAN1_BMSPackCrnt_h6HSC6"/>
+			<iniitem blmc="脉冲_step8_CAN1_BMSCellMaxVolHSC6" chapter="CH" property="脉冲_step8_CAN1_BMSCellMaxVolHSC6" caption="脉冲_step8_CAN1_BMSCellMaxVolHSC6"/>
+			<iniitem blmc="脉冲_step8_CAN1_BMSCellMinVolHSC6" chapter="CH" property="脉冲_step8_CAN1_BMSCellMinVolHSC6" caption="脉冲_step8_CAN1_BMSCellMinVolHSC6"/>
+			<iniitem blmc="脉冲_step8_CAN1_BMSCellMaxTem_h6HSC6" chapter="CH" property="脉冲_step8_CAN1_BMSCellMaxTem_h6HSC6" caption="脉冲_step8_CAN1_BMSCellMaxTem_h6HSC6"/>
+			<iniitem blmc="脉冲_step8_CAN1_BMSCellMinTem_h6HSC6" chapter="CH" property="脉冲_step8_CAN1_BMSCellMinTem_h6HSC6" caption="脉冲_step8_CAN1_BMSCellMinTem_h6HSC6"/>
+			<iniitem blmc="脉冲_step8_CAN2_SysAlwayMaxT" chapter="CH" property="脉冲_step8_CAN2_SysAlwayMaxT" caption="脉冲_step8_CAN2_SysAlwayMaxT"/>
+			<iniitem blmc="脉冲_step8_CAN2_SysUpMaxT" chapter="CH" property="脉冲_step8_CAN2_SysUpMaxT" caption="脉冲_step8_CAN2_SysUpMaxT"/>
+			<iniitem blmc="脉冲_step8_CAN2_SysDiffCellT" chapter="CH" property="脉冲_step8_CAN2_SysDiffCellT" caption="脉冲_step8_CAN2_SysDiffCellT"/>
+			<iniitem blmc="脉冲_step8_CAN2_SysDiffCellV" chapter="CH" property="脉冲_step8_CAN2_SysDiffCellV" caption="脉冲_step8_CAN2_SysDiffCellV"/>
+			<iniitem blmc="脉冲_step8_CAN2_CMU00CellTemp00_difftemp" chapter="CH" property="脉冲_step8_CAN2_CMU00CellTemp00_difftemp" caption="脉冲_step8_CAN2_CMU00CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step8_CAN2_CMU00CellTemp01_difftemp" chapter="CH" property="脉冲_step8_CAN2_CMU00CellTemp01_difftemp" caption="脉冲_step8_CAN2_CMU00CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step8_CAN2_CMU01CellTemp00_difftemp" chapter="CH" property="脉冲_step8_CAN2_CMU01CellTemp00_difftemp" caption="脉冲_step8_CAN2_CMU01CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step8_CAN2_CMU01CellTemp01_difftemp" chapter="CH" property="脉冲_step8_CAN2_CMU01CellTemp01_difftemp" caption="脉冲_step8_CAN2_CMU01CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step8_CAN2_CMU02CellTemp00_difftemp" chapter="CH" property="脉冲_step8_CAN2_CMU02CellTemp00_difftemp" caption="脉冲_step8_CAN2_CMU02CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step8_CAN2_CMU02CellTemp01_difftemp" chapter="CH" property="脉冲_step8_CAN2_CMU02CellTemp01_difftemp" caption="脉冲_step8_CAN2_CMU02CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step8_CAN2_CMU03CellTemp00_difftemp" chapter="CH" property="脉冲_step8_CAN2_CMU03CellTemp00_difftemp" caption="脉冲_step8_CAN2_CMU03CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step8_CAN2_CMU03CellTemp01_difftemp" chapter="CH" property="脉冲_step8_CAN2_CMU03CellTemp01_difftemp" caption="脉冲_step8_CAN2_CMU03CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step8_A" chapter="CH" property="脉冲_step8_A" caption="脉冲_step8_A"/>
+			<iniitem blmc="脉冲_step8_V" chapter="CH" property="脉冲_step8_V" caption="脉冲_step8_V"/>
+			<iniitem blmc="脉冲_step8_Chmah" chapter="CH" property="脉冲_step8_Chmah" caption="脉冲_step8_Chmah"/>
+			<iniitem blmc="脉冲_step8_DChmah" chapter="CH" property="脉冲_step8_DChmah" caption="脉冲_step8_DChmah"/>
+			<iniitem blmc="脉冲_step8_state" chapter="CH" property="脉冲_step8_state" caption="脉冲_step8_state"/>
+			<iniitem blmc="脉冲_step8_EndTime" chapter="CH" property="脉冲_step8_EndTime" caption="脉冲_step8_EndTime"/>
+			<iniitem blmc="脉冲_step10_CAN1_BMSPackVol_h6HSC6" chapter="CH" property="脉冲_step10_CAN1_BMSPackVol_h6HSC6" caption="脉冲_step10_CAN1_BMSPackVol_h6HSC6"/>
+			<iniitem blmc="脉冲_step10_CAN1_BMSPackSOCActualHSC6" chapter="CH" property="脉冲_step10_CAN1_BMSPackSOCActualHSC6" caption="脉冲_step10_CAN1_BMSPackSOCActualHSC6"/>
+			<iniitem blmc="脉冲_step10_CAN1_BMSPackCrnt_h6HSC6" chapter="CH" property="脉冲_step10_CAN1_BMSPackCrnt_h6HSC6" caption="脉冲_step10_CAN1_BMSPackCrnt_h6HSC6"/>
+			<iniitem blmc="脉冲_step10_CAN1_BMSCellMaxVolHSC6" chapter="CH" property="脉冲_step10_CAN1_BMSCellMaxVolHSC6" caption="脉冲_step10_CAN1_BMSCellMaxVolHSC6"/>
+			<iniitem blmc="脉冲_step10_CAN1_BMSCellMinVolHSC6" chapter="CH" property="脉冲_step10_CAN1_BMSCellMinVolHSC6" caption="脉冲_step10_CAN1_BMSCellMinVolHSC6"/>
+			<iniitem blmc="脉冲_step10_CAN1_BMSCellMaxTem_h6HSC6" chapter="CH" property="脉冲_step10_CAN1_BMSCellMaxTem_h6HSC6" caption="脉冲_step10_CAN1_BMSCellMaxTem_h6HSC6"/>
+			<iniitem blmc="脉冲_step10_CAN1_BMSCellMinTem_h6HSC6" chapter="CH" property="脉冲_step10_CAN1_BMSCellMinTem_h6HSC6" caption="脉冲_step10_CAN1_BMSCellMinTem_h6HSC6"/>
+			<iniitem blmc="脉冲_step10_CAN2_SysAlwayMaxT" chapter="CH" property="脉冲_step10_CAN2_SysAlwayMaxT" caption="脉冲_step10_CAN2_SysAlwayMaxT"/>
+			<iniitem blmc="脉冲_step10_CAN2_SysUpMaxT" chapter="CH" property="脉冲_step10_CAN2_SysUpMaxT" caption="脉冲_step10_CAN2_SysUpMaxT"/>
+			<iniitem blmc="脉冲_step10_CAN2_SysDiffCellT" chapter="CH" property="脉冲_step10_CAN2_SysDiffCellT" caption="脉冲_step10_CAN2_SysDiffCellT"/>
+			<iniitem blmc="脉冲_step10_CAN2_SysDiffCellV" chapter="CH" property="脉冲_step10_CAN2_SysDiffCellV" caption="脉冲_step10_CAN2_SysDiffCellV"/>
+			<iniitem blmc="脉冲_step10_CAN2_CMU00CellTemp00_difftemp" chapter="CH" property="脉冲_step10_CAN2_CMU00CellTemp00_difftemp" caption="脉冲_step10_CAN2_CMU00CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step10_CAN2_CMU00CellTemp01_difftemp" chapter="CH" property="脉冲_step10_CAN2_CMU00CellTemp01_difftemp" caption="脉冲_step10_CAN2_CMU00CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step10_CAN2_CMU01CellTemp00_difftemp" chapter="CH" property="脉冲_step10_CAN2_CMU01CellTemp00_difftemp" caption="脉冲_step10_CAN2_CMU01CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step10_CAN2_CMU01CellTemp01_difftemp" chapter="CH" property="脉冲_step10_CAN2_CMU01CellTemp01_difftemp" caption="脉冲_step10_CAN2_CMU01CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step10_CAN2_CMU02CellTemp00_difftemp" chapter="CH" property="脉冲_step10_CAN2_CMU02CellTemp00_difftemp" caption="脉冲_step10_CAN2_CMU02CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step10_CAN2_CMU02CellTemp01_difftemp" chapter="CH" property="脉冲_step10_CAN2_CMU02CellTemp01_difftemp" caption="脉冲_step10_CAN2_CMU02CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step10_CAN2_CMU03CellTemp00_difftemp" chapter="CH" property="脉冲_step10_CAN2_CMU03CellTemp00_difftemp" caption="脉冲_step10_CAN2_CMU03CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step10_CAN2_CMU03CellTemp01_difftemp" chapter="CH" property="脉冲_step10_CAN2_CMU03CellTemp01_difftemp" caption="脉冲_step10_CAN2_CMU03CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step10_A" chapter="CH" property="脉冲_step10_A" caption="脉冲_step10_A"/>
+			<iniitem blmc="脉冲_step10_V" chapter="CH" property="脉冲_step10_V" caption="脉冲_step10_V"/>
+			<iniitem blmc="脉冲_step10_Chmah" chapter="CH" property="脉冲_step10_Chmah" caption="脉冲_step10_Chmah"/>
+			<iniitem blmc="脉冲_step10_DChmah" chapter="CH" property="脉冲_step10_DChmah" caption="脉冲_step10_DChmah"/>
+			<iniitem blmc="脉冲_step10_state" chapter="CH" property="脉冲_step10_state" caption="脉冲_step10_state"/>
+			<iniitem blmc="脉冲_step10_EndTime" chapter="CH" property="脉冲_step10_EndTime" caption="脉冲_step10_EndTime"/>
+			<iniitem blmc="脉冲_step11_CAN1_BMSPackVol_h6HSC6" chapter="CH" property="脉冲_step11_CAN1_BMSPackVol_h6HSC6" caption="脉冲_step11_CAN1_BMSPackVol_h6HSC6"/>
+			<iniitem blmc="脉冲_step11_CAN1_BMSPackSOCActualHSC6" chapter="CH" property="脉冲_step11_CAN1_BMSPackSOCActualHSC6" caption="脉冲_step11_CAN1_BMSPackSOCActualHSC6"/>
+			<iniitem blmc="脉冲_step11_CAN1_BMSPackCrnt_h6HSC6" chapter="CH" property="脉冲_step11_CAN1_BMSPackCrnt_h6HSC6" caption="脉冲_step11_CAN1_BMSPackCrnt_h6HSC6"/>
+			<iniitem blmc="脉冲_step11_CAN1_BMSCellMaxVolHSC6" chapter="CH" property="脉冲_step11_CAN1_BMSCellMaxVolHSC6" caption="脉冲_step11_CAN1_BMSCellMaxVolHSC6"/>
+			<iniitem blmc="脉冲_step11_CAN1_BMSCellMinVolHSC6" chapter="CH" property="脉冲_step11_CAN1_BMSCellMinVolHSC6" caption="脉冲_step11_CAN1_BMSCellMinVolHSC6"/>
+			<iniitem blmc="脉冲_step11_CAN1_BMSCellMaxTem_h6HSC6" chapter="CH" property="脉冲_step11_CAN1_BMSCellMaxTem_h6HSC6" caption="脉冲_step11_CAN1_BMSCellMaxTem_h6HSC6"/>
+			<iniitem blmc="脉冲_step11_CAN1_BMSCellMinTem_h6HSC6" chapter="CH" property="脉冲_step11_CAN1_BMSCellMinTem_h6HSC6" caption="脉冲_step11_CAN1_BMSCellMinTem_h6HSC6"/>
+			<iniitem blmc="脉冲_step11_CAN2_SysAlwayMaxT" chapter="CH" property="脉冲_step11_CAN2_SysAlwayMaxT" caption="脉冲_step11_CAN2_SysAlwayMaxT"/>
+			<iniitem blmc="脉冲_step11_CAN2_SysUpMaxT" chapter="CH" property="脉冲_step11_CAN2_SysUpMaxT" caption="脉冲_step11_CAN2_SysUpMaxT"/>
+			<iniitem blmc="脉冲_step11_CAN2_SysDiffCellT" chapter="CH" property="脉冲_step11_CAN2_SysDiffCellT" caption="脉冲_step11_CAN2_SysDiffCellT"/>
+			<iniitem blmc="脉冲_step11_CAN2_SysDiffCellV" chapter="CH" property="脉冲_step11_CAN2_SysDiffCellV" caption="脉冲_step11_CAN2_SysDiffCellV"/>
+			<iniitem blmc="脉冲_step11_CAN2_CMU00CellTemp00_difftemp" chapter="CH" property="脉冲_step11_CAN2_CMU00CellTemp00_difftemp" caption="脉冲_step11_CAN2_CMU00CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step11_CAN2_CMU00CellTemp01_difftemp" chapter="CH" property="脉冲_step11_CAN2_CMU00CellTemp01_difftemp" caption="脉冲_step11_CAN2_CMU00CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step11_CAN2_CMU01CellTemp00_difftemp" chapter="CH" property="脉冲_step11_CAN2_CMU01CellTemp00_difftemp" caption="脉冲_step11_CAN2_CMU01CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step11_CAN2_CMU01CellTemp01_difftemp" chapter="CH" property="脉冲_step11_CAN2_CMU01CellTemp01_difftemp" caption="脉冲_step11_CAN2_CMU01CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step11_CAN2_CMU02CellTemp00_difftemp" chapter="CH" property="脉冲_step11_CAN2_CMU02CellTemp00_difftemp" caption="脉冲_step11_CAN2_CMU02CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step11_CAN2_CMU02CellTemp01_difftemp" chapter="CH" property="脉冲_step11_CAN2_CMU02CellTemp01_difftemp" caption="脉冲_step11_CAN2_CMU02CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step11_CAN2_CMU03CellTemp00_difftemp" chapter="CH" property="脉冲_step11_CAN2_CMU03CellTemp00_difftemp" caption="脉冲_step11_CAN2_CMU03CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step11_CAN2_CMU03CellTemp01_difftemp" chapter="CH" property="脉冲_step11_CAN2_CMU03CellTemp01_difftemp" caption="脉冲_step11_CAN2_CMU03CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step11_A" chapter="CH" property="脉冲_step11_A" caption="脉冲_step11_A"/>
+			<iniitem blmc="脉冲_step11_V" chapter="CH" property="脉冲_step11_V" caption="脉冲_step11_V"/>
+			<iniitem blmc="脉冲_step11_Chmah" chapter="CH" property="脉冲_step11_Chmah" caption="脉冲_step11_Chmah"/>
+			<iniitem blmc="脉冲_step11_DChmah" chapter="CH" property="脉冲_step11_DChmah" caption="脉冲_step11_DChmah"/>
+			<iniitem blmc="脉冲_step11_state" chapter="CH" property="脉冲_step11_state" caption="脉冲_step11_state"/>
+			<iniitem blmc="脉冲_step11_EndTime" chapter="CH" property="脉冲_step11_EndTime" caption="脉冲_step11_EndTime"/>
+			<iniitem blmc="脉冲_step12_CAN1_BMSPackVol_h6HSC6" chapter="CH" property="脉冲_step12_CAN1_BMSPackVol_h6HSC6" caption="脉冲_step12_CAN1_BMSPackVol_h6HSC6"/>
+			<iniitem blmc="脉冲_step12_CAN1_BMSPackSOCActualHSC6" chapter="CH" property="脉冲_step12_CAN1_BMSPackSOCActualHSC6" caption="脉冲_step12_CAN1_BMSPackSOCActualHSC6"/>
+			<iniitem blmc="脉冲_step12_CAN1_BMSPackCrnt_h6HSC6" chapter="CH" property="脉冲_step12_CAN1_BMSPackCrnt_h6HSC6" caption="脉冲_step12_CAN1_BMSPackCrnt_h6HSC6"/>
+			<iniitem blmc="脉冲_step12_CAN1_BMSCellMaxVolHSC6" chapter="CH" property="脉冲_step12_CAN1_BMSCellMaxVolHSC6" caption="脉冲_step12_CAN1_BMSCellMaxVolHSC6"/>
+			<iniitem blmc="脉冲_step12_CAN1_BMSCellMinVolHSC6" chapter="CH" property="脉冲_step12_CAN1_BMSCellMinVolHSC6" caption="脉冲_step12_CAN1_BMSCellMinVolHSC6"/>
+			<iniitem blmc="脉冲_step12_CAN1_BMSCellMaxTem_h6HSC6" chapter="CH" property="脉冲_step12_CAN1_BMSCellMaxTem_h6HSC6" caption="脉冲_step12_CAN1_BMSCellMaxTem_h6HSC6"/>
+			<iniitem blmc="脉冲_step12_CAN1_BMSCellMinTem_h6HSC6" chapter="CH" property="脉冲_step12_CAN1_BMSCellMinTem_h6HSC6" caption="脉冲_step12_CAN1_BMSCellMinTem_h6HSC6"/>
+			<iniitem blmc="脉冲_step12_CAN2_SysAlwayMaxT" chapter="CH" property="脉冲_step12_CAN2_SysAlwayMaxT" caption="脉冲_step12_CAN2_SysAlwayMaxT"/>
+			<iniitem blmc="脉冲_step12_CAN2_SysUpMaxT" chapter="CH" property="脉冲_step12_CAN2_SysUpMaxT" caption="脉冲_step12_CAN2_SysUpMaxT"/>
+			<iniitem blmc="脉冲_step12_CAN2_SysDiffCellT" chapter="CH" property="脉冲_step12_CAN2_SysDiffCellT" caption="脉冲_step12_CAN2_SysDiffCellT"/>
+			<iniitem blmc="脉冲_step12_CAN2_SysDiffCellV" chapter="CH" property="脉冲_step12_CAN2_SysDiffCellV" caption="脉冲_step12_CAN2_SysDiffCellV"/>
+			<iniitem blmc="脉冲_step12_CAN2_CMU00CellTemp00_difftemp" chapter="CH" property="脉冲_step12_CAN2_CMU00CellTemp00_difftemp" caption="脉冲_step12_CAN2_CMU00CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step12_CAN2_CMU00CellTemp01_difftemp" chapter="CH" property="脉冲_step12_CAN2_CMU00CellTemp01_difftemp" caption="脉冲_step12_CAN2_CMU00CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step12_CAN2_CMU01CellTemp00_difftemp" chapter="CH" property="脉冲_step12_CAN2_CMU01CellTemp00_difftemp" caption="脉冲_step12_CAN2_CMU01CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step12_CAN2_CMU01CellTemp01_difftemp" chapter="CH" property="脉冲_step12_CAN2_CMU01CellTemp01_difftemp" caption="脉冲_step12_CAN2_CMU01CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step12_CAN2_CMU02CellTemp00_difftemp" chapter="CH" property="脉冲_step12_CAN2_CMU02CellTemp00_difftemp" caption="脉冲_step12_CAN2_CMU02CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step12_CAN2_CMU02CellTemp01_difftemp" chapter="CH" property="脉冲_step12_CAN2_CMU02CellTemp01_difftemp" caption="脉冲_step12_CAN2_CMU02CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step12_CAN2_CMU03CellTemp00_difftemp" chapter="CH" property="脉冲_step12_CAN2_CMU03CellTemp00_difftemp" caption="脉冲_step12_CAN2_CMU03CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step12_CAN2_CMU03CellTemp01_difftemp" chapter="CH" property="脉冲_step12_CAN2_CMU03CellTemp01_difftemp" caption="脉冲_step12_CAN2_CMU03CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step12_A" chapter="CH" property="脉冲_step12_A" caption="脉冲_step12_A"/>
+			<iniitem blmc="脉冲_step12_V" chapter="CH" property="脉冲_step12_V" caption="脉冲_step12_V"/>
+			<iniitem blmc="脉冲_step12_Chmah" chapter="CH" property="脉冲_step12_Chmah" caption="脉冲_step12_Chmah"/>
+			<iniitem blmc="脉冲_step12_DChmah" chapter="CH" property="脉冲_step12_DChmah" caption="脉冲_step12_DChmah"/>
+			<iniitem blmc="脉冲_step12_state" chapter="CH" property="脉冲_step12_state" caption="脉冲_step12_state"/>
+			<iniitem blmc="脉冲_step12_EndTime" chapter="CH" property="脉冲_step12_EndTime" caption="脉冲_step12_EndTime"/>
+			<iniitem blmc="脉冲_step13_CAN1_BMSPackVol_h6HSC6" chapter="CH" property="脉冲_step13_CAN1_BMSPackVol_h6HSC6" caption="脉冲_step13_CAN1_BMSPackVol_h6HSC6"/>
+			<iniitem blmc="脉冲_step13_CAN1_BMSPackSOCActualHSC6" chapter="CH" property="脉冲_step13_CAN1_BMSPackSOCActualHSC6" caption="脉冲_step13_CAN1_BMSPackSOCActualHSC6"/>
+			<iniitem blmc="脉冲_step13_CAN1_BMSPackCrnt_h6HSC6" chapter="CH" property="脉冲_step13_CAN1_BMSPackCrnt_h6HSC6" caption="脉冲_step13_CAN1_BMSPackCrnt_h6HSC6"/>
+			<iniitem blmc="脉冲_step13_CAN1_BMSCellMaxVolHSC6" chapter="CH" property="脉冲_step13_CAN1_BMSCellMaxVolHSC6" caption="脉冲_step13_CAN1_BMSCellMaxVolHSC6"/>
+			<iniitem blmc="脉冲_step13_CAN1_BMSCellMinVolHSC6" chapter="CH" property="脉冲_step13_CAN1_BMSCellMinVolHSC6" caption="脉冲_step13_CAN1_BMSCellMinVolHSC6"/>
+			<iniitem blmc="脉冲_step13_CAN1_BMSCellMaxTem_h6HSC6" chapter="CH" property="脉冲_step13_CAN1_BMSCellMaxTem_h6HSC6" caption="脉冲_step13_CAN1_BMSCellMaxTem_h6HSC6"/>
+			<iniitem blmc="脉冲_step13_CAN1_BMSCellMinTem_h6HSC6" chapter="CH" property="脉冲_step13_CAN1_BMSCellMinTem_h6HSC6" caption="脉冲_step13_CAN1_BMSCellMinTem_h6HSC6"/>
+			<iniitem blmc="脉冲_step13_CAN2_SysAlwayMaxT" chapter="CH" property="脉冲_step13_CAN2_SysAlwayMaxT" caption="脉冲_step13_CAN2_SysAlwayMaxT"/>
+			<iniitem blmc="脉冲_step13_CAN2_SysUpMaxT" chapter="CH" property="脉冲_step13_CAN2_SysUpMaxT" caption="脉冲_step13_CAN2_SysUpMaxT"/>
+			<iniitem blmc="脉冲_step13_CAN2_SysDiffCellT" chapter="CH" property="脉冲_step13_CAN2_SysDiffCellT" caption="脉冲_step13_CAN2_SysDiffCellT"/>
+			<iniitem blmc="脉冲_step13_CAN2_SysDiffCellV" chapter="CH" property="脉冲_step13_CAN2_SysDiffCellV" caption="脉冲_step13_CAN2_SysDiffCellV"/>
+			<iniitem blmc="脉冲_step13_CAN2_CMU00CellTemp00_difftemp" chapter="CH" property="脉冲_step13_CAN2_CMU00CellTemp00_difftemp" caption="脉冲_step13_CAN2_CMU00CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step13_CAN2_CMU00CellTemp01_difftemp" chapter="CH" property="脉冲_step13_CAN2_CMU00CellTemp01_difftemp" caption="脉冲_step13_CAN2_CMU00CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step13_CAN2_CMU01CellTemp00_difftemp" chapter="CH" property="脉冲_step13_CAN2_CMU01CellTemp00_difftemp" caption="脉冲_step13_CAN2_CMU01CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step13_CAN2_CMU01CellTemp01_difftemp" chapter="CH" property="脉冲_step13_CAN2_CMU01CellTemp01_difftemp" caption="脉冲_step13_CAN2_CMU01CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step13_CAN2_CMU02CellTemp00_difftemp" chapter="CH" property="脉冲_step13_CAN2_CMU02CellTemp00_difftemp" caption="脉冲_step13_CAN2_CMU02CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step13_CAN2_CMU02CellTemp01_difftemp" chapter="CH" property="脉冲_step13_CAN2_CMU02CellTemp01_difftemp" caption="脉冲_step13_CAN2_CMU02CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step13_CAN2_CMU03CellTemp00_difftemp" chapter="CH" property="脉冲_step13_CAN2_CMU03CellTemp00_difftemp" caption="脉冲_step13_CAN2_CMU03CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step13_CAN2_CMU03CellTemp01_difftemp" chapter="CH" property="脉冲_step13_CAN2_CMU03CellTemp01_difftemp" caption="脉冲_step13_CAN2_CMU03CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step13_A" chapter="CH" property="脉冲_step13_A" caption="脉冲_step13_A"/>
+			<iniitem blmc="脉冲_step13_V" chapter="CH" property="脉冲_step13_V" caption="脉冲_step13_V"/>
+			<iniitem blmc="脉冲_step13_Chmah" chapter="CH" property="脉冲_step13_Chmah" caption="脉冲_step13_Chmah"/>
+			<iniitem blmc="脉冲_step13_DChmah" chapter="CH" property="脉冲_step13_DChmah" caption="脉冲_step13_DChmah"/>
+			<iniitem blmc="脉冲_step13_state" chapter="CH" property="脉冲_step13_state" caption="脉冲_step13_state"/>
+			<iniitem blmc="脉冲_step13_EndTime" chapter="CH" property="脉冲_step13_EndTime" caption="脉冲_step13_EndTime"/>
+			<iniitem blmc="脉冲_step15_CAN1_BMSPackVol_h6HSC6" chapter="CH" property="脉冲_step15_CAN1_BMSPackVol_h6HSC6" caption="脉冲_step15_CAN1_BMSPackVol_h6HSC6"/>
+			<iniitem blmc="脉冲_step15_CAN1_BMSPackSOCActualHSC6" chapter="CH" property="脉冲_step15_CAN1_BMSPackSOCActualHSC6" caption="脉冲_step15_CAN1_BMSPackSOCActualHSC6"/>
+			<iniitem blmc="脉冲_step15_CAN1_BMSPackCrnt_h6HSC6" chapter="CH" property="脉冲_step15_CAN1_BMSPackCrnt_h6HSC6" caption="脉冲_step15_CAN1_BMSPackCrnt_h6HSC6"/>
+			<iniitem blmc="脉冲_step15_CAN1_BMSCellMaxVolHSC6" chapter="CH" property="脉冲_step15_CAN1_BMSCellMaxVolHSC6" caption="脉冲_step15_CAN1_BMSCellMaxVolHSC6"/>
+			<iniitem blmc="脉冲_step15_CAN1_BMSCellMinVolHSC6" chapter="CH" property="脉冲_step15_CAN1_BMSCellMinVolHSC6" caption="脉冲_step15_CAN1_BMSCellMinVolHSC6"/>
+			<iniitem blmc="脉冲_step15_CAN1_BMSCellMaxTem_h6HSC6" chapter="CH" property="脉冲_step15_CAN1_BMSCellMaxTem_h6HSC6" caption="脉冲_step15_CAN1_BMSCellMaxTem_h6HSC6"/>
+			<iniitem blmc="脉冲_step15_CAN1_BMSCellMinTem_h6HSC6" chapter="CH" property="脉冲_step15_CAN1_BMSCellMinTem_h6HSC6" caption="脉冲_step15_CAN1_BMSCellMinTem_h6HSC6"/>
+			<iniitem blmc="脉冲_step15_CAN2_SysAlwayMaxT" chapter="CH" property="脉冲_step15_CAN2_SysAlwayMaxT" caption="脉冲_step15_CAN2_SysAlwayMaxT"/>
+			<iniitem blmc="脉冲_step15_CAN2_SysUpMaxT" chapter="CH" property="脉冲_step15_CAN2_SysUpMaxT" caption="脉冲_step15_CAN2_SysUpMaxT"/>
+			<iniitem blmc="脉冲_step15_CAN2_SysDiffCellT" chapter="CH" property="脉冲_step15_CAN2_SysDiffCellT" caption="脉冲_step15_CAN2_SysDiffCellT"/>
+			<iniitem blmc="脉冲_step15_CAN2_SysDiffCellV" chapter="CH" property="脉冲_step15_CAN2_SysDiffCellV" caption="脉冲_step15_CAN2_SysDiffCellV"/>
+			<iniitem blmc="脉冲_step15_CAN2_CMU00CellTemp00_difftemp" chapter="CH" property="脉冲_step15_CAN2_CMU00CellTemp00_difftemp" caption="脉冲_step15_CAN2_CMU00CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step15_CAN2_CMU00CellTemp01_difftemp" chapter="CH" property="脉冲_step15_CAN2_CMU00CellTemp01_difftemp" caption="脉冲_step15_CAN2_CMU00CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step15_CAN2_CMU01CellTemp00_difftemp" chapter="CH" property="脉冲_step15_CAN2_CMU01CellTemp00_difftemp" caption="脉冲_step15_CAN2_CMU01CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step15_CAN2_CMU01CellTemp01_difftemp" chapter="CH" property="脉冲_step15_CAN2_CMU01CellTemp01_difftemp" caption="脉冲_step15_CAN2_CMU01CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step15_CAN2_CMU02CellTemp00_difftemp" chapter="CH" property="脉冲_step15_CAN2_CMU02CellTemp00_difftemp" caption="脉冲_step15_CAN2_CMU02CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step15_CAN2_CMU02CellTemp01_difftemp" chapter="CH" property="脉冲_step15_CAN2_CMU02CellTemp01_difftemp" caption="脉冲_step15_CAN2_CMU02CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step15_CAN2_CMU03CellTemp00_difftemp" chapter="CH" property="脉冲_step15_CAN2_CMU03CellTemp00_difftemp" caption="脉冲_step15_CAN2_CMU03CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step15_CAN2_CMU03CellTemp01_difftemp" chapter="CH" property="脉冲_step15_CAN2_CMU03CellTemp01_difftemp" caption="脉冲_step15_CAN2_CMU03CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step15_A" chapter="CH" property="脉冲_step15_A" caption="脉冲_step15_A"/>
+			<iniitem blmc="脉冲_step15_V" chapter="CH" property="脉冲_step15_V" caption="脉冲_step15_V"/>
+			<iniitem blmc="脉冲_step15_Chmah" chapter="CH" property="脉冲_step15_Chmah" caption="脉冲_step15_Chmah"/>
+			<iniitem blmc="脉冲_step15_DChmah" chapter="CH" property="脉冲_step15_DChmah" caption="脉冲_step15_DChmah"/>
+			<iniitem blmc="脉冲_step15_state" chapter="CH" property="脉冲_step15_state" caption="脉冲_step15_state"/>
+			<iniitem blmc="脉冲_step15_EndTime" chapter="CH" property="脉冲_step15_EndTime" caption="脉冲_step15_EndTime"/>
+			<iniitem blmc="脉冲_step16_CAN1_BMSPackVol_h6HSC6" chapter="CH" property="脉冲_step16_CAN1_BMSPackVol_h6HSC6" caption="脉冲_step16_CAN1_BMSPackVol_h6HSC6"/>
+			<iniitem blmc="脉冲_step16_CAN1_BMSPackSOCActualHSC6" chapter="CH" property="脉冲_step16_CAN1_BMSPackSOCActualHSC6" caption="脉冲_step16_CAN1_BMSPackSOCActualHSC6"/>
+			<iniitem blmc="脉冲_step16_CAN1_BMSPackCrnt_h6HSC6" chapter="CH" property="脉冲_step16_CAN1_BMSPackCrnt_h6HSC6" caption="脉冲_step16_CAN1_BMSPackCrnt_h6HSC6"/>
+			<iniitem blmc="脉冲_step16_CAN1_BMSCellMaxVolHSC6" chapter="CH" property="脉冲_step16_CAN1_BMSCellMaxVolHSC6" caption="脉冲_step16_CAN1_BMSCellMaxVolHSC6"/>
+			<iniitem blmc="脉冲_step16_CAN1_BMSCellMinVolHSC6" chapter="CH" property="脉冲_step16_CAN1_BMSCellMinVolHSC6" caption="脉冲_step16_CAN1_BMSCellMinVolHSC6"/>
+			<iniitem blmc="脉冲_step16_CAN1_BMSCellMaxTem_h6HSC6" chapter="CH" property="脉冲_step16_CAN1_BMSCellMaxTem_h6HSC6" caption="脉冲_step16_CAN1_BMSCellMaxTem_h6HSC6"/>
+			<iniitem blmc="脉冲_step16_CAN1_BMSCellMinTem_h6HSC6" chapter="CH" property="脉冲_step16_CAN1_BMSCellMinTem_h6HSC6" caption="脉冲_step16_CAN1_BMSCellMinTem_h6HSC6"/>
+			<iniitem blmc="脉冲_step16_CAN2_SysAlwayMaxT" chapter="CH" property="脉冲_step16_CAN2_SysAlwayMaxT" caption="脉冲_step16_CAN2_SysAlwayMaxT"/>
+			<iniitem blmc="脉冲_step16_CAN2_SysUpMaxT" chapter="CH" property="脉冲_step16_CAN2_SysUpMaxT" caption="脉冲_step16_CAN2_SysUpMaxT"/>
+			<iniitem blmc="脉冲_step16_CAN2_SysDiffCellT" chapter="CH" property="脉冲_step16_CAN2_SysDiffCellT" caption="脉冲_step16_CAN2_SysDiffCellT"/>
+			<iniitem blmc="脉冲_step16_CAN2_SysDiffCellV" chapter="CH" property="脉冲_step16_CAN2_SysDiffCellV" caption="脉冲_step16_CAN2_SysDiffCellV"/>
+			<iniitem blmc="脉冲_step16_CAN2_CMU00CellTemp00_difftemp" chapter="CH" property="脉冲_step16_CAN2_CMU00CellTemp00_difftemp" caption="脉冲_step16_CAN2_CMU00CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step16_CAN2_CMU00CellTemp01_difftemp" chapter="CH" property="脉冲_step16_CAN2_CMU00CellTemp01_difftemp" caption="脉冲_step16_CAN2_CMU00CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step16_CAN2_CMU01CellTemp00_difftemp" chapter="CH" property="脉冲_step16_CAN2_CMU01CellTemp00_difftemp" caption="脉冲_step16_CAN2_CMU01CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step16_CAN2_CMU01CellTemp01_difftemp" chapter="CH" property="脉冲_step16_CAN2_CMU01CellTemp01_difftemp" caption="脉冲_step16_CAN2_CMU01CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step16_CAN2_CMU02CellTemp00_difftemp" chapter="CH" property="脉冲_step16_CAN2_CMU02CellTemp00_difftemp" caption="脉冲_step16_CAN2_CMU02CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step16_CAN2_CMU02CellTemp01_difftemp" chapter="CH" property="脉冲_step16_CAN2_CMU02CellTemp01_difftemp" caption="脉冲_step16_CAN2_CMU02CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step16_CAN2_CMU03CellTemp00_difftemp" chapter="CH" property="脉冲_step16_CAN2_CMU03CellTemp00_difftemp" caption="脉冲_step16_CAN2_CMU03CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step16_CAN2_CMU03CellTemp01_difftemp" chapter="CH" property="脉冲_step16_CAN2_CMU03CellTemp01_difftemp" caption="脉冲_step16_CAN2_CMU03CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step16_A" chapter="CH" property="脉冲_step16_A" caption="脉冲_step16_A"/>
+			<iniitem blmc="脉冲_step16_V" chapter="CH" property="脉冲_step16_V" caption="脉冲_step16_V"/>
+			<iniitem blmc="脉冲_step16_Chmah" chapter="CH" property="脉冲_step16_Chmah" caption="脉冲_step16_Chmah"/>
+			<iniitem blmc="脉冲_step16_DChmah" chapter="CH" property="脉冲_step16_DChmah" caption="脉冲_step16_DChmah"/>
+			<iniitem blmc="脉冲_step16_state" chapter="CH" property="脉冲_step16_state" caption="脉冲_step16_state"/>
+			<iniitem blmc="脉冲_step16_EndTime" chapter="CH" property="脉冲_step16_EndTime" caption="脉冲_step16_EndTime"/>
+			<iniitem blmc="脉冲_step17_CAN1_BMSPackVol_h6HSC6" chapter="CH" property="脉冲_step17_CAN1_BMSPackVol_h6HSC6" caption="脉冲_step17_CAN1_BMSPackVol_h6HSC6"/>
+			<iniitem blmc="脉冲_step17_CAN1_BMSPackSOCActualHSC6" chapter="CH" property="脉冲_step17_CAN1_BMSPackSOCActualHSC6" caption="脉冲_step17_CAN1_BMSPackSOCActualHSC6"/>
+			<iniitem blmc="脉冲_step17_CAN1_BMSPackCrnt_h6HSC6" chapter="CH" property="脉冲_step17_CAN1_BMSPackCrnt_h6HSC6" caption="脉冲_step17_CAN1_BMSPackCrnt_h6HSC6"/>
+			<iniitem blmc="脉冲_step17_CAN1_BMSCellMaxVolHSC6" chapter="CH" property="脉冲_step17_CAN1_BMSCellMaxVolHSC6" caption="脉冲_step17_CAN1_BMSCellMaxVolHSC6"/>
+			<iniitem blmc="脉冲_step17_CAN1_BMSCellMinVolHSC6" chapter="CH" property="脉冲_step17_CAN1_BMSCellMinVolHSC6" caption="脉冲_step17_CAN1_BMSCellMinVolHSC6"/>
+			<iniitem blmc="脉冲_step17_CAN1_BMSCellMaxTem_h6HSC6" chapter="CH" property="脉冲_step17_CAN1_BMSCellMaxTem_h6HSC6" caption="脉冲_step17_CAN1_BMSCellMaxTem_h6HSC6"/>
+			<iniitem blmc="脉冲_step17_CAN1_BMSCellMinTem_h6HSC6" chapter="CH" property="脉冲_step17_CAN1_BMSCellMinTem_h6HSC6" caption="脉冲_step17_CAN1_BMSCellMinTem_h6HSC6"/>
+			<iniitem blmc="脉冲_step17_CAN2_SysAlwayMaxT" chapter="CH" property="脉冲_step17_CAN2_SysAlwayMaxT" caption="脉冲_step17_CAN2_SysAlwayMaxT"/>
+			<iniitem blmc="脉冲_step17_CAN2_SysUpMaxT" chapter="CH" property="脉冲_step17_CAN2_SysUpMaxT" caption="脉冲_step17_CAN2_SysUpMaxT"/>
+			<iniitem blmc="脉冲_step17_CAN2_SysDiffCellT" chapter="CH" property="脉冲_step17_CAN2_SysDiffCellT" caption="脉冲_step17_CAN2_SysDiffCellT"/>
+			<iniitem blmc="脉冲_step17_CAN2_SysDiffCellV" chapter="CH" property="脉冲_step17_CAN2_SysDiffCellV" caption="脉冲_step17_CAN2_SysDiffCellV"/>
+			<iniitem blmc="脉冲_step17_CAN2_CMU00CellTemp00_difftemp" chapter="CH" property="脉冲_step17_CAN2_CMU00CellTemp00_difftemp" caption="脉冲_step17_CAN2_CMU00CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step17_CAN2_CMU00CellTemp01_difftemp" chapter="CH" property="脉冲_step17_CAN2_CMU00CellTemp01_difftemp" caption="脉冲_step17_CAN2_CMU00CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step17_CAN2_CMU01CellTemp00_difftemp" chapter="CH" property="脉冲_step17_CAN2_CMU01CellTemp00_difftemp" caption="脉冲_step17_CAN2_CMU01CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step17_CAN2_CMU01CellTemp01_difftemp" chapter="CH" property="脉冲_step17_CAN2_CMU01CellTemp01_difftemp" caption="脉冲_step17_CAN2_CMU01CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step17_CAN2_CMU02CellTemp00_difftemp" chapter="CH" property="脉冲_step17_CAN2_CMU02CellTemp00_difftemp" caption="脉冲_step17_CAN2_CMU02CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step17_CAN2_CMU02CellTemp01_difftemp" chapter="CH" property="脉冲_step17_CAN2_CMU02CellTemp01_difftemp" caption="脉冲_step17_CAN2_CMU02CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step17_CAN2_CMU03CellTemp00_difftemp" chapter="CH" property="脉冲_step17_CAN2_CMU03CellTemp00_difftemp" caption="脉冲_step17_CAN2_CMU03CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step17_CAN2_CMU03CellTemp01_difftemp" chapter="CH" property="脉冲_step17_CAN2_CMU03CellTemp01_difftemp" caption="脉冲_step17_CAN2_CMU03CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step17_A" chapter="CH" property="脉冲_step17_A" caption="脉冲_step17_A"/>
+			<iniitem blmc="脉冲_step17_V" chapter="CH" property="脉冲_step17_V" caption="脉冲_step17_V"/>
+			<iniitem blmc="脉冲_step17_Chmah" chapter="CH" property="脉冲_step17_Chmah" caption="脉冲_step17_Chmah"/>
+			<iniitem blmc="脉冲_step17_DChmah" chapter="CH" property="脉冲_step17_DChmah" caption="脉冲_step17_DChmah"/>
+			<iniitem blmc="脉冲_step17_state" chapter="CH" property="脉冲_step17_state" caption="脉冲_step17_state"/>
+			<iniitem blmc="脉冲_step17_EndTime" chapter="CH" property="脉冲_step17_EndTime" caption="脉冲_step17_EndTime"/>
+			<iniitem blmc="脉冲_step18_CAN1_BMSPackVol_h6HSC6" chapter="CH" property="脉冲_step18_CAN1_BMSPackVol_h6HSC6" caption="脉冲_step18_CAN1_BMSPackVol_h6HSC6"/>
+			<iniitem blmc="脉冲_step18_CAN1_BMSPackSOCActualHSC6" chapter="CH" property="脉冲_step18_CAN1_BMSPackSOCActualHSC6" caption="脉冲_step18_CAN1_BMSPackSOCActualHSC6"/>
+			<iniitem blmc="脉冲_step18_CAN1_BMSPackCrnt_h6HSC6" chapter="CH" property="脉冲_step18_CAN1_BMSPackCrnt_h6HSC6" caption="脉冲_step18_CAN1_BMSPackCrnt_h6HSC6"/>
+			<iniitem blmc="脉冲_step18_CAN1_BMSCellMaxVolHSC6" chapter="CH" property="脉冲_step18_CAN1_BMSCellMaxVolHSC6" caption="脉冲_step18_CAN1_BMSCellMaxVolHSC6"/>
+			<iniitem blmc="脉冲_step18_CAN1_BMSCellMinVolHSC6" chapter="CH" property="脉冲_step18_CAN1_BMSCellMinVolHSC6" caption="脉冲_step18_CAN1_BMSCellMinVolHSC6"/>
+			<iniitem blmc="脉冲_step18_CAN1_BMSCellMaxTem_h6HSC6" chapter="CH" property="脉冲_step18_CAN1_BMSCellMaxTem_h6HSC6" caption="脉冲_step18_CAN1_BMSCellMaxTem_h6HSC6"/>
+			<iniitem blmc="脉冲_step18_CAN1_BMSCellMinTem_h6HSC6" chapter="CH" property="脉冲_step18_CAN1_BMSCellMinTem_h6HSC6" caption="脉冲_step18_CAN1_BMSCellMinTem_h6HSC6"/>
+			<iniitem blmc="脉冲_step18_CAN2_SysAlwayMaxT" chapter="CH" property="脉冲_step18_CAN2_SysAlwayMaxT" caption="脉冲_step18_CAN2_SysAlwayMaxT"/>
+			<iniitem blmc="脉冲_step18_CAN2_SysUpMaxT" chapter="CH" property="脉冲_step18_CAN2_SysUpMaxT" caption="脉冲_step18_CAN2_SysUpMaxT"/>
+			<iniitem blmc="脉冲_step18_CAN2_SysDiffCellT" chapter="CH" property="脉冲_step18_CAN2_SysDiffCellT" caption="脉冲_step18_CAN2_SysDiffCellT"/>
+			<iniitem blmc="脉冲_step18_CAN2_SysDiffCellV" chapter="CH" property="脉冲_step18_CAN2_SysDiffCellV" caption="脉冲_step18_CAN2_SysDiffCellV"/>
+			<iniitem blmc="脉冲_step18_CAN2_CMU00CellTemp00_difftemp" chapter="CH" property="脉冲_step18_CAN2_CMU00CellTemp00_difftemp" caption="脉冲_step18_CAN2_CMU00CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step18_CAN2_CMU00CellTemp01_difftemp" chapter="CH" property="脉冲_step18_CAN2_CMU00CellTemp01_difftemp" caption="脉冲_step18_CAN2_CMU00CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step18_CAN2_CMU01CellTemp00_difftemp" chapter="CH" property="脉冲_step18_CAN2_CMU01CellTemp00_difftemp" caption="脉冲_step18_CAN2_CMU01CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step18_CAN2_CMU01CellTemp01_difftemp" chapter="CH" property="脉冲_step18_CAN2_CMU01CellTemp01_difftemp" caption="脉冲_step18_CAN2_CMU01CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step18_CAN2_CMU02CellTemp00_difftemp" chapter="CH" property="脉冲_step18_CAN2_CMU02CellTemp00_difftemp" caption="脉冲_step18_CAN2_CMU02CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step18_CAN2_CMU02CellTemp01_difftemp" chapter="CH" property="脉冲_step18_CAN2_CMU02CellTemp01_difftemp" caption="脉冲_step18_CAN2_CMU02CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step18_CAN2_CMU03CellTemp00_difftemp" chapter="CH" property="脉冲_step18_CAN2_CMU03CellTemp00_difftemp" caption="脉冲_step18_CAN2_CMU03CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step18_CAN2_CMU03CellTemp01_difftemp" chapter="CH" property="脉冲_step18_CAN2_CMU03CellTemp01_difftemp" caption="脉冲_step18_CAN2_CMU03CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step18_A" chapter="CH" property="脉冲_step18_A" caption="脉冲_step18_A"/>
+			<iniitem blmc="脉冲_step18_V" chapter="CH" property="脉冲_step18_V" caption="脉冲_step18_V"/>
+			<iniitem blmc="脉冲_step18_Chmah" chapter="CH" property="脉冲_step18_Chmah" caption="脉冲_step18_Chmah"/>
+			<iniitem blmc="脉冲_step18_DChmah" chapter="CH" property="脉冲_step18_DChmah" caption="脉冲_step18_DChmah"/>
+			<iniitem blmc="脉冲_step18_state" chapter="CH" property="脉冲_step18_state" caption="脉冲_step18_state"/>
+			<iniitem blmc="脉冲_step18_EndTime" chapter="CH" property="脉冲_step18_EndTime" caption="脉冲_step18_EndTime"/>
+			<iniitem blmc="脉冲_step20_CAN1_BMSPackVol_h6HSC6" chapter="CH" property="脉冲_step20_CAN1_BMSPackVol_h6HSC6" caption="脉冲_step20_CAN1_BMSPackVol_h6HSC6"/>
+			<iniitem blmc="脉冲_step20_CAN1_BMSPackSOCActualHSC6" chapter="CH" property="脉冲_step20_CAN1_BMSPackSOCActualHSC6" caption="脉冲_step20_CAN1_BMSPackSOCActualHSC6"/>
+			<iniitem blmc="脉冲_step20_CAN1_BMSPackCrnt_h6HSC6" chapter="CH" property="脉冲_step20_CAN1_BMSPackCrnt_h6HSC6" caption="脉冲_step20_CAN1_BMSPackCrnt_h6HSC6"/>
+			<iniitem blmc="脉冲_step20_CAN1_BMSCellMaxVolHSC6" chapter="CH" property="脉冲_step20_CAN1_BMSCellMaxVolHSC6" caption="脉冲_step20_CAN1_BMSCellMaxVolHSC6"/>
+			<iniitem blmc="脉冲_step20_CAN1_BMSCellMinVolHSC6" chapter="CH" property="脉冲_step20_CAN1_BMSCellMinVolHSC6" caption="脉冲_step20_CAN1_BMSCellMinVolHSC6"/>
+			<iniitem blmc="脉冲_step20_CAN1_BMSCellMaxTem_h6HSC6" chapter="CH" property="脉冲_step20_CAN1_BMSCellMaxTem_h6HSC6" caption="脉冲_step20_CAN1_BMSCellMaxTem_h6HSC6"/>
+			<iniitem blmc="脉冲_step20_CAN1_BMSCellMinTem_h6HSC6" chapter="CH" property="脉冲_step20_CAN1_BMSCellMinTem_h6HSC6" caption="脉冲_step20_CAN1_BMSCellMinTem_h6HSC6"/>
+			<iniitem blmc="脉冲_step20_CAN2_SysAlwayMaxT" chapter="CH" property="脉冲_step20_CAN2_SysAlwayMaxT" caption="脉冲_step20_CAN2_SysAlwayMaxT"/>
+			<iniitem blmc="脉冲_step20_CAN2_SysUpMaxT" chapter="CH" property="脉冲_step20_CAN2_SysUpMaxT" caption="脉冲_step20_CAN2_SysUpMaxT"/>
+			<iniitem blmc="脉冲_step20_CAN2_SysDiffCellT" chapter="CH" property="脉冲_step20_CAN2_SysDiffCellT" caption="脉冲_step20_CAN2_SysDiffCellT"/>
+			<iniitem blmc="脉冲_step20_CAN2_SysDiffCellV" chapter="CH" property="脉冲_step20_CAN2_SysDiffCellV" caption="脉冲_step20_CAN2_SysDiffCellV"/>
+			<iniitem blmc="脉冲_step20_CAN2_CMU00CellTemp00_difftemp" chapter="CH" property="脉冲_step20_CAN2_CMU00CellTemp00_difftemp" caption="脉冲_step20_CAN2_CMU00CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step20_CAN2_CMU00CellTemp01_difftemp" chapter="CH" property="脉冲_step20_CAN2_CMU00CellTemp01_difftemp" caption="脉冲_step20_CAN2_CMU00CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step20_CAN2_CMU01CellTemp00_difftemp" chapter="CH" property="脉冲_step20_CAN2_CMU01CellTemp00_difftemp" caption="脉冲_step20_CAN2_CMU01CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step20_CAN2_CMU01CellTemp01_difftemp" chapter="CH" property="脉冲_step20_CAN2_CMU01CellTemp01_difftemp" caption="脉冲_step20_CAN2_CMU01CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step20_CAN2_CMU02CellTemp00_difftemp" chapter="CH" property="脉冲_step20_CAN2_CMU02CellTemp00_difftemp" caption="脉冲_step20_CAN2_CMU02CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step20_CAN2_CMU02CellTemp01_difftemp" chapter="CH" property="脉冲_step20_CAN2_CMU02CellTemp01_difftemp" caption="脉冲_step20_CAN2_CMU02CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step20_CAN2_CMU03CellTemp00_difftemp" chapter="CH" property="脉冲_step20_CAN2_CMU03CellTemp00_difftemp" caption="脉冲_step20_CAN2_CMU03CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step20_CAN2_CMU03CellTemp01_difftemp" chapter="CH" property="脉冲_step20_CAN2_CMU03CellTemp01_difftemp" caption="脉冲_step20_CAN2_CMU03CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step20_A" chapter="CH" property="脉冲_step20_A" caption="脉冲_step20_A"/>
+			<iniitem blmc="脉冲_step20_V" chapter="CH" property="脉冲_step20_V" caption="脉冲_step20_V"/>
+			<iniitem blmc="脉冲_step20_Chmah" chapter="CH" property="脉冲_step20_Chmah" caption="脉冲_step20_Chmah"/>
+			<iniitem blmc="脉冲_step20_DChmah" chapter="CH" property="脉冲_step20_DChmah" caption="脉冲_step20_DChmah"/>
+			<iniitem blmc="脉冲_step20_state" chapter="CH" property="脉冲_step20_state" caption="脉冲_step20_state"/>
+			<iniitem blmc="脉冲_step20_EndTime" chapter="CH" property="脉冲_step20_EndTime" caption="脉冲_step20_EndTime"/>
+			<iniitem blmc="脉冲_step21_CAN1_BMSPackVol_h6HSC6" chapter="CH" property="脉冲_step21_CAN1_BMSPackVol_h6HSC6" caption="脉冲_step21_CAN1_BMSPackVol_h6HSC6"/>
+			<iniitem blmc="脉冲_step21_CAN1_BMSPackSOCActualHSC6" chapter="CH" property="脉冲_step21_CAN1_BMSPackSOCActualHSC6" caption="脉冲_step21_CAN1_BMSPackSOCActualHSC6"/>
+			<iniitem blmc="脉冲_step21_CAN1_BMSPackCrnt_h6HSC6" chapter="CH" property="脉冲_step21_CAN1_BMSPackCrnt_h6HSC6" caption="脉冲_step21_CAN1_BMSPackCrnt_h6HSC6"/>
+			<iniitem blmc="脉冲_step21_CAN1_BMSCellMaxVolHSC6" chapter="CH" property="脉冲_step21_CAN1_BMSCellMaxVolHSC6" caption="脉冲_step21_CAN1_BMSCellMaxVolHSC6"/>
+			<iniitem blmc="脉冲_step21_CAN1_BMSCellMinVolHSC6" chapter="CH" property="脉冲_step21_CAN1_BMSCellMinVolHSC6" caption="脉冲_step21_CAN1_BMSCellMinVolHSC6"/>
+			<iniitem blmc="脉冲_step21_CAN1_BMSCellMaxTem_h6HSC6" chapter="CH" property="脉冲_step21_CAN1_BMSCellMaxTem_h6HSC6" caption="脉冲_step21_CAN1_BMSCellMaxTem_h6HSC6"/>
+			<iniitem blmc="脉冲_step21_CAN1_BMSCellMinTem_h6HSC6" chapter="CH" property="脉冲_step21_CAN1_BMSCellMinTem_h6HSC6" caption="脉冲_step21_CAN1_BMSCellMinTem_h6HSC6"/>
+			<iniitem blmc="脉冲_step21_CAN2_SysAlwayMaxT" chapter="CH" property="脉冲_step21_CAN2_SysAlwayMaxT" caption="脉冲_step21_CAN2_SysAlwayMaxT"/>
+			<iniitem blmc="脉冲_step21_CAN2_SysUpMaxT" chapter="CH" property="脉冲_step21_CAN2_SysUpMaxT" caption="脉冲_step21_CAN2_SysUpMaxT"/>
+			<iniitem blmc="脉冲_step21_CAN2_SysDiffCellT" chapter="CH" property="脉冲_step21_CAN2_SysDiffCellT" caption="脉冲_step21_CAN2_SysDiffCellT"/>
+			<iniitem blmc="脉冲_step21_CAN2_SysDiffCellV" chapter="CH" property="脉冲_step21_CAN2_SysDiffCellV" caption="脉冲_step21_CAN2_SysDiffCellV"/>
+			<iniitem blmc="脉冲_step21_CAN2_CMU00CellTemp00_difftemp" chapter="CH" property="脉冲_step21_CAN2_CMU00CellTemp00_difftemp" caption="脉冲_step21_CAN2_CMU00CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step21_CAN2_CMU00CellTemp01_difftemp" chapter="CH" property="脉冲_step21_CAN2_CMU00CellTemp01_difftemp" caption="脉冲_step21_CAN2_CMU00CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step21_CAN2_CMU01CellTemp00_difftemp" chapter="CH" property="脉冲_step21_CAN2_CMU01CellTemp00_difftemp" caption="脉冲_step21_CAN2_CMU01CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step21_CAN2_CMU01CellTemp01_difftemp" chapter="CH" property="脉冲_step21_CAN2_CMU01CellTemp01_difftemp" caption="脉冲_step21_CAN2_CMU01CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step21_CAN2_CMU02CellTemp00_difftemp" chapter="CH" property="脉冲_step21_CAN2_CMU02CellTemp00_difftemp" caption="脉冲_step21_CAN2_CMU02CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step21_CAN2_CMU02CellTemp01_difftemp" chapter="CH" property="脉冲_step21_CAN2_CMU02CellTemp01_difftemp" caption="脉冲_step21_CAN2_CMU02CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step21_CAN2_CMU03CellTemp00_difftemp" chapter="CH" property="脉冲_step21_CAN2_CMU03CellTemp00_difftemp" caption="脉冲_step21_CAN2_CMU03CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step21_CAN2_CMU03CellTemp01_difftemp" chapter="CH" property="脉冲_step21_CAN2_CMU03CellTemp01_difftemp" caption="脉冲_step21_CAN2_CMU03CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step21_A" chapter="CH" property="脉冲_step21_A" caption="脉冲_step21_A"/>
+			<iniitem blmc="脉冲_step21_V" chapter="CH" property="脉冲_step21_V" caption="脉冲_step21_V"/>
+			<iniitem blmc="脉冲_step21_Chmah" chapter="CH" property="脉冲_step21_Chmah" caption="脉冲_step21_Chmah"/>
+			<iniitem blmc="脉冲_step21_DChmah" chapter="CH" property="脉冲_step21_DChmah" caption="脉冲_step21_DChmah"/>
+			<iniitem blmc="脉冲_step21_state" chapter="CH" property="脉冲_step21_state" caption="脉冲_step21_state"/>
+			<iniitem blmc="脉冲_step21_EndTime" chapter="CH" property="脉冲_step21_EndTime" caption="脉冲_step21_EndTime"/>
+			<iniitem blmc="脉冲_step22_CAN1_BMSPackVol_h6HSC6" chapter="CH" property="脉冲_step22_CAN1_BMSPackVol_h6HSC6" caption="脉冲_step22_CAN1_BMSPackVol_h6HSC6"/>
+			<iniitem blmc="脉冲_step22_CAN1_BMSPackSOCActualHSC6" chapter="CH" property="脉冲_step22_CAN1_BMSPackSOCActualHSC6" caption="脉冲_step22_CAN1_BMSPackSOCActualHSC6"/>
+			<iniitem blmc="脉冲_step22_CAN1_BMSPackCrnt_h6HSC6" chapter="CH" property="脉冲_step22_CAN1_BMSPackCrnt_h6HSC6" caption="脉冲_step22_CAN1_BMSPackCrnt_h6HSC6"/>
+			<iniitem blmc="脉冲_step22_CAN1_BMSCellMaxVolHSC6" chapter="CH" property="脉冲_step22_CAN1_BMSCellMaxVolHSC6" caption="脉冲_step22_CAN1_BMSCellMaxVolHSC6"/>
+			<iniitem blmc="脉冲_step22_CAN1_BMSCellMinVolHSC6" chapter="CH" property="脉冲_step22_CAN1_BMSCellMinVolHSC6" caption="脉冲_step22_CAN1_BMSCellMinVolHSC6"/>
+			<iniitem blmc="脉冲_step22_CAN1_BMSCellMaxTem_h6HSC6" chapter="CH" property="脉冲_step22_CAN1_BMSCellMaxTem_h6HSC6" caption="脉冲_step22_CAN1_BMSCellMaxTem_h6HSC6"/>
+			<iniitem blmc="脉冲_step22_CAN1_BMSCellMinTem_h6HSC6" chapter="CH" property="脉冲_step22_CAN1_BMSCellMinTem_h6HSC6" caption="脉冲_step22_CAN1_BMSCellMinTem_h6HSC6"/>
+			<iniitem blmc="脉冲_step22_CAN2_SysAlwayMaxT" chapter="CH" property="脉冲_step22_CAN2_SysAlwayMaxT" caption="脉冲_step22_CAN2_SysAlwayMaxT"/>
+			<iniitem blmc="脉冲_step22_CAN2_SysUpMaxT" chapter="CH" property="脉冲_step22_CAN2_SysUpMaxT" caption="脉冲_step22_CAN2_SysUpMaxT"/>
+			<iniitem blmc="脉冲_step22_CAN2_SysDiffCellT" chapter="CH" property="脉冲_step22_CAN2_SysDiffCellT" caption="脉冲_step22_CAN2_SysDiffCellT"/>
+			<iniitem blmc="脉冲_step22_CAN2_SysDiffCellV" chapter="CH" property="脉冲_step22_CAN2_SysDiffCellV" caption="脉冲_step22_CAN2_SysDiffCellV"/>
+			<iniitem blmc="脉冲_step22_CAN2_CMU00CellTemp00_difftemp" chapter="CH" property="脉冲_step22_CAN2_CMU00CellTemp00_difftemp" caption="脉冲_step22_CAN2_CMU00CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step22_CAN2_CMU00CellTemp01_difftemp" chapter="CH" property="脉冲_step22_CAN2_CMU00CellTemp01_difftemp" caption="脉冲_step22_CAN2_CMU00CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step22_CAN2_CMU01CellTemp00_difftemp" chapter="CH" property="脉冲_step22_CAN2_CMU01CellTemp00_difftemp" caption="脉冲_step22_CAN2_CMU01CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step22_CAN2_CMU01CellTemp01_difftemp" chapter="CH" property="脉冲_step22_CAN2_CMU01CellTemp01_difftemp" caption="脉冲_step22_CAN2_CMU01CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step22_CAN2_CMU02CellTemp00_difftemp" chapter="CH" property="脉冲_step22_CAN2_CMU02CellTemp00_difftemp" caption="脉冲_step22_CAN2_CMU02CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step22_CAN2_CMU02CellTemp01_difftemp" chapter="CH" property="脉冲_step22_CAN2_CMU02CellTemp01_difftemp" caption="脉冲_step22_CAN2_CMU02CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step22_CAN2_CMU03CellTemp00_difftemp" chapter="CH" property="脉冲_step22_CAN2_CMU03CellTemp00_difftemp" caption="脉冲_step22_CAN2_CMU03CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step22_CAN2_CMU03CellTemp01_difftemp" chapter="CH" property="脉冲_step22_CAN2_CMU03CellTemp01_difftemp" caption="脉冲_step22_CAN2_CMU03CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step22_A" chapter="CH" property="脉冲_step22_A" caption="脉冲_step22_A"/>
+			<iniitem blmc="脉冲_step22_V" chapter="CH" property="脉冲_step22_V" caption="脉冲_step22_V"/>
+			<iniitem blmc="脉冲_step22_Chmah" chapter="CH" property="脉冲_step22_Chmah" caption="脉冲_step22_Chmah"/>
+			<iniitem blmc="脉冲_step22_DChmah" chapter="CH" property="脉冲_step22_DChmah" caption="脉冲_step22_DChmah"/>
+			<iniitem blmc="脉冲_step22_state" chapter="CH" property="脉冲_step22_state" caption="脉冲_step22_state"/>
+			<iniitem blmc="脉冲_step22_EndTime" chapter="CH" property="脉冲_step22_EndTime" caption="脉冲_step22_EndTime"/>
+			<iniitem blmc="脉冲_step23_CAN1_BMSPackVol_h6HSC6" chapter="CH" property="脉冲_step23_CAN1_BMSPackVol_h6HSC6" caption="脉冲_step23_CAN1_BMSPackVol_h6HSC6"/>
+			<iniitem blmc="脉冲_step23_CAN1_BMSPackSOCActualHSC6" chapter="CH" property="脉冲_step23_CAN1_BMSPackSOCActualHSC6" caption="脉冲_step23_CAN1_BMSPackSOCActualHSC6"/>
+			<iniitem blmc="脉冲_step23_CAN1_BMSPackCrnt_h6HSC6" chapter="CH" property="脉冲_step23_CAN1_BMSPackCrnt_h6HSC6" caption="脉冲_step23_CAN1_BMSPackCrnt_h6HSC6"/>
+			<iniitem blmc="脉冲_step23_CAN1_BMSCellMaxVolHSC6" chapter="CH" property="脉冲_step23_CAN1_BMSCellMaxVolHSC6" caption="脉冲_step23_CAN1_BMSCellMaxVolHSC6"/>
+			<iniitem blmc="脉冲_step23_CAN1_BMSCellMinVolHSC6" chapter="CH" property="脉冲_step23_CAN1_BMSCellMinVolHSC6" caption="脉冲_step23_CAN1_BMSCellMinVolHSC6"/>
+			<iniitem blmc="脉冲_step23_CAN1_BMSCellMaxTem_h6HSC6" chapter="CH" property="脉冲_step23_CAN1_BMSCellMaxTem_h6HSC6" caption="脉冲_step23_CAN1_BMSCellMaxTem_h6HSC6"/>
+			<iniitem blmc="脉冲_step23_CAN1_BMSCellMinTem_h6HSC6" chapter="CH" property="脉冲_step23_CAN1_BMSCellMinTem_h6HSC6" caption="脉冲_step23_CAN1_BMSCellMinTem_h6HSC6"/>
+			<iniitem blmc="脉冲_step23_CAN2_SysAlwayMaxT" chapter="CH" property="脉冲_step23_CAN2_SysAlwayMaxT" caption="脉冲_step23_CAN2_SysAlwayMaxT"/>
+			<iniitem blmc="脉冲_step23_CAN2_SysUpMaxT" chapter="CH" property="脉冲_step23_CAN2_SysUpMaxT" caption="脉冲_step23_CAN2_SysUpMaxT"/>
+			<iniitem blmc="脉冲_step23_CAN2_SysDiffCellT" chapter="CH" property="脉冲_step23_CAN2_SysDiffCellT" caption="脉冲_step23_CAN2_SysDiffCellT"/>
+			<iniitem blmc="脉冲_step23_CAN2_SysDiffCellV" chapter="CH" property="脉冲_step23_CAN2_SysDiffCellV" caption="脉冲_step23_CAN2_SysDiffCellV"/>
+			<iniitem blmc="脉冲_step23_CAN2_CMU00CellTemp00_difftemp" chapter="CH" property="脉冲_step23_CAN2_CMU00CellTemp00_difftemp" caption="脉冲_step23_CAN2_CMU00CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step23_CAN2_CMU00CellTemp01_difftemp" chapter="CH" property="脉冲_step23_CAN2_CMU00CellTemp01_difftemp" caption="脉冲_step23_CAN2_CMU00CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step23_CAN2_CMU01CellTemp00_difftemp" chapter="CH" property="脉冲_step23_CAN2_CMU01CellTemp00_difftemp" caption="脉冲_step23_CAN2_CMU01CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step23_CAN2_CMU01CellTemp01_difftemp" chapter="CH" property="脉冲_step23_CAN2_CMU01CellTemp01_difftemp" caption="脉冲_step23_CAN2_CMU01CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step23_CAN2_CMU02CellTemp00_difftemp" chapter="CH" property="脉冲_step23_CAN2_CMU02CellTemp00_difftemp" caption="脉冲_step23_CAN2_CMU02CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step23_CAN2_CMU02CellTemp01_difftemp" chapter="CH" property="脉冲_step23_CAN2_CMU02CellTemp01_difftemp" caption="脉冲_step23_CAN2_CMU02CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step23_CAN2_CMU03CellTemp00_difftemp" chapter="CH" property="脉冲_step23_CAN2_CMU03CellTemp00_difftemp" caption="脉冲_step23_CAN2_CMU03CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step23_CAN2_CMU03CellTemp01_difftemp" chapter="CH" property="脉冲_step23_CAN2_CMU03CellTemp01_difftemp" caption="脉冲_step23_CAN2_CMU03CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step23_A" chapter="CH" property="脉冲_step23_A" caption="脉冲_step23_A"/>
+			<iniitem blmc="脉冲_step23_V" chapter="CH" property="脉冲_step23_V" caption="脉冲_step23_V"/>
+			<iniitem blmc="脉冲_step23_Chmah" chapter="CH" property="脉冲_step23_Chmah" caption="脉冲_step23_Chmah"/>
+			<iniitem blmc="脉冲_step23_DChmah" chapter="CH" property="脉冲_step23_DChmah" caption="脉冲_step23_DChmah"/>
+			<iniitem blmc="脉冲_step23_state" chapter="CH" property="脉冲_step23_state" caption="脉冲_step23_state"/>
+			<iniitem blmc="脉冲_step23_EndTime" chapter="CH" property="脉冲_step23_EndTime" caption="脉冲_step23_EndTime"/>
+			<iniitem blmc="脉冲_step24_CAN1_BMSPackVol_h6HSC6" chapter="CH" property="脉冲_step24_CAN1_BMSPackVol_h6HSC6" caption="脉冲_step24_CAN1_BMSPackVol_h6HSC6"/>
+			<iniitem blmc="脉冲_step24_CAN1_BMSPackSOCActualHSC6" chapter="CH" property="脉冲_step24_CAN1_BMSPackSOCActualHSC6" caption="脉冲_step24_CAN1_BMSPackSOCActualHSC6"/>
+			<iniitem blmc="脉冲_step24_CAN1_BMSPackCrnt_h6HSC6" chapter="CH" property="脉冲_step24_CAN1_BMSPackCrnt_h6HSC6" caption="脉冲_step24_CAN1_BMSPackCrnt_h6HSC6"/>
+			<iniitem blmc="脉冲_step24_CAN1_BMSCellMaxVolHSC6" chapter="CH" property="脉冲_step24_CAN1_BMSCellMaxVolHSC6" caption="脉冲_step24_CAN1_BMSCellMaxVolHSC6"/>
+			<iniitem blmc="脉冲_step24_CAN1_BMSCellMinVolHSC6" chapter="CH" property="脉冲_step24_CAN1_BMSCellMinVolHSC6" caption="脉冲_step24_CAN1_BMSCellMinVolHSC6"/>
+			<iniitem blmc="脉冲_step24_CAN1_BMSCellMaxTem_h6HSC6" chapter="CH" property="脉冲_step24_CAN1_BMSCellMaxTem_h6HSC6" caption="脉冲_step24_CAN1_BMSCellMaxTem_h6HSC6"/>
+			<iniitem blmc="脉冲_step24_CAN1_BMSCellMinTem_h6HSC6" chapter="CH" property="脉冲_step24_CAN1_BMSCellMinTem_h6HSC6" caption="脉冲_step24_CAN1_BMSCellMinTem_h6HSC6"/>
+			<iniitem blmc="脉冲_step24_CAN1_SysAlwayMaxT" chapter="CH" property="脉冲_step24_CAN1_SysAlwayMaxT" caption="脉冲_step24_CAN1_SysAlwayMaxT"/>
+			<iniitem blmc="脉冲_step24_CAN2_SysAlwayMaxT" chapter="CH" property="脉冲_step24_CAN2_SysAlwayMaxT" caption="脉冲_step24_CAN2_SysAlwayMaxT"/>
+			<iniitem blmc="脉冲_step24_CAN2_SysUpMaxT" chapter="CH" property="脉冲_step24_CAN2_SysUpMaxT" caption="脉冲_step24_CAN2_SysUpMaxT"/>
+			<iniitem blmc="脉冲_step24_CAN2_SysDiffCellT" chapter="CH" property="脉冲_step24_CAN2_SysDiffCellT" caption="脉冲_step24_CAN2_SysDiffCellT"/>
+			<iniitem blmc="脉冲_step24_CAN2_SysDiffCellV" chapter="CH" property="脉冲_step24_CAN2_SysDiffCellV" caption="脉冲_step24_CAN2_SysDiffCellV"/>
+			<iniitem blmc="脉冲_step24_CAN2_CMU00CellTemp00_difftemp" chapter="CH" property="脉冲_step24_CAN2_CMU00CellTemp00_difftemp" caption="脉冲_step24_CAN2_CMU00CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step24_CAN2_CMU00CellTemp01_difftemp" chapter="CH" property="脉冲_step24_CAN2_CMU00CellTemp01_difftemp" caption="脉冲_step24_CAN2_CMU00CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step24_CAN2_CMU01CellTemp00_difftemp" chapter="CH" property="脉冲_step24_CAN2_CMU01CellTemp00_difftemp" caption="脉冲_step24_CAN2_CMU01CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step24_CAN2_CMU01CellTemp01_difftemp" chapter="CH" property="脉冲_step24_CAN2_CMU01CellTemp01_difftemp" caption="脉冲_step24_CAN2_CMU01CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step24_CAN2_CMU02CellTemp00_difftemp" chapter="CH" property="脉冲_step24_CAN2_CMU02CellTemp00_difftemp" caption="脉冲_step24_CAN2_CMU02CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step24_CAN2_CMU02CellTemp01_difftemp" chapter="CH" property="脉冲_step24_CAN2_CMU02CellTemp01_difftemp" caption="脉冲_step24_CAN2_CMU02CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step24_CAN2_CMU03CellTemp00_difftemp" chapter="CH" property="脉冲_step24_CAN2_CMU03CellTemp00_difftemp" caption="脉冲_step24_CAN2_CMU03CellTemp00_difftemp"/>
+			<iniitem blmc="脉冲_step24_CAN2_CMU03CellTemp01_difftemp" chapter="CH" property="脉冲_step24_CAN2_CMU03CellTemp01_difftemp" caption="脉冲_step24_CAN2_CMU03CellTemp01_difftemp"/>
+			<iniitem blmc="脉冲_step24_CAN1_SysAlwayMaxDiffV" chapter="CH" property="脉冲_step24_CAN1_SysAlwayMaxDiffV" caption="脉冲_step24_CAN1_SysAlwayMaxDiffV"/>
+			<iniitem blmc="脉冲_step24_CAN2_SysAlwayMaxDiffV" chapter="CH" property="脉冲_step24_CAN2_SysAlwayMaxDiffV" caption="脉冲_step24_CAN2_SysAlwayMaxDiffV"/>
+			<iniitem blmc="脉冲_step24_CAN2_SysAlwayMaxDiffT" chapter="CH" property="脉冲_step24_CAN2_SysAlwayMaxDiffT" caption="脉冲_step24_CAN2_SysAlwayMaxDiffT"/>
+			<iniitem blmc="脉冲_step24_CAN1_SysAlwayMaxDiffT" chapter="CH" property="脉冲_step24_CAN1_SysAlwayMaxDiffT" caption="脉冲_step24_CAN1_SysAlwayMaxDiffT"/>
+			<iniitem blmc="脉冲_step24_CAN2_SysOneUpMaxT" chapter="CH" property="脉冲_step24_CAN2_SysOneUpMaxT" caption="脉冲_step24_CAN2_SysOneUpMaxT"/>
+			<iniitem blmc="脉冲_step24_A" chapter="CH" property="脉冲_step24_A" caption="脉冲_step24_A"/>
+			<iniitem blmc="脉冲_step24_V" chapter="CH" property="脉冲_step24_V" caption="脉冲_step24_V"/>
+			<iniitem blmc="脉冲_step24_Chmah" chapter="CH" property="脉冲_step24_Chmah" caption="脉冲_step24_Chmah"/>
+			<iniitem blmc="脉冲_step24_DChmah" chapter="CH" property="脉冲_step24_DChmah" caption="脉冲_step24_DChmah"/>
+			<iniitem blmc="脉冲_step24_state" chapter="CH" property="脉冲_step24_state" caption="脉冲_step24_state"/>
+			<iniitem blmc="脉冲_step24_EndTime" chapter="CH" property="脉冲_step24_EndTime" caption="脉冲_step24_EndTime"/>
+			<iniitem blmc="DCR_1_CAN1_BMSPackVol_h6HSC6" chapter="CH" property="DCR_1_CAN1_BMSPackVol_h6HSC6" caption="DCR_1_CAN1_BMSPackVol_h6HSC6"/>
+			<iniitem blmc="DCR_1_CAN1_BMSPackSOCActualHSC6" chapter="CH" property="DCR_1_CAN1_BMSPackSOCActualHSC6" caption="DCR_1_CAN1_BMSPackSOCActualHSC6"/>
+			<iniitem blmc="DCR_1_CAN1_BMSPackCrnt_h6HSC6" chapter="CH" property="DCR_1_CAN1_BMSPackCrnt_h6HSC6" caption="DCR_1_CAN1_BMSPackCrnt_h6HSC6"/>
+			<iniitem blmc="DCR_1_CAN1_BMSCellMaxVolHSC6" chapter="CH" property="DCR_1_CAN1_BMSCellMaxVolHSC6" caption="DCR_1_CAN1_BMSCellMaxVolHSC6"/>
+			<iniitem blmc="DCR_1_CAN1_BMSCellMinVolHSC6" chapter="CH" property="DCR_1_CAN1_BMSCellMinVolHSC6" caption="DCR_1_CAN1_BMSCellMinVolHSC6"/>
+			<iniitem blmc="DCR_1_CAN1_BMSCellMaxTem_h6HSC6" chapter="CH" property="DCR_1_CAN1_BMSCellMaxTem_h6HSC6" caption="DCR_1_CAN1_BMSCellMaxTem_h6HSC6"/>
+			<iniitem blmc="DCR_1_CAN1_BMSCellMinTem_h6HSC6" chapter="CH" property="DCR_1_CAN1_BMSCellMinTem_h6HSC6" caption="DCR_1_CAN1_BMSCellMinTem_h6HSC6"/>
+			<iniitem blmc="DCR_1_CAN2_SysAlwayMaxT" chapter="CH" property="DCR_1_CAN2_SysAlwayMaxT" caption="DCR_1_CAN2_SysAlwayMaxT"/>
+			<iniitem blmc="DCR_1_CAN2_SysUpMaxT" chapter="CH" property="DCR_1_CAN2_SysUpMaxT" caption="DCR_1_CAN2_SysUpMaxT"/>
+			<iniitem blmc="DCR_1_CAN2_SysDiffCellT" chapter="CH" property="DCR_1_CAN2_SysDiffCellT" caption="DCR_1_CAN2_SysDiffCellT"/>
+			<iniitem blmc="DCR_1_CAN2_SysDiffCellV" chapter="CH" property="DCR_1_CAN2_SysDiffCellV" caption="DCR_1_CAN2_SysDiffCellV"/>
+			<iniitem blmc="DCR_1_CAN2_CMU00CellTemp00_difftemp" chapter="CH" property="DCR_1_CAN2_CMU00CellTemp00_difftemp" caption="DCR_1_CAN2_CMU00CellTemp00_difftemp"/>
+			<iniitem blmc="DCR_1_CAN2_CMU00CellTemp01_difftemp" chapter="CH" property="DCR_1_CAN2_CMU00CellTemp01_difftemp" caption="DCR_1_CAN2_CMU00CellTemp01_difftemp"/>
+			<iniitem blmc="DCR_1_CAN2_CMU01CellTemp00_difftemp" chapter="CH" property="DCR_1_CAN2_CMU01CellTemp00_difftemp" caption="DCR_1_CAN2_CMU01CellTemp00_difftemp"/>
+			<iniitem blmc="DCR_1_CAN2_CMU01CellTemp01_difftemp" chapter="CH" property="DCR_1_CAN2_CMU01CellTemp01_difftemp" caption="DCR_1_CAN2_CMU01CellTemp01_difftemp"/>
+			<iniitem blmc="DCR_1_CAN2_CMU02CellTemp00_difftemp" chapter="CH" property="DCR_1_CAN2_CMU02CellTemp00_difftemp" caption="DCR_1_CAN2_CMU02CellTemp00_difftemp"/>
+			<iniitem blmc="DCR_1_CAN2_CMU02CellTemp01_difftemp" chapter="CH" property="DCR_1_CAN2_CMU02CellTemp01_difftemp" caption="DCR_1_CAN2_CMU02CellTemp01_difftemp"/>
+			<iniitem blmc="DCR_1_CAN2_CMU03CellTemp00_difftemp" chapter="CH" property="DCR_1_CAN2_CMU03CellTemp00_difftemp" caption="DCR_1_CAN2_CMU03CellTemp00_difftemp"/>
+			<iniitem blmc="DCR_1_CAN2_CMU03CellTemp01_difftemp" chapter="CH" property="DCR_1_CAN2_CMU03CellTemp01_difftemp" caption="DCR_1_CAN2_CMU03CellTemp01_difftemp"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU00CellVolt00" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU00CellVolt00" caption="DCR_1_Dcr1_CAN2_CMU00CellVolt00"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU00CellVolt01" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU00CellVolt01" caption="DCR_1_Dcr1_CAN2_CMU00CellVolt01"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU00CellVolt02" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU00CellVolt02" caption="DCR_1_Dcr1_CAN2_CMU00CellVolt02"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU00CellVolt03" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU00CellVolt03" caption="DCR_1_Dcr1_CAN2_CMU00CellVolt03"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU00CellVolt04" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU00CellVolt04" caption="DCR_1_Dcr1_CAN2_CMU00CellVolt04"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU00CellVolt05" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU00CellVolt05" caption="DCR_1_Dcr1_CAN2_CMU00CellVolt05"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU00CellVolt06" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU00CellVolt06" caption="DCR_1_Dcr1_CAN2_CMU00CellVolt06"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU00CellVolt07" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU00CellVolt07" caption="DCR_1_Dcr1_CAN2_CMU00CellVolt07"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU00CellVolt08" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU00CellVolt08" caption="DCR_1_Dcr1_CAN2_CMU00CellVolt08"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU00CellVolt09" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU00CellVolt09" caption="DCR_1_Dcr1_CAN2_CMU00CellVolt09"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU00CellVolt10" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU00CellVolt10" caption="DCR_1_Dcr1_CAN2_CMU00CellVolt10"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU00CellVolt11" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU00CellVolt11" caption="DCR_1_Dcr1_CAN2_CMU00CellVolt11"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU00CellVolt12" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU00CellVolt12" caption="DCR_1_Dcr1_CAN2_CMU00CellVolt12"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU00CellVolt13" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU00CellVolt13" caption="DCR_1_Dcr1_CAN2_CMU00CellVolt13"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU00CellVolt14" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU00CellVolt14" caption="DCR_1_Dcr1_CAN2_CMU00CellVolt14"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU00CellVolt15" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU00CellVolt15" caption="DCR_1_Dcr1_CAN2_CMU00CellVolt15"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU00CellVolt16" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU00CellVolt16" caption="DCR_1_Dcr1_CAN2_CMU00CellVolt16"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU00CellVolt17" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU00CellVolt17" caption="DCR_1_Dcr1_CAN2_CMU00CellVolt17"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU00CellVolt18" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU00CellVolt18" caption="DCR_1_Dcr1_CAN2_CMU00CellVolt18"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU00CellVolt19" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU00CellVolt19" caption="DCR_1_Dcr1_CAN2_CMU00CellVolt19"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU00CellVolt20" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU00CellVolt20" caption="DCR_1_Dcr1_CAN2_CMU00CellVolt20"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU00CellVolt21" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU00CellVolt21" caption="DCR_1_Dcr1_CAN2_CMU00CellVolt21"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU00CellVolt22" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU00CellVolt22" caption="DCR_1_Dcr1_CAN2_CMU00CellVolt22"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU00CellVolt23" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU00CellVolt23" caption="DCR_1_Dcr1_CAN2_CMU00CellVolt23"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU01CellVolt00" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU01CellVolt00" caption="DCR_1_Dcr1_CAN2_CMU01CellVolt00"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU01CellVolt01" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU01CellVolt01" caption="DCR_1_Dcr1_CAN2_CMU01CellVolt01"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU01CellVolt02" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU01CellVolt02" caption="DCR_1_Dcr1_CAN2_CMU01CellVolt02"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU01CellVolt03" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU01CellVolt03" caption="DCR_1_Dcr1_CAN2_CMU01CellVolt03"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU01CellVolt04" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU01CellVolt04" caption="DCR_1_Dcr1_CAN2_CMU01CellVolt04"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU01CellVolt05" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU01CellVolt05" caption="DCR_1_Dcr1_CAN2_CMU01CellVolt05"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU01CellVolt06" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU01CellVolt06" caption="DCR_1_Dcr1_CAN2_CMU01CellVolt06"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU01CellVolt07" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU01CellVolt07" caption="DCR_1_Dcr1_CAN2_CMU01CellVolt07"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU01CellVolt08" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU01CellVolt08" caption="DCR_1_Dcr1_CAN2_CMU01CellVolt08"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU01CellVolt09" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU01CellVolt09" caption="DCR_1_Dcr1_CAN2_CMU01CellVolt09"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU01CellVolt10" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU01CellVolt10" caption="DCR_1_Dcr1_CAN2_CMU01CellVolt10"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU01CellVolt11" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU01CellVolt11" caption="DCR_1_Dcr1_CAN2_CMU01CellVolt11"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU01CellVolt12" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU01CellVolt12" caption="DCR_1_Dcr1_CAN2_CMU01CellVolt12"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU01CellVolt13" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU01CellVolt13" caption="DCR_1_Dcr1_CAN2_CMU01CellVolt13"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU01CellVolt14" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU01CellVolt14" caption="DCR_1_Dcr1_CAN2_CMU01CellVolt14"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU01CellVolt15" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU01CellVolt15" caption="DCR_1_Dcr1_CAN2_CMU01CellVolt15"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU01CellVolt16" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU01CellVolt16" caption="DCR_1_Dcr1_CAN2_CMU01CellVolt16"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU01CellVolt17" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU01CellVolt17" caption="DCR_1_Dcr1_CAN2_CMU01CellVolt17"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU01CellVolt18" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU01CellVolt18" caption="DCR_1_Dcr1_CAN2_CMU01CellVolt18"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU01CellVolt19" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU01CellVolt19" caption="DCR_1_Dcr1_CAN2_CMU01CellVolt19"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU01CellVolt20" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU01CellVolt20" caption="DCR_1_Dcr1_CAN2_CMU01CellVolt20"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU01CellVolt21" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU01CellVolt21" caption="DCR_1_Dcr1_CAN2_CMU01CellVolt21"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU01CellVolt22" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU01CellVolt22" caption="DCR_1_Dcr1_CAN2_CMU01CellVolt22"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU01CellVolt23" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU01CellVolt23" caption="DCR_1_Dcr1_CAN2_CMU01CellVolt23"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU02CellVolt00" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU02CellVolt00" caption="DCR_1_Dcr1_CAN2_CMU02CellVolt00"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU02CellVolt01" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU02CellVolt01" caption="DCR_1_Dcr1_CAN2_CMU02CellVolt01"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU02CellVolt02" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU02CellVolt02" caption="DCR_1_Dcr1_CAN2_CMU02CellVolt02"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU02CellVolt03" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU02CellVolt03" caption="DCR_1_Dcr1_CAN2_CMU02CellVolt03"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU02CellVolt04" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU02CellVolt04" caption="DCR_1_Dcr1_CAN2_CMU02CellVolt04"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU02CellVolt05" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU02CellVolt05" caption="DCR_1_Dcr1_CAN2_CMU02CellVolt05"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU02CellVolt06" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU02CellVolt06" caption="DCR_1_Dcr1_CAN2_CMU02CellVolt06"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU02CellVolt07" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU02CellVolt07" caption="DCR_1_Dcr1_CAN2_CMU02CellVolt07"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU02CellVolt08" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU02CellVolt08" caption="DCR_1_Dcr1_CAN2_CMU02CellVolt08"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU02CellVolt09" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU02CellVolt09" caption="DCR_1_Dcr1_CAN2_CMU02CellVolt09"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU02CellVolt10" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU02CellVolt10" caption="DCR_1_Dcr1_CAN2_CMU02CellVolt10"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU02CellVolt11" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU02CellVolt11" caption="DCR_1_Dcr1_CAN2_CMU02CellVolt11"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU02CellVolt12" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU02CellVolt12" caption="DCR_1_Dcr1_CAN2_CMU02CellVolt12"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU02CellVolt13" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU02CellVolt13" caption="DCR_1_Dcr1_CAN2_CMU02CellVolt13"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU02CellVolt14" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU02CellVolt14" caption="DCR_1_Dcr1_CAN2_CMU02CellVolt14"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU02CellVolt15" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU02CellVolt15" caption="DCR_1_Dcr1_CAN2_CMU02CellVolt15"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU02CellVolt16" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU02CellVolt16" caption="DCR_1_Dcr1_CAN2_CMU02CellVolt16"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU02CellVolt17" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU02CellVolt17" caption="DCR_1_Dcr1_CAN2_CMU02CellVolt17"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU02CellVolt18" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU02CellVolt18" caption="DCR_1_Dcr1_CAN2_CMU02CellVolt18"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU02CellVolt19" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU02CellVolt19" caption="DCR_1_Dcr1_CAN2_CMU02CellVolt19"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU02CellVolt20" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU02CellVolt20" caption="DCR_1_Dcr1_CAN2_CMU02CellVolt20"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU02CellVolt21" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU02CellVolt21" caption="DCR_1_Dcr1_CAN2_CMU02CellVolt21"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU02CellVolt22" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU02CellVolt22" caption="DCR_1_Dcr1_CAN2_CMU02CellVolt22"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU02CellVolt23" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU02CellVolt23" caption="DCR_1_Dcr1_CAN2_CMU02CellVolt23"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU03CellVolt00" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU03CellVolt00" caption="DCR_1_Dcr1_CAN2_CMU03CellVolt00"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU03CellVolt01" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU03CellVolt01" caption="DCR_1_Dcr1_CAN2_CMU03CellVolt01"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU03CellVolt02" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU03CellVolt02" caption="DCR_1_Dcr1_CAN2_CMU03CellVolt02"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU03CellVolt03" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU03CellVolt03" caption="DCR_1_Dcr1_CAN2_CMU03CellVolt03"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU03CellVolt04" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU03CellVolt04" caption="DCR_1_Dcr1_CAN2_CMU03CellVolt04"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU03CellVolt05" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU03CellVolt05" caption="DCR_1_Dcr1_CAN2_CMU03CellVolt05"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU03CellVolt06" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU03CellVolt06" caption="DCR_1_Dcr1_CAN2_CMU03CellVolt06"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU03CellVolt07" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU03CellVolt07" caption="DCR_1_Dcr1_CAN2_CMU03CellVolt07"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU03CellVolt08" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU03CellVolt08" caption="DCR_1_Dcr1_CAN2_CMU03CellVolt08"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU03CellVolt09" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU03CellVolt09" caption="DCR_1_Dcr1_CAN2_CMU03CellVolt09"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU03CellVolt10" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU03CellVolt10" caption="DCR_1_Dcr1_CAN2_CMU03CellVolt10"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU03CellVolt11" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU03CellVolt11" caption="DCR_1_Dcr1_CAN2_CMU03CellVolt11"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU03CellVolt12" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU03CellVolt12" caption="DCR_1_Dcr1_CAN2_CMU03CellVolt12"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU03CellVolt13" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU03CellVolt13" caption="DCR_1_Dcr1_CAN2_CMU03CellVolt13"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU03CellVolt14" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU03CellVolt14" caption="DCR_1_Dcr1_CAN2_CMU03CellVolt14"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU03CellVolt15" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU03CellVolt15" caption="DCR_1_Dcr1_CAN2_CMU03CellVolt15"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU03CellVolt16" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU03CellVolt16" caption="DCR_1_Dcr1_CAN2_CMU03CellVolt16"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU03CellVolt17" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU03CellVolt17" caption="DCR_1_Dcr1_CAN2_CMU03CellVolt17"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU03CellVolt18" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU03CellVolt18" caption="DCR_1_Dcr1_CAN2_CMU03CellVolt18"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU03CellVolt19" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU03CellVolt19" caption="DCR_1_Dcr1_CAN2_CMU03CellVolt19"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU03CellVolt20" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU03CellVolt20" caption="DCR_1_Dcr1_CAN2_CMU03CellVolt20"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU03CellVolt21" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU03CellVolt21" caption="DCR_1_Dcr1_CAN2_CMU03CellVolt21"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU03CellVolt22" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU03CellVolt22" caption="DCR_1_Dcr1_CAN2_CMU03CellVolt22"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU03CellVolt23" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU03CellVolt23" caption="DCR_1_Dcr1_CAN2_CMU03CellVolt23"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU00ModVolt" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU00ModVolt" caption="DCR_1_Dcr1_CAN2_CMU00ModVolt"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU01ModVolt" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU01ModVolt" caption="DCR_1_Dcr1_CAN2_CMU01ModVolt"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU02ModVolt" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU02ModVolt" caption="DCR_1_Dcr1_CAN2_CMU02ModVolt"/>
+			<iniitem blmc="DCR_1_Dcr1_CAN2_CMU03ModVolt" chapter="CH" property="DCR_1_Dcr1_CAN2_CMU03ModVolt" caption="DCR_1_Dcr1_CAN2_CMU03ModVolt"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU00CellVolt00" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU00CellVolt00" caption="DCR_1_Dcr2_CAN2_CMU00CellVolt00"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU00CellVolt01" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU00CellVolt01" caption="DCR_1_Dcr2_CAN2_CMU00CellVolt01"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU00CellVolt02" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU00CellVolt02" caption="DCR_1_Dcr2_CAN2_CMU00CellVolt02"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU00CellVolt03" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU00CellVolt03" caption="DCR_1_Dcr2_CAN2_CMU00CellVolt03"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU00CellVolt04" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU00CellVolt04" caption="DCR_1_Dcr2_CAN2_CMU00CellVolt04"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU00CellVolt05" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU00CellVolt05" caption="DCR_1_Dcr2_CAN2_CMU00CellVolt05"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU00CellVolt06" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU00CellVolt06" caption="DCR_1_Dcr2_CAN2_CMU00CellVolt06"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU00CellVolt07" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU00CellVolt07" caption="DCR_1_Dcr2_CAN2_CMU00CellVolt07"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU00CellVolt08" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU00CellVolt08" caption="DCR_1_Dcr2_CAN2_CMU00CellVolt08"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU00CellVolt09" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU00CellVolt09" caption="DCR_1_Dcr2_CAN2_CMU00CellVolt09"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU00CellVolt10" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU00CellVolt10" caption="DCR_1_Dcr2_CAN2_CMU00CellVolt10"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU00CellVolt11" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU00CellVolt11" caption="DCR_1_Dcr2_CAN2_CMU00CellVolt11"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU00CellVolt12" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU00CellVolt12" caption="DCR_1_Dcr2_CAN2_CMU00CellVolt12"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU00CellVolt13" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU00CellVolt13" caption="DCR_1_Dcr2_CAN2_CMU00CellVolt13"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU00CellVolt14" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU00CellVolt14" caption="DCR_1_Dcr2_CAN2_CMU00CellVolt14"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU00CellVolt15" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU00CellVolt15" caption="DCR_1_Dcr2_CAN2_CMU00CellVolt15"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU00CellVolt16" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU00CellVolt16" caption="DCR_1_Dcr2_CAN2_CMU00CellVolt16"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU00CellVolt17" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU00CellVolt17" caption="DCR_1_Dcr2_CAN2_CMU00CellVolt17"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU00CellVolt18" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU00CellVolt18" caption="DCR_1_Dcr2_CAN2_CMU00CellVolt18"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU00CellVolt19" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU00CellVolt19" caption="DCR_1_Dcr2_CAN2_CMU00CellVolt19"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU00CellVolt20" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU00CellVolt20" caption="DCR_1_Dcr2_CAN2_CMU00CellVolt20"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU00CellVolt21" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU00CellVolt21" caption="DCR_1_Dcr2_CAN2_CMU00CellVolt21"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU00CellVolt22" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU00CellVolt22" caption="DCR_1_Dcr2_CAN2_CMU00CellVolt22"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU00CellVolt23" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU00CellVolt23" caption="DCR_1_Dcr2_CAN2_CMU00CellVolt23"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU01CellVolt00" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU01CellVolt00" caption="DCR_1_Dcr2_CAN2_CMU01CellVolt00"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU01CellVolt01" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU01CellVolt01" caption="DCR_1_Dcr2_CAN2_CMU01CellVolt01"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU01CellVolt02" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU01CellVolt02" caption="DCR_1_Dcr2_CAN2_CMU01CellVolt02"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU01CellVolt03" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU01CellVolt03" caption="DCR_1_Dcr2_CAN2_CMU01CellVolt03"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU01CellVolt04" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU01CellVolt04" caption="DCR_1_Dcr2_CAN2_CMU01CellVolt04"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU01CellVolt05" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU01CellVolt05" caption="DCR_1_Dcr2_CAN2_CMU01CellVolt05"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU01CellVolt06" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU01CellVolt06" caption="DCR_1_Dcr2_CAN2_CMU01CellVolt06"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU01CellVolt07" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU01CellVolt07" caption="DCR_1_Dcr2_CAN2_CMU01CellVolt07"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU01CellVolt08" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU01CellVolt08" caption="DCR_1_Dcr2_CAN2_CMU01CellVolt08"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU01CellVolt09" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU01CellVolt09" caption="DCR_1_Dcr2_CAN2_CMU01CellVolt09"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU01CellVolt10" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU01CellVolt10" caption="DCR_1_Dcr2_CAN2_CMU01CellVolt10"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU01CellVolt11" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU01CellVolt11" caption="DCR_1_Dcr2_CAN2_CMU01CellVolt11"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU01CellVolt12" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU01CellVolt12" caption="DCR_1_Dcr2_CAN2_CMU01CellVolt12"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU01CellVolt13" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU01CellVolt13" caption="DCR_1_Dcr2_CAN2_CMU01CellVolt13"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU01CellVolt14" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU01CellVolt14" caption="DCR_1_Dcr2_CAN2_CMU01CellVolt14"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU01CellVolt15" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU01CellVolt15" caption="DCR_1_Dcr2_CAN2_CMU01CellVolt15"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU01CellVolt16" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU01CellVolt16" caption="DCR_1_Dcr2_CAN2_CMU01CellVolt16"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU01CellVolt17" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU01CellVolt17" caption="DCR_1_Dcr2_CAN2_CMU01CellVolt17"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU01CellVolt18" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU01CellVolt18" caption="DCR_1_Dcr2_CAN2_CMU01CellVolt18"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU01CellVolt19" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU01CellVolt19" caption="DCR_1_Dcr2_CAN2_CMU01CellVolt19"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU01CellVolt20" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU01CellVolt20" caption="DCR_1_Dcr2_CAN2_CMU01CellVolt20"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU01CellVolt21" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU01CellVolt21" caption="DCR_1_Dcr2_CAN2_CMU01CellVolt21"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU01CellVolt22" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU01CellVolt22" caption="DCR_1_Dcr2_CAN2_CMU01CellVolt22"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU01CellVolt23" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU01CellVolt23" caption="DCR_1_Dcr2_CAN2_CMU01CellVolt23"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU02CellVolt00" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU02CellVolt00" caption="DCR_1_Dcr2_CAN2_CMU02CellVolt00"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU02CellVolt01" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU02CellVolt01" caption="DCR_1_Dcr2_CAN2_CMU02CellVolt01"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU02CellVolt02" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU02CellVolt02" caption="DCR_1_Dcr2_CAN2_CMU02CellVolt02"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU02CellVolt03" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU02CellVolt03" caption="DCR_1_Dcr2_CAN2_CMU02CellVolt03"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU02CellVolt04" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU02CellVolt04" caption="DCR_1_Dcr2_CAN2_CMU02CellVolt04"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU02CellVolt05" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU02CellVolt05" caption="DCR_1_Dcr2_CAN2_CMU02CellVolt05"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU02CellVolt06" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU02CellVolt06" caption="DCR_1_Dcr2_CAN2_CMU02CellVolt06"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU02CellVolt07" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU02CellVolt07" caption="DCR_1_Dcr2_CAN2_CMU02CellVolt07"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU02CellVolt08" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU02CellVolt08" caption="DCR_1_Dcr2_CAN2_CMU02CellVolt08"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU02CellVolt09" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU02CellVolt09" caption="DCR_1_Dcr2_CAN2_CMU02CellVolt09"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU02CellVolt10" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU02CellVolt10" caption="DCR_1_Dcr2_CAN2_CMU02CellVolt10"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU02CellVolt11" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU02CellVolt11" caption="DCR_1_Dcr2_CAN2_CMU02CellVolt11"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU02CellVolt12" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU02CellVolt12" caption="DCR_1_Dcr2_CAN2_CMU02CellVolt12"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU02CellVolt13" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU02CellVolt13" caption="DCR_1_Dcr2_CAN2_CMU02CellVolt13"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU02CellVolt14" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU02CellVolt14" caption="DCR_1_Dcr2_CAN2_CMU02CellVolt14"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU02CellVolt15" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU02CellVolt15" caption="DCR_1_Dcr2_CAN2_CMU02CellVolt15"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU02CellVolt16" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU02CellVolt16" caption="DCR_1_Dcr2_CAN2_CMU02CellVolt16"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU02CellVolt17" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU02CellVolt17" caption="DCR_1_Dcr2_CAN2_CMU02CellVolt17"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU02CellVolt18" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU02CellVolt18" caption="DCR_1_Dcr2_CAN2_CMU02CellVolt18"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU02CellVolt19" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU02CellVolt19" caption="DCR_1_Dcr2_CAN2_CMU02CellVolt19"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU02CellVolt20" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU02CellVolt20" caption="DCR_1_Dcr2_CAN2_CMU02CellVolt20"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU02CellVolt21" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU02CellVolt21" caption="DCR_1_Dcr2_CAN2_CMU02CellVolt21"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU02CellVolt22" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU02CellVolt22" caption="DCR_1_Dcr2_CAN2_CMU02CellVolt22"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU02CellVolt23" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU02CellVolt23" caption="DCR_1_Dcr2_CAN2_CMU02CellVolt23"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU03CellVolt00" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU03CellVolt00" caption="DCR_1_Dcr2_CAN2_CMU03CellVolt00"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU03CellVolt01" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU03CellVolt01" caption="DCR_1_Dcr2_CAN2_CMU03CellVolt01"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU03CellVolt02" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU03CellVolt02" caption="DCR_1_Dcr2_CAN2_CMU03CellVolt02"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU03CellVolt03" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU03CellVolt03" caption="DCR_1_Dcr2_CAN2_CMU03CellVolt03"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU03CellVolt04" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU03CellVolt04" caption="DCR_1_Dcr2_CAN2_CMU03CellVolt04"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU03CellVolt05" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU03CellVolt05" caption="DCR_1_Dcr2_CAN2_CMU03CellVolt05"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU03CellVolt06" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU03CellVolt06" caption="DCR_1_Dcr2_CAN2_CMU03CellVolt06"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU03CellVolt07" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU03CellVolt07" caption="DCR_1_Dcr2_CAN2_CMU03CellVolt07"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU03CellVolt08" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU03CellVolt08" caption="DCR_1_Dcr2_CAN2_CMU03CellVolt08"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU03CellVolt09" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU03CellVolt09" caption="DCR_1_Dcr2_CAN2_CMU03CellVolt09"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU03CellVolt10" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU03CellVolt10" caption="DCR_1_Dcr2_CAN2_CMU03CellVolt10"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU03CellVolt11" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU03CellVolt11" caption="DCR_1_Dcr2_CAN2_CMU03CellVolt11"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU03CellVolt12" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU03CellVolt12" caption="DCR_1_Dcr2_CAN2_CMU03CellVolt12"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU03CellVolt13" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU03CellVolt13" caption="DCR_1_Dcr2_CAN2_CMU03CellVolt13"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU03CellVolt14" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU03CellVolt14" caption="DCR_1_Dcr2_CAN2_CMU03CellVolt14"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU03CellVolt15" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU03CellVolt15" caption="DCR_1_Dcr2_CAN2_CMU03CellVolt15"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU03CellVolt16" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU03CellVolt16" caption="DCR_1_Dcr2_CAN2_CMU03CellVolt16"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU03CellVolt17" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU03CellVolt17" caption="DCR_1_Dcr2_CAN2_CMU03CellVolt17"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU03CellVolt18" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU03CellVolt18" caption="DCR_1_Dcr2_CAN2_CMU03CellVolt18"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU03CellVolt19" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU03CellVolt19" caption="DCR_1_Dcr2_CAN2_CMU03CellVolt19"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU03CellVolt20" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU03CellVolt20" caption="DCR_1_Dcr2_CAN2_CMU03CellVolt20"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU03CellVolt21" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU03CellVolt21" caption="DCR_1_Dcr2_CAN2_CMU03CellVolt21"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU03CellVolt22" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU03CellVolt22" caption="DCR_1_Dcr2_CAN2_CMU03CellVolt22"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU03CellVolt23" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU03CellVolt23" caption="DCR_1_Dcr2_CAN2_CMU03CellVolt23"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU00ModVolt" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU00ModVolt" caption="DCR_1_Dcr2_CAN2_CMU00ModVolt"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU01ModVolt" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU01ModVolt" caption="DCR_1_Dcr2_CAN2_CMU01ModVolt"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU02ModVolt" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU02ModVolt" caption="DCR_1_Dcr2_CAN2_CMU02ModVolt"/>
+			<iniitem blmc="DCR_1_Dcr2_CAN2_CMU03ModVolt" chapter="CH" property="DCR_1_Dcr2_CAN2_CMU03ModVolt" caption="DCR_1_Dcr2_CAN2_CMU03ModVolt"/>
+			<iniitem blmc="DCR_1_A" chapter="CH" property="DCR_1_A" caption="DCR_1_A"/>
+			<iniitem blmc="DCR_1_V" chapter="CH" property="DCR_1_V" caption="DCR_1_V"/>
+			<iniitem blmc="DCR_1_Chmah" chapter="CH" property="DCR_1_Chmah" caption="DCR_1_Chmah"/>
+			<iniitem blmc="DCR_1_DChmah" chapter="CH" property="DCR_1_DChmah" caption="DCR_1_DChmah"/>
+			<iniitem blmc="DCR_1_state" chapter="CH" property="DCR_1_state" caption="DCR_1_state"/>
+			<iniitem blmc="DCR_1_DCRV1" chapter="CH" property="DCR_1_DCRV1" caption="DCR_1_DCRV1"/>
+			<iniitem blmc="DCR_1_DCRV2" chapter="CH" property="DCR_1_DCRV2" caption="DCR_1_DCRV2"/>
+			<iniitem blmc="DCR_1_DCRa1" chapter="CH" property="DCR_1_DCRa1" caption="DCR_1_DCRa1"/>
+			<iniitem blmc="DCR_1_DCRa2" chapter="CH" property="DCR_1_DCRa2" caption="DCR_1_DCRa2"/>
+			<iniitem blmc="DCR_1_EndTime" chapter="CH" property="DCR_1_EndTime" caption="DCR_1_EndTime"/>
+			<iniitem blmc="DCR_1_result" chapter="CH" property="DCR_1_result" caption="DCR_1_result"/>
+			<iniitem blmc="DCR_1_CellDiffMaxV" chapter="CH" property="DCR_1_CellDiffMaxV" caption="DCR_1_CellDiffMaxV"/>
+			<iniitem blmc="DCR_1_CellDiffMinV" chapter="CH" property="DCR_1_CellDiffMinV" caption="DCR_1_CellDiffMinV"/>
+			<iniitem blmc="SOC_OQC_2_CAN1_BMSPackVol_h6HSC6" chapter="CH" property="SOC_OQC_2_CAN1_BMSPackVol_h6HSC6" caption="SOC_OQC_2_CAN1_BMSPackVol_h6HSC6"/>
+			<iniitem blmc="SOC_OQC_2_CAN1_BMSPackSOCActualHSC6" chapter="CH" property="SOC_OQC_2_CAN1_BMSPackSOCActualHSC6" caption="SOC_OQC_2_CAN1_BMSPackSOCActualHSC6"/>
+			<iniitem blmc="SOC_OQC_2_CAN1_BMSPackCrnt_h6HSC6" chapter="CH" property="SOC_OQC_2_CAN1_BMSPackCrnt_h6HSC6" caption="SOC_OQC_2_CAN1_BMSPackCrnt_h6HSC6"/>
+			<iniitem blmc="SOC_OQC_2_CAN1_BMSCellMaxVolHSC6" chapter="CH" property="SOC_OQC_2_CAN1_BMSCellMaxVolHSC6" caption="SOC_OQC_2_CAN1_BMSCellMaxVolHSC6"/>
+			<iniitem blmc="SOC_OQC_2_CAN1_BMSCellMinVolHSC6" chapter="CH" property="SOC_OQC_2_CAN1_BMSCellMinVolHSC6" caption="SOC_OQC_2_CAN1_BMSCellMinVolHSC6"/>
+			<iniitem blmc="SOC_OQC_2_CAN1_BMSCellMaxTem_h6HSC6" chapter="CH" property="SOC_OQC_2_CAN1_BMSCellMaxTem_h6HSC6" caption="SOC_OQC_2_CAN1_BMSCellMaxTem_h6HSC6"/>
+			<iniitem blmc="SOC_OQC_2_CAN1_BMSCellMinTem_h6HSC6" chapter="CH" property="SOC_OQC_2_CAN1_BMSCellMinTem_h6HSC6" caption="SOC_OQC_2_CAN1_BMSCellMinTem_h6HSC6"/>
+			<iniitem blmc="SOC_OQC_2_CAN2_SysAlwayMaxT" chapter="CH" property="SOC_OQC_2_CAN2_SysAlwayMaxT" caption="SOC_OQC_2_CAN2_SysAlwayMaxT"/>
+			<iniitem blmc="SOC_OQC_2_CAN2_SysUpMaxT" chapter="CH" property="SOC_OQC_2_CAN2_SysUpMaxT" caption="SOC_OQC_2_CAN2_SysUpMaxT"/>
+			<iniitem blmc="SOC_OQC_2_CAN2_SysDiffCellT" chapter="CH" property="SOC_OQC_2_CAN2_SysDiffCellT" caption="SOC_OQC_2_CAN2_SysDiffCellT"/>
+			<iniitem blmc="SOC_OQC_2_CAN2_SysDiffCellV" chapter="CH" property="SOC_OQC_2_CAN2_SysDiffCellV" caption="SOC_OQC_2_CAN2_SysDiffCellV"/>
+			<iniitem blmc="SOC_OQC_2_CAN2_CMU00CellTemp00_difftemp" chapter="CH" property="SOC_OQC_2_CAN2_CMU00CellTemp00_difftemp" caption="SOC_OQC_2_CAN2_CMU00CellTemp00_difftemp"/>
+			<iniitem blmc="SOC_OQC_2_CAN2_CMU00CellTemp01_difftemp" chapter="CH" property="SOC_OQC_2_CAN2_CMU00CellTemp01_difftemp" caption="SOC_OQC_2_CAN2_CMU00CellTemp01_difftemp"/>
+			<iniitem blmc="SOC_OQC_2_CAN2_CMU01CellTemp00_difftemp" chapter="CH" property="SOC_OQC_2_CAN2_CMU01CellTemp00_difftemp" caption="SOC_OQC_2_CAN2_CMU01CellTemp00_difftemp"/>
+			<iniitem blmc="SOC_OQC_2_CAN2_CMU01CellTemp01_difftemp" chapter="CH" property="SOC_OQC_2_CAN2_CMU01CellTemp01_difftemp" caption="SOC_OQC_2_CAN2_CMU01CellTemp01_difftemp"/>
+			<iniitem blmc="SOC_OQC_2_CAN2_CMU02CellTemp00_difftemp" chapter="CH" property="SOC_OQC_2_CAN2_CMU02CellTemp00_difftemp" caption="SOC_OQC_2_CAN2_CMU02CellTemp00_difftemp"/>
+			<iniitem blmc="SOC_OQC_2_CAN2_CMU02CellTemp01_difftemp" chapter="CH" property="SOC_OQC_2_CAN2_CMU02CellTemp01_difftemp" caption="SOC_OQC_2_CAN2_CMU02CellTemp01_difftemp"/>
+			<iniitem blmc="SOC_OQC_2_CAN2_CMU03CellTemp00_difftemp" chapter="CH" property="SOC_OQC_2_CAN2_CMU03CellTemp00_difftemp" caption="SOC_OQC_2_CAN2_CMU03CellTemp00_difftemp"/>
+			<iniitem blmc="SOC_OQC_2_CAN2_CMU03CellTemp01_difftemp" chapter="CH" property="SOC_OQC_2_CAN2_CMU03CellTemp01_difftemp" caption="SOC_OQC_2_CAN2_CMU03CellTemp01_difftemp"/>
+			<iniitem blmc="SOC_OQC_2_A" chapter="CH" property="SOC_OQC_2_A" caption="SOC_OQC_2_A"/>
+			<iniitem blmc="SOC_OQC_2_V" chapter="CH" property="SOC_OQC_2_V" caption="SOC_OQC_2_V"/>
+			<iniitem blmc="SOC_OQC_2_Chmah" chapter="CH" property="SOC_OQC_2_Chmah" caption="SOC_OQC_2_Chmah"/>
+			<iniitem blmc="SOC_OQC_2_DChmah" chapter="CH" property="SOC_OQC_2_DChmah" caption="SOC_OQC_2_DChmah"/>
+			<iniitem blmc="SOC_OQC_2_state" chapter="CH" property="SOC_OQC_2_state" caption="SOC_OQC_2_state"/>
+			<iniitem blmc="SOC_OQC_2_EndTime" chapter="CH" property="SOC_OQC_2_EndTime" caption="SOC_OQC_2_EndTime"/>
+			<iniitem blmc="run_State" chapter="CH" property="run_State" caption="run_State"/>
+			<iniitem blmc="1温度调整_CAN1_BMSCellMinTem_h6HSC6" chapter="CH" property="1温度调整_CAN1_BMSCellMinTem_h6HSC6" caption="1温度调整_CAN1_BMSCellMinTem_h6HSC6"/>
+			<iniitem blmc="1温度调整_state" chapter="CH" property="1温度调整_state" caption="1温度调整_state"/>
+			<iniitem blmc="6温度调整_CAN1_BMSCellMinTem_h6HSC6" chapter="CH" property="6温度调整_CAN1_BMSCellMinTem_h6HSC6" caption="6温度调整_CAN1_BMSCellMinTem_h6HSC6"/>
+			<iniitem blmc="6温度调整_state" chapter="CH" property="6温度调整_state" caption="6温度调整_state"/>
+			<iniitem blmc="脉冲_step1_CAN2_SysMaxCellT" chapter="CH" property="脉冲_step1_CAN2_SysMaxCellT" caption="脉冲_step1_CAN2_SysMaxCellT"/>
+			<iniitem blmc="" chapter="CH" property="脉冲_step1_CAN2_SysMinCellT" caption="脉冲_step1_CAN2_SysMinCellT"/>
+		</inibl>
+	</custbllist>
+	<selproplist>
+		<canprop>
+			<canproplist leftx="150" topy="193" width="200" heigth="200" caption="名字">
+				<canpropitem text="CMU03CellTempV05" blmc="CAN2_CMU03CellTempV05" dw="Flag"/>
+				<canpropitem text="CMU00CellVoltMax" blmc="CAN4_CMU00CellVoltMax" dw="mV"/>
+			</canproplist>
+			<canproplist leftx="13" topy="219" width="216" heigth="343" caption="工工">
+				<canpropitem text="ChargerEfficiencyHSC6" blmc="CAN3_ChargerEfficiencyHSC6" dw="%"/>
+				<canpropitem text="ChargerHVVoltHSC6" blmc="CAN3_ChargerHVVoltHSC6" dw="V"/>
+			</canproplist>
+			<canproplist leftx="9" topy="10" width="216" heigth="200" caption="播放">
+				<canpropitem text="ChargerACCurrentHSC6" blmc="CAN1_ChargerACCurrentHSC6" dw="A"/>
+				<canpropitem text="ChargerACCurrentHSC6" blmc="CAN1_ChargerACCurrentHSC6" dw="A"/>
+				<canpropitem text="ChargerEfficiencyHSC6" blmc="CAN1_ChargerEfficiencyHSC6" dw="%"/>
+			</canproplist>
+			<canproplist leftx="251" topy="213" width="200" heigth="200" caption="方">
+				<canpropitem text="ChargerACCurrentHSC6" blmc="CAN1_ChargerACCurrentHSC6" dw="A"/>
+				<canpropitem text="ChargerACVoltHSC6" blmc="CAN1_ChargerACVoltHSC6" dw="V"/>
+			</canproplist>
+			<canproplist leftx="116" topy="176" width="300" heigth="440" caption="qwertyuio">
+				<canpropitem text="ChargerACVoltHSC6" blmc="CAN1_ChargerACVoltHSC6" dw="V"/>
+				<canpropitem text="ChargerHVCurrentHSC6" blmc="CAN1_ChargerHVCurrentHSC6" dw="A"/>
+				<canpropitem text="ChargerStatusHSC6" blmc="CAN1_ChargerStatusHSC6" dw=""/>
+			</canproplist>
+		</canprop>
+		<chartprop>
+			<chartproplist leftx="468" topy="99" width="598" heigth="200" caption="chart">
+				<propitem text="CMU00CellVoltMax" blmc="CAN2_CMU00CellVoltMax" dw="mV"/>
+				<propitem text="CMU00RollCnter00" blmc="CAN2_CMU00RollCnter00" dw=""/>
+				<propitem text="CMU00RollCnter00" blmc="CAN2_CMU00RollCnter00" dw=""/>
+			</chartproplist>
+			<chartproplist leftx="232" topy="8" width="200" heigth="200" caption="ltus">
+				<propitem text="CMU03CellTempV05" blmc="CAN2_CMU03CellTempV05" dw="Flag"/>
+				<propitem text="CMU03CellTempV03" blmc="CAN2_CMU03CellTempV03" dw="Flag"/>
+			</chartproplist>
+		</chartprop>
+	</selproplist>
+</ChHIL>

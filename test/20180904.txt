@@ -1,0 +1,1 @@
+Class TSchem {[XmlElement("setCanlist")]public setCanlist setcanlist;[XmlElement("setEthList")]public setEthList setethlist;[XmlElement("stepList")]public stepList steplist;}Class setCanlist {[XmlElement("TSetCan")]public TSetCan[] tsetcans;}Class setEthList {[XmlElement("TSetEth")]public TSetEth[] tseteths;}Class stepList {[XmlElement("TStep")]public TStep[] tsteps;}

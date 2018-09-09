@@ -1,0 +1,17 @@
+E:\work\iHilBms\iHilBms\Bin\Debug\Interface\iBms.dll
+E:\work\iHilBms\iHilBms\Bin\Debug\Interface\iBms.pdb
+E:\work\iHil\iBms\obj\Debug\iBms.csprojResolveAssemblyReference.cache
+E:\work\iHil\iBms\obj\Debug\iBms.dll
+E:\work\iHil\iBms\obj\Debug\iBms.pdb
+E:\work\iHil\Interface\iBms\bin\Debug\iBms.dll
+E:\work\iHil\Interface\iBms\bin\Debug\iBms.pdb
+E:\work\iHil\Interface\iBms\bin\Debug\iCommunicationBase.dll
+E:\work\iHil\Interface\iBms\obj\Debug\iBms.dll
+E:\work\iHil\Interface\iBms\obj\Debug\iBms.pdb
+E:\VSProject\iHIL0828\Interface\iBms\bin\Debug\iBms.dll
+E:\VSProject\iHIL0828\Interface\iBms\bin\Debug\iBms.pdb
+E:\VSProject\iHIL0828\Interface\iBms\bin\Debug\iCommunicationBase.dll
+E:\VSProject\iHIL0828\Interface\iBms\obj\Debug\iBms.csproj.CoreCompileInputs.cache
+E:\VSProject\iHIL0828\Interface\iBms\obj\Debug\iBms.csproj.CopyComplete
+E:\VSProject\iHIL0828\Interface\iBms\obj\Debug\iBms.dll
+E:\VSProject\iHIL0828\Interface\iBms\obj\Debug\iBms.pdb

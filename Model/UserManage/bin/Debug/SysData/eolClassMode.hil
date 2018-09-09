@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="gb2312"?>
+<ChHIL>
+  <machine bz="这里只做修改，不做增加 删除操作 ">
+    <can bz="ch1设备索引号使用usbcan" ch1="" ch2="" ch1file="" ch1check="0" ch1btl="3" ch1index1="0" ch1index2="1" ch2file="" ch2check="0" ch2btl="" ch2index1="" ch2index2="" />
+    <cannetList>
+      <cannet machineindex="0" chindex="0" check="0" file="" btl="2" chip="192.168.1.178" chport="4001" />
+      <cannet machineindex="0" chindex="1" check="0" file="" btl="2" chip="192.168.1.178" chport="4002" />
+      <cannet machineindex="0" chindex="2" check="0" file="" btl="3" chip="192.168.1.178" chport="4003" />
+      <cannet machineindex="0" chindex="3" check="0" file="" btl="3" chip="192.168.1.178" chport="4004" />
+      <cannet machineindex="1" chindex="0" check="0" file="" btl="2" chip="192.168.1.179" chport="4001" />
+      <cannet machineindex="1" chindex="1" check="0" file="" btl="2" chip="192.168.1.179" chport="4002" />
+      <cannet machineindex="1" chindex="2" check="0" file="" btl="3" chip="192.168.1.179" chport="4003" />
+      <cannet machineindex="1" chindex="3" check="0" file="" btl="3" chip="192.168.1.179" chport="4004" />
+    </cannetList>
+	<comset>
+      <item key="" bz="第一个串口" text="内阻仪" check="0" file="" btl="" ch1index="" ch2index="" />
+      <item bz="第二个串口" text="耐压仪" czheck="0" file="" btl="" ch1index="" ch2index="" />
+      <item bz="第三个串口" text="万用表" check="0" file="" btl="" ch1index="" ch2index="" />
+      <item bz="第四个串口" text="继电器" check="0" file="" btl="" ch1index="" ch2index="" />
+	  <item bz="第五个串口" text="串口" check="0" file="" btl="" ch1index="" ch2index="" ch1com="" ch2com="" />
+    </comset>
+    <telect>
+      <item bz="第一个以太网" text="内阻仪" check="0" file="" IP="169.254.4.10" PORT="5025" />
+      <item bz="第二个以太网" text="耐压仪" check="0" file="" IP="169.254.4.10" PORT="5025" />
+    </telect>
+  </machine>
+  <steplist text="ewq" check="-1">
+	<step text="结束测试" kind="endtest" check="-1">
+      <send />
+      <result />
+      <runlist />
+	  <resultsave/>
+    </step>
+  </steplist>
+  <custbllist>
+    <custbl>
+      <item id="1" blmc="NOT_EXIST" dw="" caption="过渡" blgs="" />
+      <item id="2" blmc="gkdh" dw="" caption="工况项目编码" blgs="" />
+      <item id="3" blmc="ShowForm" dw="" caption="提示信息请自行修改" blgs="" />
+      <item id="4" blmc="ShowPassword" dw="" caption="密码校验" blgs="" />
+    </custbl>
+    <inibl>
+    </inibl>
+  </custbllist>
+</ChHIL>

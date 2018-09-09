@@ -1,0 +1,13 @@
+E:\work\iHil\instance\instance\bin\Debug\instance.dll
+E:\work\iHil\instance\instance\bin\Debug\instance.pdb
+E:\work\iHil\instance\instance\bin\Debug\hilinterface.dll
+E:\work\iHil\instance\instance\bin\Debug\hilinterface.pdb
+E:\work\iHil\instance\instance\obj\Debug\instance.dll
+E:\work\iHil\instance\instance\obj\Debug\instance.pdb
+E:\work\iHil\iHilBms\iHilBms\bin\Debug\instance.dll
+E:\work\iHil\iHilBms\iHilBms\bin\Debug\instance.pdb
+E:\work\iHil\iHilBms\iHilBms\bin\Debug\ModelDLL\instance.dll
+E:\work\iHil\iHilBms\iHilBms\bin\Debug\ModelDLL\instance.pdb
+E:\work\iHil\instance\instance\obj\Debug\instance.csprojResolveAssemblyReference.cache
+E:\work\iHil\iHilBms\iHilBms\bin\Debug\ClassObject\instance.dll
+E:\work\iHil\iHilBms\iHilBms\bin\Debug\ClassObject\instance.pdb

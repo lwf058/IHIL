@@ -1,0 +1,8 @@
+E:\VSProject\iHIL0828\Instance\TComm\bin\Debug\TComm.dll
+E:\VSProject\iHIL0828\Instance\TComm\bin\Debug\TComm.pdb
+E:\VSProject\iHIL0828\Instance\TComm\bin\Debug\iComm.dll
+E:\VSProject\iHIL0828\Instance\TComm\obj\Debug\TComm.csprojAssemblyReference.cache
+E:\VSProject\iHIL0828\Instance\TComm\obj\Debug\TComm.csproj.CoreCompileInputs.cache
+E:\VSProject\iHIL0828\Instance\TComm\obj\Debug\TComm.csproj.CopyComplete
+E:\VSProject\iHIL0828\Instance\TComm\obj\Debug\TComm.dll
+E:\VSProject\iHIL0828\Instance\TComm\obj\Debug\TComm.pdb

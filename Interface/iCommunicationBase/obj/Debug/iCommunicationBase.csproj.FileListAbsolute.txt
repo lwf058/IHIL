@@ -1,0 +1,9 @@
+E:\work\iHil\Interface\iCommunicationBase\bin\Debug\iCommunicationBase.dll
+E:\work\iHil\Interface\iCommunicationBase\bin\Debug\iCommunicationBase.pdb
+E:\work\iHil\Interface\iCommunicationBase\obj\Debug\iCommunicationBase.dll
+E:\work\iHil\Interface\iCommunicationBase\obj\Debug\iCommunicationBase.pdb
+E:\VSProject\iHIL0828\Interface\iCommunicationBase\bin\Debug\iCommunicationBase.dll
+E:\VSProject\iHIL0828\Interface\iCommunicationBase\bin\Debug\iCommunicationBase.pdb
+E:\VSProject\iHIL0828\Interface\iCommunicationBase\obj\Debug\iCommunicationBase.csproj.CoreCompileInputs.cache
+E:\VSProject\iHIL0828\Interface\iCommunicationBase\obj\Debug\iCommunicationBase.dll
+E:\VSProject\iHIL0828\Interface\iCommunicationBase\obj\Debug\iCommunicationBase.pdb

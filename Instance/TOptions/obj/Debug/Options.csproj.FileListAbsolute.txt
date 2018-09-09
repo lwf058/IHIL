@@ -1,0 +1,12 @@
+E:\work\iHil\Options\bin\Debug\Options.dll
+E:\work\iHil\Options\bin\Debug\Options.pdb
+E:\work\iHil\Options\bin\Debug\iinterface.dll
+E:\work\iHil\Options\bin\Debug\LiuQF.Common.dll
+E:\work\iHil\Options\bin\Debug\ICommon.dll
+E:\work\iHil\Options\bin\Debug\iinterface.pdb
+E:\work\iHil\Options\bin\Debug\LiuQF.Common.pdb
+E:\work\iHil\Options\obj\Debug\Options.csprojResolveAssemblyReference.cache
+E:\work\iHil\Options\obj\Debug\Options.dll
+E:\work\iHil\Options\obj\Debug\Options.pdb
+E:\work\iHil\iHilBms\iHilBms\bin\Debug\ClassObject\Options.dll
+E:\work\iHil\iHilBms\iHilBms\bin\Debug\ClassObject\Options.pdb

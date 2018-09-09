@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="gb2312"?>
+<TSysSet>
+  <TMachine IPAddress="192.168.1.2" Port="1230" Device="C:\Users\ne\Desktop\2018年测试系统软件储能组年中总结" />
+  <TSaveOption DefaultSavePath="C:\Users\ne\Desktop\工况系列需要下位机整改"/>
+</TSysSet>

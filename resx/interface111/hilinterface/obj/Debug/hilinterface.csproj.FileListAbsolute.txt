@@ -1,0 +1,4 @@
+E:\work\iHil\interface\hilinterface\bin\Debug\hilinterface.dll
+E:\work\iHil\interface\hilinterface\bin\Debug\hilinterface.pdb
+E:\work\iHil\interface\hilinterface\obj\Debug\hilinterface.dll
+E:\work\iHil\interface\hilinterface\obj\Debug\hilinterface.pdb

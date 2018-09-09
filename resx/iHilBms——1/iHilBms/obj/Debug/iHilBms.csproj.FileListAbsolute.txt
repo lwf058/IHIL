@@ -1,0 +1,11 @@
+E:\work\iHil\iHilBms\iHilBms\obj\Debug\iHilBms.csprojResolveAssemblyReference.cache
+E:\work\iHil\iHilBms\iHilBms\bin\Debug\iHilBms.dll
+E:\work\iHil\iHilBms\iHilBms\bin\Debug\iHilBms.pdb
+E:\work\iHil\iHilBms\iHilBms\bin\Debug\hilinterface.dll
+E:\work\iHil\iHilBms\iHilBms\bin\Debug\instance.dll
+E:\work\iHil\iHilBms\iHilBms\bin\Debug\instance.pdb
+E:\work\iHil\iHilBms\iHilBms\bin\Debug\hilinterface.pdb
+E:\work\iHil\iHilBms\iHilBms\obj\Debug\iHilBms.dll
+E:\work\iHil\iHilBms\iHilBms\obj\Debug\iHilBms.pdb
+E:\work\iHil\iHilBms\iHilBms\obj\Debug\iHilBms.iForm.hilMain.resources
+E:\work\iHil\iHilBms\iHilBms\obj\Debug\iHilBms.csproj.GenerateResource.Cache

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="gb2312"?>
+<TSchem>
+  <setCanlist>
+    <TSetCan Check="1" AgreeMentFile="20151215-hm1-IP34_-WX-EP_BMS_HSCAN6-V04.bm" Baut="2" Alias="" />
+    <TSetCan Check="1" AgreeMentFile="20160816-IP34WX-InternalCan-V104-CMU.bm" Baut="2" Alias="" />
+    <TSetCan Check="0" AgreeMentFile="20151215-hm1-IP34_-WX-EP_BMS_HSCAN6-V04.bm" Baut="2" Alias="" />
+    <TSetCan Check="0" AgreeMentFile="20160816-IP34WX-InternalCan-V104-CMU.bm" Baut="2" Alias="" />
+  </setCanlist>
+  <setEthList>
+    <TSetEth Check="0" IP="169.254.4.10" Port="5025" AgreeMentFile="万用表.net" Alias="内阻仪" />
+    <TSetEth Check="0" IP="169.254.4.10" Port="234" AgreeMentFile="" Alias="耐压仪" />
+  </setEthList>
+  <stepList>
+    <TStep testid="" title="脉冲前的电芯组压差计算" kind="" Check="true">
+      <cmdList>
+        <TCMD Kind="过渡" Cmd="NOT_EXIST" WaitTime="0">
+          <initlist />
+          <setlist />
+          <judgelist>
+            <TCondition IsParent="true" VarName="与条件" ConValue="0">
+              <subCondition IsParent="false" VarName="脉冲前celldiffT" VarCaption="脉冲前celldiffT" Con="&lt;=" ConValue="0" Unit="℃" />
+              <subCondition IsParent="false" VarName="脉冲前BusbardiffT" VarCaption="脉冲前BusbardiffT" Con="&lt;=" ConValue="0" Unit="℃" />
+              <subCondition IsParent="false" VarName="脉冲前的压差" VarCaption="脉冲前的压差" Con="&lt;=" ConValue="0" Unit="mV" />
+            </TCondition>
+          </judgelist>
+          <savelist>
+            <TCondition IsParent="false" VarName="脉冲前cellTMax" VarCaption="脉冲前cellTMax" Con="=" ConValue="0" Unit="℃" />
+            <TCondition IsParent="false" VarName="脉冲前cellTMin" VarCaption="脉冲前cellTMin" Con="=" ConValue="0" Unit="℃" />
+            <TCondition IsParent="false" VarName="脉冲前BusbarTMax" VarCaption="脉冲前BusbarTMax" Con="=" ConValue="0" Unit="℃" />
+            <TCondition IsParent="false" VarName="脉冲前BusbarTMin" VarCaption="脉冲前BusbarTMin" Con="=" ConValue="0" Unit="℃" />
+            <TCondition IsParent="false" VarName="脉冲前SOC" VarCaption="脉冲前SOC" ConValue="0" Unit="%" />
+            <TCondition IsParent="false" VarName="脉冲前celldiffT" VarCaption="脉冲前celldiffT" Con="=" ConValue="0" Unit="℃" />
+            <TCondition IsParent="false" VarName="脉冲前BusbardiffT" VarCaption="脉冲前BusbardiffT" Con="=" ConValue="0" Unit="℃" />
+            <TCondition IsParent="false" VarName="脉冲前的压差" VarCaption="脉冲前的压差" Con="=" ConValue="0" Unit="mV" />
+          </savelist>
+        </TCMD>
+        <TCMD Kind="CAN2" Cmd="DTC" WaitTime="200">
+          <initlist />
+          <setlist />
+          <judgelist>
+            <TCondition IsParent="true" VarName="与条件" ConValue="0">
+              <subCondition IsParent="false" VarName="脉冲前celldiffT" VarCaption="脉冲前celldiffT" Con="&lt;=" ConValue="0" Unit="℃" />
+              <subCondition IsParent="false" VarName="脉冲前BusbardiffT" VarCaption="脉冲前BusbardiffT" Con="&lt;=" ConValue="0" Unit="℃" />
+              <subCondition IsParent="false" VarName="脉冲前的压差" VarCaption="脉冲前的压差" Con="&lt;=" ConValue="0" Unit="mV" />
+            </TCondition>
+          </judgelist>
+          <savelist>
+            <TCondition IsParent="false" ConValue="0" />
+            <TCondition IsParent="false" ConValue="0" />
+            <TCondition IsParent="false" ConValue="0" />
+            <TCondition IsParent="false" ConValue="0" />
+            <TCondition IsParent="false" ConValue="0" />
+            <TCondition IsParent="false" ConValue="0" />
+            <TCondition IsParent="false" ConValue="0" />
+            <TCondition IsParent="false" ConValue="0" />
+          </savelist>
+        </TCMD>
+      </cmdList>
+    </TStep>
+  </stepList>
+</TSchem>

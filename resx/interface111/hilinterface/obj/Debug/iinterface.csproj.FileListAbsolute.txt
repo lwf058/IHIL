@@ -1,0 +1,11 @@
+E:\work\iHil\interface\hilinterface\bin\Debug\hilinterface.dll
+E:\work\iHil\interface\hilinterface\bin\Debug\hilinterface.pdb
+E:\work\iHil\iHilBms\iHilBms\bin\Debug\hilinterface.dll
+E:\work\iHil\iHilBms\iHilBms\bin\Debug\hilinterface.pdb
+E:\work\iHil\iHilBms\iHilBms\bin\Debug\ModelDLL\iinterface.dll
+E:\work\iHil\iHilBms\iHilBms\bin\Debug\ModelDLL\iinterface.pdb
+E:\work\iHil\interface\hilinterface\obj\Debug\iinterface.dll
+E:\work\iHil\interface\hilinterface\obj\Debug\iinterface.pdb
+E:\work\iHil\iHilBms\iHilBms\bin\Debug\ClassObject\iinterface.dll
+E:\work\iHil\iHilBms\iHilBms\bin\Debug\ClassObject\iinterface.pdb
+E:\work\iHil\interface\hilinterface\obj\Debug\iinterface.csprojResolveAssemblyReference.cache

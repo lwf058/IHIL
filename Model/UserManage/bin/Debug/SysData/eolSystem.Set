@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="gb2312"?>
+<eolSystem>
+  <SetList>
+    <SystemItem SystemID="8ad7e1b5-d86d-4087-b553-e15ad3d06eb7" SetContent="测试数据保存路径设置" KeyName="TestDataPath" KeyVal="D:\EOL测试数据保存" CheckType="文件路径" />
+    <SystemItem SystemID="63fcc538-2838-410c-8d15-9be395fd8287" SetContent="打印字体大小" KeyName="PrintSize" KeyVal="12" CheckType="数字" />
+    <SystemItem SystemID="c83395ec-1c12-4fa1-8a65-6c79b0892350" SetContent="灯自检COM8" KeyName="CheckLight" KeyVal="1拖2继电器 - 测试.moc$9600,n,8,2$COM5" CheckType="字符串" />
+    <SystemItem SystemID="759be35d-b441-41be-aee5-40275329ab5f" SetContent="灯自检COM9" KeyName="CheckLight" KeyVal="1拖2继电器 - 测试.moc$9600,n,8,2$COM7" CheckType="字符串" />
+    <SystemItem SystemID="1eadba4d-80b2-46a2-ac2a-35726a61ec68" SetContent="DCR测试温度补偿" KeyName="DcrTemp" KeyVal="19$1.489$1.827" CheckType="字符串" />
+    <SystemItem SystemID="25450801-26c5-482a-8dd7-fb740fa87e6b" SetContent="DCR测试温度补偿" KeyName="DcrTemp" KeyVal="20$1.45$1.78" CheckType="字符串" />
+    <SystemItem SystemID="e225f4f3-82d7-42fd-ab8a-036e4353461a" SetContent="DCR测试温度补偿" KeyName="DcrTemp" KeyVal="21$1.411$1.733" CheckType="字符串" />
+    <SystemItem SystemID="235716fa-63d8-486c-96c3-fc34df0cc3fa" SetContent="DCR测试温度补偿" KeyName="DcrTemp" KeyVal="22$1.373$1.685" CheckType="字符串" />
+    <SystemItem SystemID="fd7bb604-4a18-4646-98c3-31fbdba6be78" SetContent="DCR测试温度补偿" KeyName="DcrTemp" KeyVal="23$1.334$1.638" CheckType="字符串" />
+    <SystemItem SystemID="e33839c1-6e04-4259-b31b-7e6b395b0689" SetContent="DCR测试温度补偿" KeyName="DcrTemp" KeyVal="24$1.295$1.590" CheckType="字符串" />
+    <SystemItem SystemID="1bcfa07c-b5d3-4035-b723-68c9e1f9bc04" SetContent="DCR测试温度补偿" KeyName="DcrTemp" KeyVal="25$1.257$1.543" CheckType="字符串" />
+    <SystemItem SystemID="632cd592-c8fb-4c46-bab5-c0dfd9149149" SetContent="DCR测试温度补偿" KeyName="DcrTemp" KeyVal="26$1.218$1.495" CheckType="字符串" />
+    <SystemItem SystemID="70cc5e97-8700-49e9-ae85-f98858b53179" SetContent="DCR测试温度补偿" KeyName="DcrTemp" KeyVal="27$1.179$1.448" CheckType="字符串" />
+    <SystemItem SystemID="99bcdeb6-acb2-4c0c-8a7c-b4c55d6b208f" SetContent="结束测试关闭通道灯" KeyName="IsStartLight" KeyVal="YES" CheckType="字符串" />
+    <SystemItem SystemID="3f1fd34e-b735-4852-bd73-8ff7f48b85ef" SetContent="结束测试后清空方案" KeyName="IsClearPlan" KeyVal="2" CheckType="字符串" />
+  </SetList>
+  <CodeList>
+    <CodeItem aaCodeId="f405f0d7-6bf6-43b1-9910-b2185d8d5c79" aTestFileName="AS24-A" bFindCode="479371" cChIndex="1" dStartLong="15" eSubLong="6" />
+    <CodeItem aaCodeId="6bbeeed9-452b-41f3-ba84-62c930ae9905" aTestFileName="AS24-A" bFindCode="455831" cChIndex="1" dStartLong="15" eSubLong="6" />
+    <CodeItem aaCodeId="0cfa7305-f0ad-42e5-ae67-bc4f24434b69" aTestFileName="AS24-B" bFindCode="479371" cChIndex="2" dStartLong="15" eSubLong="6" />
+    <CodeItem aaCodeId="21b24293-860f-4959-a6e6-573162f7389a" aTestFileName="AS24-A" bFindCode="005831" cChIndex="1" dStartLong="1" eSubLong="6" />
+    <CodeItem aaCodeId="de361078-0e68-49f6-8645-a16ba6aeb82f" aTestFileName="aEOL功能操作说明" bFindCode="5P31S" cChIndex="1" dStartLong="4" eSubLong="5" />
+    <CodeItem aaCodeId="1fbe49b2-5544-4a54-9984-473b32ad0abc" aTestFileName="aEOL功能操作说明" bFindCode="5P31S" cChIndex="2" dStartLong="4" eSubLong="5" />
+    <CodeItem aaCodeId="c169bc45-e960-43c0-8c90-d30213910df2" aTestFileName="1128 南汽EOL -IP34-5 脉冲Mes" bFindCode="1122" cChIndex="1" dStartLong="1" eSubLong="4" />
+    <CodeItem aaCodeId="6497be47-938d-487a-a9e5-b55ebdc39362" aTestFileName="1210 南汽EOL -IP34-11 脉冲Mes" bFindCode="GGXF" cChIndex="1" dStartLong="1" eSubLong="4">
+      <fCodeCheck>GGXF****</fCodeCheck>
+    </CodeItem>
+    <CodeItem aaCodeId="75fdfecc-893e-4768-a2f5-d8866353aa3e" aTestFileName="1210 南汽EOL -IP34-12 脉冲Mes " bFindCode="GGXF" cChIndex="2" dStartLong="1" eSubLong="4" />
+    <CodeItem aaCodeId="5cdc6363-d47d-4728-9ffe-5419ee302218" aTestFileName="1210 南汽EOL -容量" bFindCode="GGXF" cChIndex="1" dStartLong="1" eSubLong="4" gIsCapacity="是">
+      <fCodeCheck>GGXF****</fCodeCheck>
+    </CodeItem>
+  </CodeList>
+  <DTCList>
+    <BmsDTC DtcId="168839" DtcCode="0x029387" Comment="DTC_HYBRID_CAN_MISSING" DTCDispose="" />
+    <BmsDTC DtcId="352791" DtcCode="0x056217" Comment="DTC_LVBAT_HI" DTCDispose="" />
+    <BmsDTC DtcId="1994752" DtcCode="0x1E7000" Comment="DTC_CELL_OV_LVL1" DTCDispose="" />
+    <BmsDTC DtcId="1995008" DtcCode="0x1E7100" Comment="DTC_CELL_OV_LVL2" DTCDispose="" />
+    <BmsDTC DtcId="1995264" DtcCode="0x1E7200" Comment="DTC_CELL_UV_LVL1" DTCDispose="" />
+    <BmsDTC DtcId="1995520" DtcCode="0x1E7300" Comment="DTC_CELL_UV_LVL2" DTCDispose="" />
+    <BmsDTC DtcId="353046" DtcCode="0x056316" Comment="DTC_LVBAT_LO" DTCDispose="" />
+    <BmsDTC DtcId="658432" DtcCode="0x0A0C00" Comment="DTC_MAIN_HVIL_OOR_LO" DTCDispose="" />
+    <BmsDTC DtcId="658688" DtcCode="0x0A0D00" Comment="DTC_MAIN_HVIL_OOR_HI" DTCDispose="" />
+    <BmsDTC DtcId="663296" DtcCode="0x0A1F00" Comment="DTC_BMU_FAIL_HW" DTCDispose="" />
+    <BmsDTC DtcId="687360" DtcCode="0x0A7D00" Comment="DTC_SOC_TOO_LOW" DTCDispose="" />
+    <BmsDTC DtcId="687872" DtcCode="0x0A7F00" Comment="DTC_SOH_TOO_LOW" DTCDispose="" />
+    <BmsDTC DtcId="693504" DtcCode="0x0A9500" Comment="DTC_PACK_FUSE" DTCDispose="" />
+    <BmsDTC DtcId="698112" DtcCode="0x0AA700" Comment="DTC_HVM_LEAK_FAIL_HW" DTCDispose="" />
+    <BmsDTC DtcId="711424" DtcCode="0x0ADB00" Comment="DTC_POSRLY_LSD_FAILED_LO" DTCDispose="" />
+    <BmsDTC DtcId="711680" DtcCode="0x0ADC00" Comment="DTC_POSRLY_LSD_FAILED_HI" DTCDispose="" />
+    <BmsDTC DtcId="712448" DtcCode="0x0ADF00" Comment="DTC_NEGRLY_LSD_FAILED_LO" DTCDispose="" />
+    <BmsDTC DtcId="714240" DtcCode="0x0AE600" Comment="DTC_PRERLY_LSD_FAILED_LO" DTCDispose="" />
+    <BmsDTC DtcId="714496" DtcCode="0x0AE700" Comment="DTC_PRERLY_LSD_FAILED_HI" DTCDispose="" />
+    <BmsDTC DtcId="719360" DtcCode="0x0AFA00" Comment="DTC_VBAT_VMIN" DTCDispose="" />
+    <BmsDTC DtcId="719616" DtcCode="0x0AFB00" Comment="DTC_VBAT_VMAX" DTCDispose="" />
+    <BmsDTC DtcId="725760" DtcCode="0x0B1300" Comment="DTC_IBAT_MISMATCH" DTCDispose="" />
+    <BmsDTC DtcId="727296" DtcCode="0x0B1900" Comment="DTC_VBAT" DTCDispose="" />
+    <BmsDTC DtcId="728576" DtcCode="0x0B1E00" Comment="DTC_VPOS" DTCDispose="" />
+    <BmsDTC DtcId="803840" DtcCode="0x0C4400" Comment="DTC_COOLANT_TEMP_OOR_HI" DTCDispose="" />
+    <BmsDTC DtcId="804096" DtcCode="0x0C4500" Comment="DTC_COOLANT_TEMP_OOR_LO" DTCDispose="" />
+    <BmsDTC DtcId="804864" DtcCode="0x0C4800" Comment="DTC_PUMP_FAILED_LO" DTCDispose="" />
+    <BmsDTC DtcId="805120" DtcCode="0x0C4900" Comment="DTC_PUMP_FAILED_HI" DTCDispose="" />
+    <BmsDTC DtcId="806912" DtcCode="0x0C5000" Comment="DTC_PUMP_FAILED_OPEN" DTCDispose="" />
+    <BmsDTC DtcId="807168" DtcCode="0x0C5100" Comment="DTC_PUMP_OC" DTCDispose="" />
+    <BmsDTC DtcId="817152" DtcCode="0x0C7800" Comment="DTC_PRECHARGE_TIMEOUT" DTCDispose="" />
+    <BmsDTC DtcId="1966336" DtcCode="0x1E0100" Comment="DTC_ONCHG_HVIL_OOR_LO" DTCDispose="" />
+    <BmsDTC DtcId="1966592" DtcCode="0x1E0200" Comment="DTC_ONCHG_HVIL_OOR_HI" DTCDispose="" />
+    <BmsDTC DtcId="1966848" DtcCode="0x1E0300" Comment="DTC_HVM_LEAK_FAIL_CALC" DTCDispose="" />
+    <BmsDTC DtcId="1967104" DtcCode="0x1E0400" Comment="DTC_HVM_LEAK_EXT_SHORT" DTCDispose="" />
+    <BmsDTC DtcId="1967360" DtcCode="0x1E0500" Comment="DTC_HVM_LEAK_MID_PACK_SHORT" DTCDispose="" />
+    <BmsDTC DtcId="1967616" DtcCode="0x1E0600" Comment="DTC_HVM_LEAK_ERROR" DTCDispose="" />
+    <BmsDTC DtcId="1968384" DtcCode="0x1E0900" Comment="DTC_LEM_OOR_LO" DTCDispose="" />
+    <BmsDTC DtcId="1968640" DtcCode="0x1E0A00" Comment="DTC_LEM_OOR_HI" DTCDispose="" />
+    <BmsDTC DtcId="1969408" DtcCode="0x1E0D00" Comment="DTC_PRECHARGE_ENERGY" DTCDispose="" />
+    <BmsDTC DtcId="1969664" DtcCode="0x1E0E00" Comment="DTC_CELL_V_DIF" DTCDispose="" />
+    <BmsDTC DtcId="1969920" DtcCode="0x1E0F00" Comment="DTC_CELL_T_DIF" DTCDispose="" />
+    <BmsDTC DtcId="1970432" DtcCode="0x1E1100" Comment="DTC_RTC_ERR" DTCDispose="" />
+    <BmsDTC DtcId="1970688" DtcCode="0x1E1200" Comment="DTC_HVM_DTC_SET" DTCDispose="" />
+    <BmsDTC DtcId="1970944" DtcCode="0x1E1300" Comment="DTC_CMU_01_FAIL_HW" DTCDispose="" />
+    <BmsDTC DtcId="1976576" DtcCode="0x1E2900" Comment="DTC_CHG_IND_FAIL_HI" DTCDispose="" />
+    <BmsDTC DtcId="1993984" DtcCode="0x1E6D00" Comment="DTC_MOD_VOLTAGE_MISMATCH" DTCDispose="" />
+    <BmsDTC DtcId="1977600" DtcCode="0x1E2D00" Comment="DTC_CHG_CONN_FAIL_HI" DTCDispose="" />
+    <BmsDTC DtcId="1977856" DtcCode="0x1E2E00" Comment="DTC_CHG_CONN_FAIL_LO" DTCDispose="" />
+    <BmsDTC DtcId="1994240" DtcCode="0x1E6E00" Comment="DTC_CELL_VMAX_ERR" DTCDispose="" />
+    <BmsDTC DtcId="1995776" DtcCode="0x1E7400" Comment="DTC_CELL_T_ERR" DTCDispose="" />
+    <BmsDTC DtcId="1972992" DtcCode="0x1E1B00" Comment="DTC_HVM_CAL_FAULT" DTCDispose="" />
+    <BmsDTC DtcId="1973248" DtcCode="0x1E1C00" Comment="DTC_DIS_OC_LVL2" DTCDispose="" />
+    <BmsDTC DtcId="1973504" DtcCode="0x1E1D00" Comment="DTC_CHG_OC_LVL2" DTCDispose="" />
+    <BmsDTC DtcId="1973760" DtcCode="0x1E1E00" Comment="DTC_DIS_OC_LVL1" DTCDispose="" />
+    <BmsDTC DtcId="1974016" DtcCode="0x1E1F00" Comment="DTC_CHG_OC_LVL1" DTCDispose="" />
+    <BmsDTC DtcId="1974784" DtcCode="0x1E2200" Comment="DTC_RLY_OPEN_WITH_CURRENT" DTCDispose="" />
+    <BmsDTC DtcId="1975040" DtcCode="0x1E2300" Comment="DTC_RLY_CLOSE_CMD_ON_RESET" DTCDispose="" />
+    <BmsDTC DtcId="1975296" DtcCode="0x1E2400" Comment="DTC_RLY_CLOSE_SIG_FAILED" DTCDispose="" />
+    <BmsDTC DtcId="1975552" DtcCode="0x1E2500" Comment="DTC_CRASH" DTCDispose="" />
+    <BmsDTC DtcId="1975808" DtcCode="0x1E2600" Comment="DTC_MSD_OPEN" DTCDispose="" />
+    <BmsDTC DtcId="1976320" DtcCode="0x1E2800" Comment="DTC_HB_LATCH" DTCDispose="" />
+    <BmsDTC DtcId="1976832" DtcCode="0x1E2A00" Comment="DTC_CHG_IND_FAIL_LO" DTCDispose="" />
+    <BmsDTC DtcId="1978112" DtcCode="0x1E2F00" Comment="DTC_SAEJ1772_PROX_DECT_OOR_HI" DTCDispose="" />
+    <BmsDTC DtcId="1978368" DtcCode="0x1E3000" Comment="DTC_EXT_PWR_FAILED_HI" DTCDispose="" />
+    <BmsDTC DtcId="1978624" DtcCode="0x1E3100" Comment="DTC_EXT_PWR_FAILED_LO" DTCDispose="" />
+    <BmsDTC DtcId="1979392" DtcCode="0x1E3400" Comment="DTC_SEN_5V_OOR_HI" DTCDispose="" />
+    <BmsDTC DtcId="1979648" DtcCode="0x1E3500" Comment="DTC_SEN_5V_OOR_LO" DTCDispose="" />
+    <BmsDTC DtcId="1979904" DtcCode="0x1E3600" Comment="DTC_LLS_OOR_HI" DTCDispose="" />
+    <BmsDTC DtcId="1980160" DtcCode="0x1E3700" Comment="DTC_LLS_OOR_LO" DTCDispose="" />
+    <BmsDTC DtcId="1980416" DtcCode="0x1E3800" Comment="DTC_LLS_FAULT" DTCDispose="" />
+    <BmsDTC DtcId="1980672" DtcCode="0x1E3900" Comment="DTC_ONCHGR_OC" DTCDispose="" />
+    <BmsDTC DtcId="1982720" DtcCode="0x1E4100" Comment="DTC_ONCHGR_UC" DTCDispose="" />
+    <BmsDTC DtcId="1983232" DtcCode="0x1E4300" Comment="DTC_ONCHGRLY_LSD_FAILED_LO" DTCDispose="" />
+    <BmsDTC DtcId="1983488" DtcCode="0x1E4400" Comment="DTC_ONCHGRLY_LSD_FAILED_HI" DTCDispose="" />
+    <BmsDTC DtcId="1984000" DtcCode="0x1E4600" Comment="DTC_OFFCHGRLY_LSD_FAILED_LO" DTCDispose="" />
+    <BmsDTC DtcId="1984256" DtcCode="0x1E4700" Comment="DTC_OFFCHGRLY_LSD_FAILED_HI" DTCDispose="" />
+    <BmsDTC DtcId="1984512" DtcCode="0x1E4800" Comment="DTC_RLY_CTR_PWR_FAILED_LO" DTCDispose="" />
+    <BmsDTC DtcId="1984768" DtcCode="0x1E4900" Comment="DTC_RLY_CTR_PWR_FAILED_HI" DTCDispose="" />
+    <BmsDTC DtcId="1985024" DtcCode="0x1E4A00" Comment="DTC_HPWR_OOR_HI" DTCDispose="" />
+    <BmsDTC DtcId="1985280" DtcCode="0x1E4B00" Comment="DTC_HPWR_OOR_LO" DTCDispose="" />
+    <BmsDTC DtcId="1985536" DtcCode="0x1E4C00" Comment="DTC_RLY_MPOS_WELD_AT_SU" DTCDispose="" />
+    <BmsDTC DtcId="1985792" DtcCode="0x1E4D00" Comment="DTC_RLY_MNEG_WELD_AT_SU" DTCDispose="" />
+    <BmsDTC DtcId="1986304" DtcCode="0x1E4F00" Comment="DTC_RLY_ONCHG_WELD_AT_SU" DTCDispose="" />
+    <BmsDTC DtcId="1986816" DtcCode="0x1E5100" Comment="DTC_RLY_OFFCHG_WELD_AT_SU" DTCDispose="" />
+    <BmsDTC DtcId="1987072" DtcCode="0x1E5200" Comment="DTC_RLY_MPOS_WELD_AT_SD" DTCDispose="" />
+    <BmsDTC DtcId="1987328" DtcCode="0x1E5300" Comment="DTC_RLY_MNEG_WELD_AT_SD" DTCDispose="" />
+    <BmsDTC DtcId="1987840" DtcCode="0x1E5500" Comment="DTC_RLY_ONCHG_WELD_AT_SD" DTCDispose="" />
+    <BmsDTC DtcId="1988608" DtcCode="0x1E5800" Comment="DTC_RLY_MPOS_OPEN" DTCDispose="" />
+    <BmsDTC DtcId="1988864" DtcCode="0x1E5900" Comment="DTC_RLY_MNEG_OPEN" DTCDispose="" />
+    <BmsDTC DtcId="1989120" DtcCode="0x1E5A00" Comment="DTC_RLY_MPRE_OPEN" DTCDispose="" />
+    <BmsDTC DtcId="1989632" DtcCode="0x1E5C00" Comment="DTC_RLY_ONCHG_OPEN" DTCDispose="" />
+    <BmsDTC DtcId="1990144" DtcCode="0x1E5E00" Comment="DTC_RLY_OFFCHG_OPEN" DTCDispose="" />
+    <BmsDTC DtcId="1990400" DtcCode="0x1E5F00" Comment="DTC_RLY_MPOS_VDIF" DTCDispose="" />
+    <BmsDTC DtcId="1990656" DtcCode="0x1E6000" Comment="DTC_RLY_MNEG_VDIF" DTCDispose="" />
+    <BmsDTC DtcId="1991168" DtcCode="0x1E6200" Comment="DTC_RLY_ONCHG_VDIF" DTCDispose="" />
+    <BmsDTC DtcId="1991680" DtcCode="0x1E6400" Comment="DTC_RLY_OFFCHG_VDIF" DTCDispose="" />
+    <BmsDTC DtcId="1991936" DtcCode="0x1E6500" Comment="DTC_VNEG" DTCDispose="" />
+    <BmsDTC DtcId="1992192" DtcCode="0x1E6600" Comment="DTC_VONCHG" DTCDispose="" />
+    <BmsDTC DtcId="1992448" DtcCode="0x1E6700" Comment="DTC_VOFFCHG" DTCDispose="" />
+    <BmsDTC DtcId="1992704" DtcCode="0x1E6800" Comment="DTC_MAIN_FUSE_HI" DTCDispose="" />
+    <BmsDTC DtcId="1992960" DtcCode="0x1E6900" Comment="DTC_MAIN_FUSE_LO" DTCDispose="" />
+    <BmsDTC DtcId="1994496" DtcCode="0x1E6F00" Comment="DTC_CELL_VMIN_ERR" DTCDispose="" />
+    <BmsDTC DtcId="1996032" DtcCode="0x1E7500" Comment="DTC_CELL_OT_LVL1" DTCDispose="" />
+    <BmsDTC DtcId="1996288" DtcCode="0x1E7600" Comment="DTC_CELL_OT_LVL2" DTCDispose="" />
+    <BmsDTC DtcId="1996544" DtcCode="0x1E7700" Comment="DTC_CELL_UT" DTCDispose="" />
+    <BmsDTC DtcId="1997056" DtcCode="0x1E7900" Comment="DTC_CMU_01_TFAULT" DTCDispose="" />
+    <BmsDTC DtcId="1999616" DtcCode="0x1E8300" Comment="DTC_OFFCHGR_EPO" DTCDispose="" />
+    <BmsDTC DtcId="1999872" DtcCode="0x1E8400" Comment="DTC_VEPO" DTCDispose="" />
+    <BmsDTC DtcId="2000384" DtcCode="0x1E8600" Comment="DTC_NVM_KOT" DTCDispose="" />
+    <BmsDTC DtcId="2001664" DtcCode="0x1E8B00" Comment="DTC_CMU_01_VFAULT" DTCDispose="" />
+    <BmsDTC DtcId="1999360" DtcCode="0x1E8200" Comment="DTC_ONCHGR_EPO" DTCDispose="" />
+    <BmsDTC DtcId="2003712" DtcCode="0x1E9300" Comment="DTC_KOT_ERROR" DTCDispose="" />
+    <BmsDTC DtcId="2006016" DtcCode="0x1E9C00" Comment="DTC_ACP_FUSE" DTCDispose="" />
+    <BmsDTC DtcId="2006272" DtcCode="0x1E9D00" Comment="DTC_LOST_VEHWAKE" DTCDispose="" />
+    <BmsDTC DtcId="2007040" DtcCode="0x1EA000" Comment="DTC_LVDCDC_HI" DTCDispose="" />
+    <BmsDTC DtcId="2007296" DtcCode="0x1EA100" Comment="DTC_LVDCDC_LO" DTCDispose="" />
+    <BmsDTC DtcId="2008832" DtcCode="0x1EA700" Comment="DTC_CAB_ERRCRC" DTCDispose="" />
+    <BmsDTC DtcId="2009856" DtcCode="0x1EAB00" Comment="DTC_LV5V_FAIL_LO" DTCDispose="" />
+    <BmsDTC DtcId="2010880" DtcCode="0x1EAF00" Comment="DTC_ONCHG_VOLT_MISMATCH" DTCDispose="" />
+    <BmsDTC DtcId="2011136" DtcCode="0x1EB000" Comment="DTC_FGD_NO_SENSOR" DTCDispose="" />
+    <BmsDTC DtcId="2012040" DtcCode="0x1EB388" Comment="DTC_HYBRID_CAN_BUSOFF" DTCDispose="" />
+    <BmsDTC DtcId="2013064" DtcCode="0x1EB788" Comment="DTC_PT_CAN_BUSOFF" DTCDispose="" />
+    <BmsDTC DtcId="2013319" DtcCode="0x1EB887" Comment="DTC_PT_CAN_MISSING" DTCDispose="" />
+    <BmsDTC DtcId="2023428" DtcCode="0x1EE004" Comment="DTC_NVM_APP_SCRATCHPAD" DTCDispose="" />
+    <BmsDTC DtcId="13373446" DtcCode="0xCC1006" Comment="DTC_POSRLY_COIL_INVALID" DTCDispose="" />
+    <BmsDTC DtcId="13373448" DtcCode="0xCC1008" Comment="DTC_POSRLY_CIRCUIT_FAILED" DTCDispose="" />
+    <BmsDTC DtcId="13377542" DtcCode="0xCC2006" Comment="DTC_NEGRLY_COIL_INVALID" DTCDispose="" />
+    <BmsDTC DtcId="13381640" DtcCode="0xCC3008" Comment="DTC_PRERLY_CIRCUIT_FAILED" DTCDispose="" />
+    <BmsDTC DtcId="13385735" DtcCode="0xCC4007" Comment="DTC_ONCHGRLY_COIL_OPEN" DTCDispose="" />
+    <BmsDTC DtcId="13389831" DtcCode="0xCC5007" Comment="DTC_OFFCHGRLY_COIL_INVALID" DTCDispose="" />
+    <BmsDTC DtcId="2000128" DtcCode="0x1E8500" Comment="DTC_NVM_SOC" DTCDispose="" />
+    <BmsDTC DtcId="2003968" DtcCode="0x1E9400" Comment="DTC_VBAT_MISMATCH" DTCDispose="" />
+    <BmsDTC DtcId="2004480" DtcCode="0x1E9600" Comment="DTC_LVBAT_ERR" DTCDispose="" />
+    <BmsDTC DtcId="2004736" DtcCode="0x1E9700" Comment="DTC_SAEJ1772_PROX_DECT_OOR_LO" DTCDispose="" />
+    <BmsDTC DtcId="2005504" DtcCode="0x1E9A00" Comment="DTC_HVM_VER_MISMATCH" DTCDispose="" />
+    <BmsDTC DtcId="14551687" DtcCode="0xDE0A87" Comment="DTC_TBOX_CAN_MISSING" DTCDispose="" />
+    <BmsDTC DtcId="712704" DtcCode="0x0AE000" Comment="DTC_NEGRLY_LSD_FAILED_HI" DTCDispose="" />
+    <BmsDTC DtcId="2009600" DtcCode="0x1EAA00" Comment="DTC_LV5V_FAIL_HI" DTCDispose="" />
+    <BmsDTC DtcId="1976064" DtcCode="0x1E2700" Comment="DTC_INVALID_HB" DTCDispose="" />
+    <BmsDTC DtcId="1982464" DtcCode="0x1E4000" Comment="DTC_OFFCHGR_REQ_VS_CMD" DTCDispose="" />
+    <BmsDTC DtcId="1988352" DtcCode="0x1E5700" Comment="DTC_RLY_OFFCHG_WELD_AT_SD" DTCDispose="" />
+    <BmsDTC DtcId="2000640" DtcCode="0x1E8700" Comment="DTC_NVM_DTC" DTCDispose="" />
+    <BmsDTC DtcId="2000896" DtcCode="0x1E8800" Comment="DTC_NVM_LOGISTIC" DTCDispose="" />
+    <BmsDTC DtcId="2010112" DtcCode="0x1EAC00" Comment="DTC_ONCHG_CP_PWM_OOR_HI" DTCDispose="" />
+    <BmsDTC DtcId="2010368" DtcCode="0x1EAD00" Comment="DTC_ONCHG_CP_PWM_OOR_LO" DTCDispose="" />
+    <BmsDTC DtcId="2007552" DtcCode="0x1EA200" Comment="DTC_CAB_FGRUNABNRM" DTCDispose="" />
+    <BmsDTC DtcId="2007808" DtcCode="0x1EA300" Comment="DTC_CAB_NOOSCI" DTCDispose="" />
+    <BmsDTC DtcId="2008064" DtcCode="0x1EA400" Comment="DTC_CAB_FAILSFMOD" DTCDispose="" />
+    <BmsDTC DtcId="2008320" DtcCode="0x1EA500" Comment="DTC_CAB_SIGNOTAVAIL" DTCDispose="" />
+    <BmsDTC DtcId="2008576" DtcCode="0x1EA600" Comment="DTC_CAB_BRIGVOLTPROTECT" DTCDispose="" />
+    <BmsDTC DtcId="2009088" DtcCode="0x1EA800" Comment="DTC_FGD_OOR_HI" DTCDispose="" />
+    <BmsDTC DtcId="2009344" DtcCode="0x1EA900" Comment="DTC_FGD_OOR_LO" DTCDispose="" />
+    <BmsDTC DtcId="2011392" DtcCode="0x1EB100" Comment="DTC_ONCHG_CP_VOLT_OOR_HI" DTCDispose="" />
+    <BmsDTC DtcId="2011648" DtcCode="0x1EB200" Comment="DTC_ONCHG_CP_VOLT_OOR_LO" DTCDispose="" />
+    <BmsDTC DtcId="2012296" DtcCode="0x1EB488" Comment="DTC_INTERNAL_CAN_BUSOFF" DTCDispose="" />
+    <BmsDTC DtcId="2012552" DtcCode="0x1EB588" Comment="DTC_ONCHG_CAN_BUSOFF" DTCDispose="" />
+    <BmsDTC DtcId="2012808" DtcCode="0x1EB688" Comment="DTC_OFFCHG_CAN_BUSOFF" DTCDispose="" />
+    <BmsDTC DtcId="2013440" DtcCode="0x1EB900" Comment="DTC_ONCHG_CP_PWM_DIG_COMM" DTCDispose="" />
+    <BmsDTC DtcId="2013696" DtcCode="0x1EBA00" Comment="DTC_ONCHG_CP_PWM_IR_ERR" DTCDispose="" />
+    <BmsDTC DtcId="13373447" DtcCode="0xCC1007" Comment="DTC_POSRLY_COIL_OPEN" DTCDispose="" />
+    <BmsDTC DtcId="13377543" DtcCode="0xCC2007" Comment="DTC_NEGRLY_COIL_OPEN" DTCDispose="" />
+    <BmsDTC DtcId="13377544" DtcCode="0xCC2008" Comment="DTC_NEGRLY_CIRCUIT_FAILED" DTCDispose="" />
+    <BmsDTC DtcId="13381638" DtcCode="0xCC3006" Comment="DTC_PRERLY_COIL_INVALID" DTCDispose="" />
+    <BmsDTC DtcId="13381639" DtcCode="0xCC3007" Comment="DTC_PRERLY_COIL_OPEN" DTCDispose="" />
+    <BmsDTC DtcId="13385736" DtcCode="0xCC4008" Comment="DTC_ONCHGRLY_CIRCUIT_FAILED" DTCDispose="" />
+    <BmsDTC DtcId="13389830" DtcCode="0xCC5006" Comment="DTC_OFFCHGRLY_COIL_OPEN" DTCDispose="" />
+    <BmsDTC DtcId="13389832" DtcCode="0xCC5008" Comment="DTC_OFFCHGRLY_CIRCUIT_FAILED" DTCDispose="" />
+    <BmsDTC DtcId="13701767" DtcCode="0xD11287" Comment="DTC_ONCHGR_CAN_MISSING" DTCDispose="" />
+    <BmsDTC DtcId="13702023" DtcCode="0xD11387" Comment="DTC_OFFCHGR_CAN_MISSING" DTCDispose="" />
+    <BmsDTC DtcId="14549383" DtcCode="0xDE0187" Comment="DTC_INTERNAL_CAN_MISSING" DTCDispose="" />
+    <BmsDTC DtcId="14549639" DtcCode="0xDE0287" Comment="DTC_CMU_01_LOST_COM" DTCDispose="" />
+    <BmsDTC DtcId="2010624" DtcCode="0x1EAE00" Comment="DTC_ONCHG_CURRENT_MISMATCH" DTCDispose="" />
+    <BmsDTC DtcId="13385734" DtcCode="0xCC4006" Comment="DTC_ONCHGRLY_COIL_INVALID" DTCDispose="" />
+    <BmsDTC DtcId="1971200" DtcCode="0x1E1400" Comment="DTC_CMU_02_FAIL_HW" DTCDispose="" />
+    <BmsDTC DtcId="1971456" DtcCode="0x1E1500" Comment="DTC_CMU_03_FAIL_HW" DTCDispose="" />
+    <BmsDTC DtcId="1971712" DtcCode="0x1E1600" Comment="DTC_CMU_04_FAIL_HW" DTCDispose="" />
+    <BmsDTC DtcId="1971968" DtcCode="0x1E1700" Comment="DTC_CMU_05_FAIL_HW" DTCDispose="" />
+    <BmsDTC DtcId="1997312" DtcCode="0x1E7A00" Comment="DTC_CMU_02_TFAULT" DTCDispose="" />
+    <BmsDTC DtcId="1997568" DtcCode="0x1E7B00" Comment="DTC_CMU_03_TFAULT" DTCDispose="" />
+    <BmsDTC DtcId="1997824" DtcCode="0x1E7C00" Comment="DTC_CMU_04_TFAULT" DTCDispose="" />
+    <BmsDTC DtcId="1998080" DtcCode="0x1E7D00" Comment="DTC_CMU_05_TFAULT" DTCDispose="" />
+    <BmsDTC DtcId="2001920" DtcCode="0x1E8C00" Comment="DTC_CMU_02_VFAULT" DTCDispose="" />
+    <BmsDTC DtcId="2002176" DtcCode="0x1E8D00" Comment="DTC_CMU_03_VFAULT" DTCDispose="" />
+    <BmsDTC DtcId="2002432" DtcCode="0x1E8E00" Comment="DTC_CMU_04_VFAULT" DTCDispose="" />
+    <BmsDTC DtcId="2002688" DtcCode="0x1E8F00" Comment="DTC_CMU_05_VFAULT" DTCDispose="" />
+    <BmsDTC DtcId="14549895" DtcCode="0xDE0387" Comment="DTC_CMU_02_LOST_COM" DTCDispose="" />
+    <BmsDTC DtcId="14550151" DtcCode="0xDE0487" Comment="DTC_CMU_03_LOST_COM" DTCDispose="" />
+    <BmsDTC DtcId="14550407" DtcCode="0xDE0587" Comment="DTC_CMU_04_LOST_COM" DTCDispose="" />
+    <BmsDTC DtcId="14550663" DtcCode="0xDE0687" Comment="DTC_CMU_05_LOST_COM" DTCDispose="" />
+    <BmsDTC DtcId="1972224" DtcCode="0x1E1800" Comment="DTC_CMU_06_FAIL_HW" DTCDispose="" />
+    <BmsDTC DtcId="1972480" DtcCode="0x1E1900" Comment="DTC_CMU_07_FAIL_HW" DTCDispose="" />
+    <BmsDTC DtcId="1972736" DtcCode="0x1E1A00" Comment="DTC_CMU_08_FAIL_HW" DTCDispose="" />
+    <BmsDTC DtcId="1998336" DtcCode="0x1E7E00" Comment="DTC_CMU_06_TFAULT" DTCDispose="" />
+    <BmsDTC DtcId="1998592" DtcCode="0x1E7F00" Comment="DTC_CMU_07_TFAULT" DTCDispose="" />
+    <BmsDTC DtcId="1998848" DtcCode="0x1E8000" Comment="DTC_CMU_08_TFAULT" DTCDispose="" />
+    <BmsDTC DtcId="2002944" DtcCode="0x1E9000" Comment="DTC_CMU_06_VFAULT" DTCDispose="" />
+    <BmsDTC DtcId="2003200" DtcCode="0x1E9100" Comment="DTC_CMU_07_VFAULT" DTCDispose="" />
+    <BmsDTC DtcId="2003456" DtcCode="0x1E9200" Comment="DTC_CMU_08_VFAULT" DTCDispose="" />
+    <BmsDTC DtcId="14550919" DtcCode="0xDE0787" Comment="DTC_CMU_06_LOST_COM" DTCDispose="" />
+    <BmsDTC DtcId="14551175" DtcCode="0xDE0887" Comment="DTC_CMU_07_LOST_COM" DTCDispose="" />
+    <BmsDTC DtcId="14551431" DtcCode="0xDE0987" Comment="DTC_CMU_08_LOST_COM" DTCDispose="" />
+    <BmsDTC DtcId="1990400" DtcCode="0x1E5F00" Comment="DTC_RLY_MPOS_VDIF" DTCDispose="" />
+    <BmsDTC DtcId="1976832" DtcCode="0x1E2A00" Comment="DTC_CHG_IND_FAIL_LO" DTCDispose="" />
+    <BmsDTC DtcId="663296" DtcCode="0x0A1F00" Comment="DTC_BMU_FAIL_HW" DTCDispose="" />
+    <BmsDTC DtcId="2023428" DtcCode="0x1EE004" Comment="DTC_NVM_APP_SCRATCHPAD" DTCDispose="" />
+    <BmsDTC DtcId="2007552" DtcCode="0x1EA200" Comment="DTC_CAB_FGRUNABNRM" DTCDispose="" />
+    <BmsDTC DtcId="12666503" DtcCode="0xC14687" Comment="DTC_GW_MISING" DTCDispose="" />
+    <BmsDTC DtcId="12687495" DtcCode="0xC19887" Comment="DTC_TBOX_CAN_MISING" DTCDispose="" />
+  </DTCList>
+</eolSystem>

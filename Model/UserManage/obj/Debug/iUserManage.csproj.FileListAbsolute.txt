@@ -1,0 +1,17 @@
+E:\work\iHil\User\iUser\bin\Debug\iUser.dll
+E:\work\iHil\User\iUser\bin\Debug\iUser.pdb
+E:\work\iHil\User\iUser\bin\Debug\hilinterface.dll
+E:\work\iHil\User\iUser\bin\Debug\LiuQF.Common.dll
+E:\work\iHil\User\iUser\bin\Debug\ICommon.dll
+E:\work\iHil\User\iUser\bin\Debug\hilinterface.pdb
+E:\work\iHil\User\iUser\bin\Debug\LiuQF.Common.pdb
+E:\work\iHil\User\iUser\obj\Debug\iUserManage.csprojResolveAssemblyReference.cache
+E:\work\iHil\User\iUser\obj\Debug\Nebule_login.FrmLogin.resources
+E:\work\iHil\User\iUser\obj\Debug\Nebula_People.FrmUsersManagement.resources
+E:\work\iHil\User\iUser\obj\Debug\iUserManage.csproj.GenerateResource.Cache
+E:\work\iHil\User\iUser\obj\Debug\iUser.dll
+E:\work\iHil\User\iUser\obj\Debug\iUser.pdb
+E:\work\iHil\iHilBms\iHilBms\bin\Debug\iUser.dll
+E:\work\iHil\iHilBms\iHilBms\bin\Debug\iUser.pdb
+E:\work\iHil\iHilBms\iHilBms\bin\Debug\Model\iUser.dll
+E:\work\iHil\iHilBms\iHilBms\bin\Debug\Model\iUser.pdb

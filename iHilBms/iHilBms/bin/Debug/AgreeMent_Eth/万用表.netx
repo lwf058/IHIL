@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="gb2312"?>
+<packcom>
+  <cmdlist ipnumber="169.254.4.10" port="5025">
+    <cmd caption="RES" id="RES" sendlen="0" recelen="0" waittime="0" isreturnval="0" checktype="CRLF" submethod="Sub">
+      <sendlist>
+        <item id="BL1" startbit="-1" caption="" defaultvalue="CONF:RES" valuetype="string" />
+      </sendlist>
+      <recelist>
+      </recelist>
+    </cmd>
+    <cmd caption="VOLT" id="VOLT" sendlen="0" recelen="0" waittime="0" isreturnval="0" checktype="CRLF" submethod="Sub">
+      <sendlist>
+        <item id="BL1" startbit="-1" caption="" defaultvalue="CONF:VOLT" valuetype="string" />
+      </sendlist>
+      <recelist />
+    </cmd>
+    <cmd caption="READ" id="READ" sendlen="8" recelen="6" waittime="1" isreturnval="-1" checktype="CRLF" submethod="Sub">
+      <sendlist>
+        <item id="READ" startbit="-1" caption="" defaultvalue="READ?" valuetype="string" />
+      </sendlist>
+      <recelist>
+        <item id="VOLT" startbit="-1" caption="有效数字" defaultvalue="" valuetype="string" index="0" symbol="E" />
+        <item id="VE" startbit="-1" caption="指数" defaultvalue="" valuetype="string" index="1" />
+      </recelist>
+    </cmd>
+    <cmd caption="CLEAR" id="CLEAR" sendlen="0" recelen="0" waittime="10" checktype="CRLF" submethod="Bit" isreturnval="0">
+      <sendlist>
+        <item id="BL1" startbit="-1" caption="" defaultvalue="*CLS" valuetype="string" />
+      </sendlist>
+      <recelist />
+    </cmd>
+    <cmd caption="READ_200" id="READ_200" sendlen="0" recelen="0" waittime="0" checktype="CRLF" submethod="Sub" isreturnval="-1">
+      <sendlist>
+        <item id="CONF" startbit="-1" caption="CONF" defaultvalue="CONF:VOLT:DC" valuetype="string" />
+        <item id="ZERO" startbit="-1" caption="" defaultvalue="VOLT:ZERO:AUTO OFF" valuetype="string" />
+        <item id="RANGE" startbit="-1" caption="" defaultvalue="VOLT:RANGE 1.0" valuetype="string" />
+        <item id="APER" startbit="-1" caption="" defaultvalue="VOLT:NPLC 2e-1" valuetype="string" />
+        <item id="DELAY" startbit="-1" caption="" defaultvalue="TRIG:DELAY:AUTO OFF" valuetype="string" />
+        <item id="DELAY0" startbit="-1" caption="" defaultvalue="TRIG:DELAY 100e-6" valuetype="string" />
+        <item id="SOUR" startbit="-1" caption="" defaultvalue="SAMP:SOUR TIMER" valuetype="string" />
+        <item id="TIMER" startbit="-1" caption="" defaultvalue="SAMP:TIMER 2e-3" valuetype="string" />
+        <item id="COUNT" startbit="-1" caption="" defaultvalue="SAMP:COUNT 100" valuetype="string" />
+      </sendlist>
+      <recelist>
+        <item id="BL1" startbit="-1" caption="" defaultvalue="" valuetype="string" />
+      </recelist>
+    </cmd>
+    <cmd caption="READ100" id="READ100" sendlen="8" recelen="6" waittime="1" isreturnval="-1" checktype="CRLF" submethod="Sub">
+      <sendlist>
+        <item id="READ" startbit="-1" caption="" defaultvalue="READ?" valuetype="string" />
+      </sendlist>
+      <recelist>
+        <item id="VOLT1" startbit="-1" caption="有效数字" defaultvalue="" valuetype="string" index="0" symbol="E" />
+        <item id="VE1" startbit="-1" caption="指数" defaultvalue="" valuetype="string" index="1" symbol="," />
+        <item id="VOLT2" startbit="-1" caption="有效数字" defaultvalue="" valuetype="string" index="0" symbol="E" />
+        <item id="VE2" startbit="-1" caption="指数" defaultvalue="" valuetype="string" index="3" symbol="," />
+        <item id="VOLT3" startbit="-1" caption="有效数字" defaultvalue="" valuetype="string" index="0" symbol="E" />
+        <item id="VE3" startbit="-1" caption="指数" defaultvalue="" valuetype="string" index="3" symbol="," />
+        <item id="VOLT4" startbit="-1" caption="有效数字" defaultvalue="" valuetype="string" index="0" symbol="E" />
+        <item id="VE4" startbit="-1" caption="指数" defaultvalue="" valuetype="string" index="3" symbol="," />
+        <item id="VOLT5" startbit="-1" caption="有效数字" defaultvalue="" valuetype="string" index="0" symbol="E" />
+        <item id="VE5" startbit="-1" caption="指数" defaultvalue="" valuetype="string" index="3" symbol="," />
+        <item id="VOLT6" startbit="-1" caption="有效数字" defaultvalue="" valuetype="string" index="0" symbol="E" />
+        <item id="VE6" startbit="-1" caption="指数" defaultvalue="" valuetype="string" index="3" symbol="," />
+        <item id="VOLT7" startbit="-1" caption="有效数字" defaultvalue="" valuetype="string" index="0" symbol="E" />
+        <item id="VE7" startbit="-1" caption="指数" defaultvalue="" valuetype="string" index="3" symbol="," />
+        <item id="VOLT8" startbit="-1" caption="有效数字" defaultvalue="" valuetype="string" index="0" symbol="E" />
+        <item id="VE8" startbit="-1" caption="指数" defaultvalue="" valuetype="string" index="3" symbol="," />
+        <item id="VOLT9" startbit="-1" caption="有效数字" defaultvalue="" valuetype="string" index="0" symbol="E" />
+        <item id="VE9" startbit="-1" caption="指数" defaultvalue="" valuetype="string" index="3" symbol="," />
+        <item id="VOLT10" startbit="-1" caption="有效数字" defaultvalue="" valuetype="string" index="0" symbol="E" />
+        <item id="VE10" startbit="-1" caption="指数" defaultvalue="" valuetype="string" index="3" symbol="," />
+        <item id="VOLT11" startbit="-1" caption="有效数字" defaultvalue="" valuetype="string" index="0" symbol="E" />
+        <item id="VE11" startbit="-1" caption="指数" defaultvalue="" valuetype="string" index="3" symbol="," />
+        <item id="VOLT12" startbit="-1" caption="有效数字" defaultvalue="" valuetype="string" index="0" symbol="E" />
+        <item id="VE12" startbit="-1" caption="指数" defaultvalue="" valuetype="string" index="3" symbol="," />
+        <item id="VOLT13" startbit="-1" caption="有效数字" defaultvalue="" valuetype="string" index="0" symbol="E" />
+        <item id="VE13" startbit="-1" caption="指数" defaultvalue="" valuetype="string" index="3" symbol="," />
+        <item id="VOLT14" startbit="-1" caption="有效数字" defaultvalue="" valuetype="string" index="0" symbol="E" />
+        <item id="VE14" startbit="-1" caption="指数" defaultvalue="" valuetype="string" index="3" symbol="," />
+        <item id="VOLT15" startbit="-1" caption="有效数字" defaultvalue="" valuetype="string" index="0" symbol="E" />
+        <item id="VE15" startbit="-1" caption="指数" defaultvalue="" valuetype="string" index="3" symbol="," />
+        <item id="VOLT16" startbit="-1" caption="有效数字" defaultvalue="" valuetype="string" index="0" symbol="E" />
+        <item id="VE16" startbit="-1" caption="指数" defaultvalue="" valuetype="string" index="3" symbol="," />
+        <item id="VOLT17" startbit="-1" caption="有效数字" defaultvalue="" valuetype="string" index="0" symbol="E" />
+        <item id="VE17" startbit="-1" caption="指数" defaultvalue="" valuetype="string" index="3" symbol="," />
+        <item id="VOLT18" startbit="-1" caption="有效数字" defaultvalue="" valuetype="string" index="0" symbol="E" />
+        <item id="VE18" startbit="-1" caption="指数" defaultvalue="" valuetype="string" index="3" symbol="," />
+        <item id="VOLT19" startbit="-1" caption="有效数字" defaultvalue="" valuetype="string" index="0" symbol="E" />
+        <item id="VE19" startbit="-1" caption="指数" defaultvalue="" valuetype="string" index="3" symbol="," />
+        <item id="VOLT20" startbit="-1" caption="有效数字" defaultvalue="" valuetype="string" index="0" symbol="E" />
+        <item id="VE20" startbit="-1" caption="指数" defaultvalue="" valuetype="string" index="3" symbol="," />
+        <item id="VOLT21" startbit="-1" caption="有效数字" defaultvalue="" valuetype="string" index="0" symbol="E" />
+        <item id="VE21" startbit="-1" caption="指数" defaultvalue="" valuetype="string" index="3" symbol="," />
+        <item id="VOLT22" startbit="-1" caption="有效数字" defaultvalue="" valuetype="string" index="0" symbol="E" />
+        <item id="VE22" startbit="-1" caption="指数" defaultvalue="" valuetype="string" index="3" symbol="," />
+        <item id="VOLT23" startbit="-1" caption="有效数字" defaultvalue="" valuetype="string" index="0" symbol="E" />
+        <item id="VE23" startbit="-1" caption="指数" defaultvalue="" valuetype="string" index="3" symbol="," />
+        <item id="VOLT24" startbit="-1" caption="有效数字" defaultvalue="" valuetype="string" index="0" symbol="E" />
+        <item id="VE24" startbit="-1" caption="指数" defaultvalue="" valuetype="string" index="3" symbol="," />
+        <item id="VOLT25" startbit="-1" caption="有效数字" defaultvalue="" valuetype="string" index="0" symbol="E" />
+        <item id="VE25" startbit="-1" caption="指数" defaultvalue="" valuetype="string" index="3" symbol="," />
+        <item id="VOLT26" startbit="-1" caption="有效数字" defaultvalue="" valuetype="string" index="0" symbol="E" />
+        <item id="VE26" startbit="-1" caption="指数" defaultvalue="" valuetype="string" index="3" symbol="," />
+        <item id="VOLT27" startbit="-1" caption="有效数字" defaultvalue="" valuetype="string" index="0" symbol="E" />
+        <item id="VE27" startbit="-1" caption="指数" defaultvalue="" valuetype="string" index="3" symbol="," />
+        <item id="VOLT28" startbit="-1" caption="有效数字" defaultvalue="" valuetype="string" index="0" symbol="E" />
+        <item id="VE28" startbit="-1" caption="指数" defaultvalue="" valuetype="string" index="3" symbol="," />
+        <item id="VOLT29" startbit="-1" caption="有效数字" defaultvalue="" valuetype="string" index="0" symbol="E" />
+        <item id="VE29" startbit="-1" caption="指数" defaultvalue="" valuetype="string" index="3" symbol="," />
+      </recelist>
+    </cmd>
+    <cmd caption="READString" id="READString" sendlen="8" recelen="6" waittime="1" isreturnval="-1" checktype="CRLF" submethod="Sub">
+      <sendlist>
+        <item id="READ" startbit="-1" caption="" defaultvalue="READ?" valuetype="string" />
+      </sendlist>
+      <recelist>
+        <item id="READStringBL1" startbit="-1" caption="万用表多值" defaultvalue="" valuetype="string" index="0" />
+      </recelist>
+    </cmd>
+    <cmd caption="S1" id="VOLT:DC" sendlen="0" recelen="0" waittime="10" checktype="CRLF" submethod="Sub" isreturnval="0">
+      <sendlist>
+        <item id="VOLT:DC" startbit="-1" caption="" defaultvalue="CONF:VOLT:DC" valuetype="string" />
+      </sendlist>
+      <recelist />
+    </cmd>
+    <cmd caption="S2" id="ZERO:OFF" sendlen="0" recelen="0" waittime="10" checktype="CRLF" submethod="Sub" isreturnval="0">
+      <sendlist>
+        <item id="ZERO:OFF" startbit="-1" caption="" defaultvalue="VOLT:ZERO:AUTO OFF" valuetype="string" />
+      </sendlist>
+      <recelist />
+    </cmd>
+    <cmd caption="S3" id="RANGE" sendlen="0" recelen="0" waittime="10" checktype="CRLF" submethod="Sub" isreturnval="0">
+      <sendlist>
+        <item id="RANGE1000" startbit="-1" caption="" defaultvalue="VOLT:RANGE 1000" valuetype="string" />
+      </sendlist>
+      <recelist />
+    </cmd>
+    <cmd caption="S4" id="NPLC" sendlen="0" recelen="0" waittime="10" checktype="CRLF" submethod="Sub" isreturnval="0">
+      <sendlist>
+        <item id="NPLC" startbit="-1" caption="" defaultvalue="VOLT:NPLC 2e-1" valuetype="string" />
+      </sendlist>
+      <recelist />
+    </cmd>
+    <cmd caption="S5" id="DELAY:OFF" sendlen="0" recelen="0" waittime="10" checktype="CRLF" submethod="Sub" isreturnval="0">
+      <sendlist>
+        <item id="DELAY:OFF" startbit="-1" caption="" defaultvalue="TRIG:DELAY:AUTO OFF" valuetype="string" />
+      </sendlist>
+      <recelist />
+    </cmd>
+    <cmd caption="S6" id="DELAY:X" sendlen="0" recelen="0" waittime="10" checktype="CRLF" submethod="Sub" isreturnval="0">
+      <sendlist>
+        <item id="DELAY:X" startbit="-1" caption="" defaultvalue="TRIG:DELAY 0" valuetype="string" />
+      </sendlist>
+      <recelist />
+    </cmd>
+    <cmd caption="S7" id="SOUR" sendlen="0" recelen="0" waittime="10" checktype="CRLF" submethod="Sub" isreturnval="0">
+      <sendlist>
+        <item id="SOURE" startbit="-1" caption="" defaultvalue="SAMP:SOUR TIMER" valuetype="string" />
+      </sendlist>
+      <recelist />
+    </cmd>
+    <cmd caption="S8" id="TIMER" sendlen="0" recelen="0" waittime="10" checktype="CRLF" submethod="Sub" isreturnval="0">
+      <sendlist>
+        <item id="TIMER X" startbit="-1" caption="" defaultvalue="SAMP:TIMER 2e-3 " valuetype="string" />
+      </sendlist>
+      <recelist />
+    </cmd>
+    <cmd caption="S9" id="COUNT" sendlen="0" recelen="0" waittime="10" checktype="CRLF" submethod="Sub" isreturnval="0">
+      <sendlist>
+        <item id="COUNT X" startbit="-1" caption="" defaultvalue="SAMP:COUNT 100" valuetype="string" />
+      </sendlist>
+      <recelist />
+    </cmd>
+    <cmd caption="S2" id="ZERO:ON" sendlen="0" recelen="0" waittime="10" checktype="CRLF" submethod="Sub" isreturnval="0">
+      <sendlist>
+        <item id="ZERO:ON" startbit="-1" caption="" defaultvalue="VOLT:ZERO:AUTO ON" valuetype="string" />
+      </sendlist>
+      <recelist />
+    </cmd>
+    <cmd caption="S3" id="RANGE:AUTO" sendlen="0" recelen="0" waittime="10" checktype="CRLF" submethod="Sub" isreturnval="0">
+      <sendlist>
+        <item id="RANGE:AUTO" startbit="-1" caption="" defaultvalue="VOLT:RANGE:AUTO ON" valuetype="string" />
+      </sendlist>
+      <recelist />
+    </cmd>
+    <cmd caption="S5" id="DELAY:ON" sendlen="0" recelen="0" waittime="10" checktype="CRLF" submethod="Sub" isreturnval="0">
+      <sendlist>
+        <item id="DELAY:ON" startbit="-1" caption="" defaultvalue="TRIG:DELAY:AUTO ON" valuetype="string" />
+      </sendlist>
+      <recelist />
+    </cmd>
+  </cmdlist>
+</packcom>

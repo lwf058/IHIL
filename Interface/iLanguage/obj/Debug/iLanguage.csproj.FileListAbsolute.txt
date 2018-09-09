@@ -1,0 +1,16 @@
+E:\work\iHil\Interface\iLanguage\iLanguage\bin\Debug\iLanguage.dll
+E:\work\iHil\Interface\iLanguage\iLanguage\bin\Debug\iLanguage.pdb
+E:\work\iHil\Interface\iLanguage\iLanguage\obj\Debug\iLanguage.csprojResolveAssemblyReference.cache
+E:\work\iHil\Interface\iLanguage\iLanguage\obj\Debug\iLanguage.dll
+E:\work\iHil\Interface\iLanguage\iLanguage\obj\Debug\iLanguage.pdb
+E:\work\iHil\Interface\iHilBms\iHilBms\Bin\Debug\Interface\iLanguage.dll
+E:\work\iHil\Interface\iHilBms\iHilBms\Bin\Debug\Interface\iLanguage.pdb
+E:\work\iHil\Interface\iLanguage\bin\Debug\iLanguage.dll
+E:\work\iHil\Interface\iLanguage\bin\Debug\iLanguage.pdb
+E:\work\iHil\Interface\iLanguage\obj\Debug\iLanguage.dll
+E:\work\iHil\Interface\iLanguage\obj\Debug\iLanguage.pdb
+E:\VSProject\iHIL0828\Interface\iLanguage\bin\Debug\iLanguage.dll
+E:\VSProject\iHIL0828\Interface\iLanguage\bin\Debug\iLanguage.pdb
+E:\VSProject\iHIL0828\Interface\iLanguage\obj\Debug\iLanguage.csproj.CoreCompileInputs.cache
+E:\VSProject\iHIL0828\Interface\iLanguage\obj\Debug\iLanguage.dll
+E:\VSProject\iHIL0828\Interface\iLanguage\obj\Debug\iLanguage.pdb

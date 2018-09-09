@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="gb2312"?>
+<Root is192="0" syszh="0" btl="0" unsign="65535" bytefrom="0" CodeFormat="0" VoltNum="0" TmpNum="0" bmsaddr="" pcaddr="" isdomuil="0" Version="1">
+	<bms>
+		<bw id="0X0000012F" znum="0" caption="KLEMMEN" FrameType="0" muilframe="0" issend="0" pgn="" IsCRC="-1" CRC_ID="19" Crc_DataLen="8">
+			<item id="CRC_KL" caption="" unit="" dwxs="1" startbytelength="2" startbyte="0" pYW="0" startbit="0" bitlength="8" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ALIV_COU_KL" caption="" unit="" dwxs="1" startbytelength="3" startbyte="0" pYW="0" startbit="8" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_VEH_CON" caption="" unit="" dwxs="1" startbytelength="3" startbyte="0" pYW="0" startbit="12" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL" caption="" unit="" dwxs="1" startbytelength="4" startbyte="0" pYW="0" startbit="16" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL_DIV" caption="" unit="" dwxs="1" startbytelength="4" startbyte="0" pYW="0" startbit="20" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL_30B" caption="" unit="" dwxs="1" startbytelength="5" startbyte="0" pYW="0" startbit="24" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL_15N" caption="" unit="" dwxs="1" startbytelength="5" startbyte="0" pYW="0" startbit="28" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL_KEY_VLD" caption="" unit="" dwxs="1" startbytelength="6" startbyte="0" pYW="0" startbit="32" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_PLK" caption="" unit="" dwxs="1" startbytelength="6" startbyte="0" pYW="0" startbit="36" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="CON_CLT_SW" caption="" unit="" dwxs="1" startbytelength="6" startbyte="0" pYW="0" startbit="38" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="CTR_ENG_STOP" caption="" unit="" dwxs="1" startbytelength="7" startbyte="0" pYW="0" startbit="40" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_STCD_PENG" caption="" unit="" dwxs="1" startbytelength="7" startbyte="0" pYW="0" startbit="42" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_OP_MSA" caption="" unit="" dwxs="1" startbytelength="7" startbyte="0" pYW="0" startbit="44" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_SSP" caption="" unit="" dwxs="1" startbytelength="7" startbyte="0" pYW="0" startbit="46" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="RWDT_BLS" caption="" unit="" dwxs="1" startbytelength="8" startbyte="0" pYW="0" startbit="48" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL_50_MSA" caption="" unit="" dwxs="1" startbytelength="8" startbyte="0" pYW="0" startbit="52" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="RQ_DRVG_RDI" caption="" unit="" dwxs="1" startbytelength="8" startbyte="0" pYW="0" startbit="54" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL_DBG" caption="" unit="" dwxs="1" startbytelength="9" startbyte="0" pYW="0" startbit="56" bitlength="8" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+		</bw>
+		<bw id="0X0000012F" znum="0" caption="KLEMMEN" FrameType="0" muilframe="0" issend="0" pgn="" IsCRC="-1" CRC_ID="19" Crc_DataLen="8">
+			<item id="CRC_KL" caption="" unit="" dwxs="1" startbytelength="2" startbyte="0" pYW="0" startbit="0" bitlength="8" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ALIV_COU_KL" caption="" unit="" dwxs="1" startbytelength="3" startbyte="0" pYW="0" startbit="8" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_VEH_CON" caption="" unit="" dwxs="1" startbytelength="3" startbyte="0" pYW="0" startbit="12" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL" caption="" unit="" dwxs="1" startbytelength="4" startbyte="0" pYW="0" startbit="16" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL_DIV" caption="" unit="" dwxs="1" startbytelength="4" startbyte="0" pYW="0" startbit="20" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL_30B" caption="" unit="" dwxs="1" startbytelength="5" startbyte="0" pYW="0" startbit="24" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL_15N" caption="" unit="" dwxs="1" startbytelength="5" startbyte="0" pYW="0" startbit="28" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL_KEY_VLD" caption="" unit="" dwxs="1" startbytelength="6" startbyte="0" pYW="0" startbit="32" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_PLK" caption="" unit="" dwxs="1" startbytelength="6" startbyte="0" pYW="0" startbit="36" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="CON_CLT_SW" caption="" unit="" dwxs="1" startbytelength="6" startbyte="0" pYW="0" startbit="38" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="CTR_ENG_STOP" caption="" unit="" dwxs="1" startbytelength="7" startbyte="0" pYW="0" startbit="40" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_STCD_PENG" caption="" unit="" dwxs="1" startbytelength="7" startbyte="0" pYW="0" startbit="42" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_OP_MSA" caption="" unit="" dwxs="1" startbytelength="7" startbyte="0" pYW="0" startbit="44" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_SSP" caption="" unit="" dwxs="1" startbytelength="7" startbyte="0" pYW="0" startbit="46" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="RWDT_BLS" caption="" unit="" dwxs="1" startbytelength="8" startbyte="0" pYW="0" startbit="48" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL_50_MSA" caption="" unit="" dwxs="1" startbytelength="8" startbyte="0" pYW="0" startbit="52" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="RQ_DRVG_RDI" caption="" unit="" dwxs="1" startbytelength="8" startbyte="0" pYW="0" startbit="54" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL_DBG" caption="" unit="" dwxs="1" startbytelength="9" startbyte="0" pYW="0" startbit="56" bitlength="8" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+		</bw>
+		<bw id="0X0000012F" znum="0" caption="KLEMMEN" FrameType="0" muilframe="0" issend="0" pgn="" IsCRC="0" CRC_ID="0" Crc_DataLen="8">
+			<item id="CRC_KL" caption="" unit="" dwxs="1" startbytelength="2" startbyte="0" pYW="0" startbit="0" bitlength="8" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ALIV_COU_KL" caption="" unit="" dwxs="1" startbytelength="3" startbyte="0" pYW="0" startbit="8" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_VEH_CON" caption="" unit="" dwxs="1" startbytelength="3" startbyte="0" pYW="0" startbit="12" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL" caption="" unit="" dwxs="1" startbytelength="4" startbyte="0" pYW="0" startbit="16" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL_DIV" caption="" unit="" dwxs="1" startbytelength="4" startbyte="0" pYW="0" startbit="20" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL_30B" caption="" unit="" dwxs="1" startbytelength="5" startbyte="0" pYW="0" startbit="24" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL_15N" caption="" unit="" dwxs="1" startbytelength="5" startbyte="0" pYW="0" startbit="28" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL_KEY_VLD" caption="" unit="" dwxs="1" startbytelength="6" startbyte="0" pYW="0" startbit="32" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_PLK" caption="" unit="" dwxs="1" startbytelength="6" startbyte="0" pYW="0" startbit="36" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="CON_CLT_SW" caption="" unit="" dwxs="1" startbytelength="6" startbyte="0" pYW="0" startbit="38" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="CTR_ENG_STOP" caption="" unit="" dwxs="1" startbytelength="7" startbyte="0" pYW="0" startbit="40" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_STCD_PENG" caption="" unit="" dwxs="1" startbytelength="7" startbyte="0" pYW="0" startbit="42" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_OP_MSA" caption="" unit="" dwxs="1" startbytelength="7" startbyte="0" pYW="0" startbit="44" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_SSP" caption="" unit="" dwxs="1" startbytelength="7" startbyte="0" pYW="0" startbit="46" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="RWDT_BLS" caption="" unit="" dwxs="1" startbytelength="8" startbyte="0" pYW="0" startbit="48" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL_50_MSA" caption="" unit="" dwxs="1" startbytelength="8" startbyte="0" pYW="0" startbit="52" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="RQ_DRVG_RDI" caption="" unit="" dwxs="1" startbytelength="8" startbyte="0" pYW="0" startbit="54" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL_DBG" caption="" unit="" dwxs="1" startbytelength="9" startbyte="0" pYW="0" startbit="56" bitlength="8" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+		</bw>
+		<bw id="0X0000012F" znum="0" caption="KLEMMEN" FrameType="0" muilframe="0" issend="0" pgn="" IsCRC="-1" CRC_ID="12" Crc_DataLen="8">
+			<item id="CRC_KL" caption="" unit="" dwxs="1" startbytelength="2" startbyte="0" pYW="0" startbit="0" bitlength="8" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ALIV_COU_KL" caption="" unit="" dwxs="1" startbytelength="3" startbyte="0" pYW="0" startbit="8" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_VEH_CON" caption="" unit="" dwxs="1" startbytelength="3" startbyte="0" pYW="0" startbit="12" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL" caption="" unit="" dwxs="1" startbytelength="4" startbyte="0" pYW="0" startbit="16" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL_DIV" caption="" unit="" dwxs="1" startbytelength="4" startbyte="0" pYW="0" startbit="20" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL_30B" caption="" unit="" dwxs="1" startbytelength="5" startbyte="0" pYW="0" startbit="24" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL_15N" caption="" unit="" dwxs="1" startbytelength="5" startbyte="0" pYW="0" startbit="28" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL_KEY_VLD" caption="" unit="" dwxs="1" startbytelength="6" startbyte="0" pYW="0" startbit="32" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_PLK" caption="" unit="" dwxs="1" startbytelength="6" startbyte="0" pYW="0" startbit="36" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="CON_CLT_SW" caption="" unit="" dwxs="1" startbytelength="6" startbyte="0" pYW="0" startbit="38" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="CTR_ENG_STOP" caption="" unit="" dwxs="1" startbytelength="7" startbyte="0" pYW="0" startbit="40" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_STCD_PENG" caption="" unit="" dwxs="1" startbytelength="7" startbyte="0" pYW="0" startbit="42" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_OP_MSA" caption="" unit="" dwxs="1" startbytelength="7" startbyte="0" pYW="0" startbit="44" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_SSP" caption="" unit="" dwxs="1" startbytelength="7" startbyte="0" pYW="0" startbit="46" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="RWDT_BLS" caption="" unit="" dwxs="1" startbytelength="8" startbyte="0" pYW="0" startbit="48" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL_50_MSA" caption="" unit="" dwxs="1" startbytelength="8" startbyte="0" pYW="0" startbit="52" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="RQ_DRVG_RDI" caption="" unit="" dwxs="1" startbytelength="8" startbyte="0" pYW="0" startbit="54" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL_DBG" caption="" unit="" dwxs="1" startbytelength="9" startbyte="0" pYW="0" startbit="56" bitlength="8" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+		</bw>
+		<bw id="0X0000012F" znum="0" caption="KLEMMEN" FrameType="0" muilframe="0" issend="0" pgn="" IsCRC="-1" CRC_ID="19" Crc_DataLen="3">
+			<item id="CRC_KL" caption="" unit="" dwxs="1" startbytelength="2" startbyte="0" pYW="0" startbit="0" bitlength="8" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ALIV_COU_KL" caption="" unit="" dwxs="1" startbytelength="3" startbyte="0" pYW="0" startbit="8" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_VEH_CON" caption="" unit="" dwxs="1" startbytelength="3" startbyte="0" pYW="0" startbit="12" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL" caption="" unit="" dwxs="1" startbytelength="4" startbyte="0" pYW="0" startbit="16" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL_DIV" caption="" unit="" dwxs="1" startbytelength="4" startbyte="0" pYW="0" startbit="20" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL_30B" caption="" unit="" dwxs="1" startbytelength="5" startbyte="0" pYW="0" startbit="24" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL_15N" caption="" unit="" dwxs="1" startbytelength="5" startbyte="0" pYW="0" startbit="28" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL_KEY_VLD" caption="" unit="" dwxs="1" startbytelength="6" startbyte="0" pYW="0" startbit="32" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_PLK" caption="" unit="" dwxs="1" startbytelength="6" startbyte="0" pYW="0" startbit="36" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="CON_CLT_SW" caption="" unit="" dwxs="1" startbytelength="6" startbyte="0" pYW="0" startbit="38" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="CTR_ENG_STOP" caption="" unit="" dwxs="1" startbytelength="7" startbyte="0" pYW="0" startbit="40" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_STCD_PENG" caption="" unit="" dwxs="1" startbytelength="7" startbyte="0" pYW="0" startbit="42" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_OP_MSA" caption="" unit="" dwxs="1" startbytelength="7" startbyte="0" pYW="0" startbit="44" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_SSP" caption="" unit="" dwxs="1" startbytelength="7" startbyte="0" pYW="0" startbit="46" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="RWDT_BLS" caption="" unit="" dwxs="1" startbytelength="8" startbyte="0" pYW="0" startbit="48" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL_50_MSA" caption="" unit="" dwxs="1" startbytelength="8" startbyte="0" pYW="0" startbit="52" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="RQ_DRVG_RDI" caption="" unit="" dwxs="1" startbytelength="8" startbyte="0" pYW="0" startbit="54" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL_DBG" caption="" unit="" dwxs="1" startbytelength="9" startbyte="0" pYW="0" startbit="56" bitlength="8" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+		</bw>
+		<bw id="0X0000012F" znum="0" caption="KLEMMEN" FrameType="0" muilframe="0" issend="0" pgn="" IsCRC="-1" CRC_ID="1" Crc_DataLen="8">
+			<item id="CRC_KL" caption="" unit="" dwxs="1" startbytelength="2" startbyte="0" pYW="0" startbit="0" bitlength="8" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ALIV_COU_KL" caption="" unit="" dwxs="1" startbytelength="3" startbyte="0" pYW="0" startbit="8" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_VEH_CON" caption="" unit="" dwxs="1" startbytelength="3" startbyte="0" pYW="0" startbit="12" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL" caption="" unit="" dwxs="1" startbytelength="4" startbyte="0" pYW="0" startbit="16" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL_DIV" caption="" unit="" dwxs="1" startbytelength="4" startbyte="0" pYW="0" startbit="20" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL_30B" caption="" unit="" dwxs="1" startbytelength="5" startbyte="0" pYW="0" startbit="24" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL_15N" caption="" unit="" dwxs="1" startbytelength="5" startbyte="0" pYW="0" startbit="28" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL_KEY_VLD" caption="" unit="" dwxs="1" startbytelength="6" startbyte="0" pYW="0" startbit="32" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_PLK" caption="" unit="" dwxs="1" startbytelength="6" startbyte="0" pYW="0" startbit="36" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="CON_CLT_SW" caption="" unit="" dwxs="1" startbytelength="6" startbyte="0" pYW="0" startbit="38" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="CTR_ENG_STOP" caption="" unit="" dwxs="1" startbytelength="7" startbyte="0" pYW="0" startbit="40" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_STCD_PENG" caption="" unit="" dwxs="1" startbytelength="7" startbyte="0" pYW="0" startbit="42" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_OP_MSA" caption="" unit="" dwxs="1" startbytelength="7" startbyte="0" pYW="0" startbit="44" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_SSP" caption="" unit="" dwxs="1" startbytelength="7" startbyte="0" pYW="0" startbit="46" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="RWDT_BLS" caption="" unit="" dwxs="1" startbytelength="8" startbyte="0" pYW="0" startbit="48" bitlength="4" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL_50_MSA" caption="" unit="" dwxs="1" startbytelength="8" startbyte="0" pYW="0" startbit="52" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="RQ_DRVG_RDI" caption="" unit="" dwxs="1" startbytelength="8" startbyte="0" pYW="0" startbit="54" bitlength="2" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+			<item id="ST_KL_DBG" caption="" unit="" dwxs="1" startbytelength="9" startbyte="0" pYW="0" startbit="56" bitlength="8" ZH="-1" IsSave="0" Decnum="0" Color="0" bl1mc="" bl2mc="" bytefrombl="1"/>
+		</bw>
+	</bms>
+	<sendbms>
+		<bw id="" cmd="" cmdid="0" time="0" FrameType="0" Frameformat="0" IsSend="-1" Fcrc_id="0" Fcrc_len="0"/>
+	</sendbms>
+	<AddressBMS/>
+</Root>

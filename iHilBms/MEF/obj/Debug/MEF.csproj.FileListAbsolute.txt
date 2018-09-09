@@ -1,0 +1,12 @@
+E:\work\iHil\iHilBms\MEF\bin\Debug\MEF.dll
+E:\work\iHil\iHilBms\MEF\bin\Debug\MEF.pdb
+E:\work\iHil\iHilBms\iHilBms\bin\Debug\Model\MEF.dll
+E:\work\iHil\iHilBms\iHilBms\bin\Debug\Model\MEF.pdb
+E:\work\iHil\iHilBms\iHilBms\bin\Debug\MEF\MEF.dll
+E:\work\iHil\iHilBms\iHilBms\bin\Debug\MEF\MEF.pdb
+E:\VSProject\iHIL0828\iHilBms\iHilBms\bin\Debug\MEF\MEF.dll
+E:\VSProject\iHIL0828\iHilBms\iHilBms\bin\Debug\MEF\MEF.pdb
+E:\VSProject\iHIL0828\iHilBms\MEF\obj\Debug\MEF.csprojAssemblyReference.cache
+E:\VSProject\iHIL0828\iHilBms\MEF\obj\Debug\MEF.csproj.CoreCompileInputs.cache
+E:\VSProject\iHIL0828\iHilBms\MEF\obj\Debug\MEF.dll
+E:\VSProject\iHIL0828\iHilBms\MEF\obj\Debug\MEF.pdb

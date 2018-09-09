@@ -1,0 +1,11 @@
+E:\测试的一些DEMO\右下角弹出 - 类库\WpfApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+E:\测试的一些DEMO\右下角弹出 - 类库\WpfApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+E:\测试的一些DEMO\右下角弹出 - 类库\WpfApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+E:\测试的一些DEMO\右下角弹出 - 类库\WpfApplication1\WindowsFormsApplication1\bin\Debug\WpfApplication1.dll
+E:\测试的一些DEMO\右下角弹出 - 类库\WpfApplication1\WindowsFormsApplication1\bin\Debug\WpfApplication1.pdb
+E:\测试的一些DEMO\右下角弹出 - 类库\WpfApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
+E:\测试的一些DEMO\右下角弹出 - 类库\WpfApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
+E:\测试的一些DEMO\右下角弹出 - 类库\WpfApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+E:\测试的一些DEMO\右下角弹出 - 类库\WpfApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
+E:\测试的一些DEMO\右下角弹出 - 类库\WpfApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
+E:\测试的一些DEMO\右下角弹出 - 类库\WpfApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb

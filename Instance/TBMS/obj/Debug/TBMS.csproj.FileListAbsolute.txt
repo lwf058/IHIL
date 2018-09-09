@@ -1,0 +1,2 @@
+E:\VSProject\iHIL0828\Instance\TBMS\obj\Debug\TBMS.csprojAssemblyReference.cache
+E:\VSProject\iHIL0828\Instance\TBMS\obj\Debug\TBMS.csproj.CoreCompileInputs.cache

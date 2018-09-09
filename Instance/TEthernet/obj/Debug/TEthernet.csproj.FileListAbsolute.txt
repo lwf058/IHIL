@@ -1,0 +1,2 @@
+E:\VSProject\iHIL0828\Instance\TEthernet\obj\Debug\TEthernet.csprojAssemblyReference.cache
+E:\VSProject\iHIL0828\Instance\TEthernet\obj\Debug\TEthernet.csproj.CoreCompileInputs.cache

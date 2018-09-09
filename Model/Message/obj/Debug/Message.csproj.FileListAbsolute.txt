@@ -1,0 +1,10 @@
+E:\work\iHil\iHilBms\iHilBms\bin\Debug\Model\Message.dll
+E:\work\iHil\iHilBms\iHilBms\bin\Debug\Model\Message.pdb
+E:\VSProject\iHIL0828\Model\Message\bin\Debug\Message.dll
+E:\VSProject\iHIL0828\Model\Message\bin\Debug\Message.pdb
+E:\VSProject\iHIL0828\Model\Message\obj\Debug\Message.csprojAssemblyReference.cache
+E:\VSProject\iHIL0828\Model\Message\obj\Debug\Message.MessageForm.resources
+E:\VSProject\iHIL0828\Model\Message\obj\Debug\Message.csproj.GenerateResource.cache
+E:\VSProject\iHIL0828\Model\Message\obj\Debug\Message.csproj.CoreCompileInputs.cache
+E:\VSProject\iHIL0828\Model\Message\obj\Debug\Message.dll
+E:\VSProject\iHIL0828\Model\Message\obj\Debug\Message.pdb
